@@ -24,6 +24,12 @@ consequences rather than just listing options.
    can go. If napari, point them to `guidance/napari-plugins.md` and the official
    napari plugin template, and explain that the analysis code in `src/` can be
    reused by the plugin.
+   **Documentation site?** Ask whether other people will install and use the
+   software. If so, keep the documentation website (`docs/`, `mkdocs.yml`). It
+   adds a user guide and a reference built from the docstrings, and is
+   published once the repository is public. If not (e.g. a private analysis or
+   a few scripts), recommend removing it: the README is enough, and the site
+   can be added back later.
 4. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
@@ -77,6 +83,12 @@ Create a branch `setup-project`. Then:
     `update-from-template` skill:
     `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --init`.
     Commit the resulting `.github/template.json`.
+11. **Documentation site:** if they don't want one, delete `mkdocs.yml`,
+    `.github/workflows/docs.yml` and every page in `docs/` except
+    `docs/decisions.md`; remove the `docs` extra from `pyproject.toml` (and
+    from the `dev` extra); remove the `mkdocs serve` line from `AGENTS.md`;
+    and in `CONTRIBUTING.md` → *Documentation*, keep only the bullets for
+    projects without a site. The README is then the user documentation.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
@@ -102,8 +114,13 @@ Explain these, and offer to do them with `gh` if it's installed:
   the AI after each merge.
 - **Dependabot alerts and security updates:** Settings → Code security.
 - **Issues** on, and labels for `bug`, `enhancement`, `documentation`.
-- **GitHub Pages** (for the docs site): Settings → Pages → *Deploy from a
-  branch* → `gh-pages`, once the repository is public or on a paid plan.
+- **Documentation site on GitHub Pages** (if they kept the site): GitHub's
+  free plan only serves sites for public repositories. Once the repository
+  is public, the *Docs* workflow publishes the site to a `gh-pages` branch on
+  every merge to `main`. After its first run, turn it on in Settings →
+  Pages → *Deploy from a branch* → `gh-pages`, folder `/ (root)`. The site
+  appears at `https://<owner>.github.io/<repo>/`; check `site_url` in
+  `mkdocs.yml` matches.
 - **Zenodo:** connect the repository at <https://zenodo.org/account/settings/github/>
   before the first release, so each release gets a DOI.
 - **Community forum:** if users will need help, choose one forum (e.g.

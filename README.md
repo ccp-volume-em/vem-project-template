@@ -119,28 +119,49 @@ with `python tools/check_template.py`.
 
 ## Installation
 
-You need Python 3.11 or newer.
+<!-- The text between the --8<-- markers also appears on the documentation
+site (docs/getting-started.md), so it's written only once. Keep links out of
+it: they would break on the site. -->
+<!-- --8<-- [start:install] -->
+You need Python 3.11 or newer. Use a virtual environment, so this project's
+packages don't interfere with others:
 
 ```bash
-git clone https://github.com/ccp-volume-em/vem-project.git
-cd vem-project
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
-python -m pip install -e ".[dev]"
+python -m pip install "vem-project @ git+https://github.com/ccp-volume-em/vem-project"
 ```
+
+Check it worked:
+
+```bash
+vem-project --version
+```
+<!-- --8<-- [end:install] -->
+
+To work on the code itself, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Quick start
 
-Make a small synthetic label volume and measure the objects in it:
+<!-- --8<-- [start:quickstart] -->
+From a copy of the repository, make a small synthetic label volume and measure
+the objects in it:
 
 ```bash
 python examples/make_example_data.py
 vem-project measure examples/params.yml
 ```
 
-This writes `results/example/object_volumes.csv` (volumes in nm³) and
-`results/example/provenance.json` (software version, parameters, inputs). See
-the [documentation](docs/index.md) for more.
+The first command writes `data/example_labels.ome.zarr`: two box-shaped
+objects with 8 × 8 × 16 nm voxels. The second measures them and writes:
+
+- `results/example/object_volumes.csv`: the volume of each object in nm³;
+- `results/example/provenance.json`: the software version, parameters and
+  inputs that produced it.
+
+Object 1 is 8 × 20 × 20 voxels of 1,024 nm³ each, so its volume should be
+3,276,800 nm³.
+<!-- --8<-- [end:quickstart] -->
 
 ## Getting help
 

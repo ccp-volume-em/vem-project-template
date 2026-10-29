@@ -190,8 +190,17 @@ FIJI=/path/to/Fiji.app/fiji pytest -m fiji
 
 - Every public function gets a [NumPy-style docstring](https://numpydoc.readthedocs.io/en/latest/format.html).
 - Comments explain *why*, not *what*.
-- User documentation lives in `docs/` and is built with MkDocs:
-  `mkdocs serve`, then open <http://127.0.0.1:8000>.
+- The README is the starting point for users. Its install and quick-start
+  text is written once, between `--8<--` markers, and the documentation site
+  reuses it: edit it in the README.
+- **With a documentation site** (`docs/` and `mkdocs.yml`): user guides and
+  the reference built from docstrings live in `docs/`. Preview with
+  `mkdocs serve`, then open <http://127.0.0.1:8000>. Pull requests check that
+  it builds.
+- **Without one:** the README is the user documentation. To add a site
+  later, ask your AI assistant to restore it from the project template
+  (`docs/`, `mkdocs.yml`, `.github/workflows/docs.yml` and the `docs` extra in
+  `pyproject.toml`).
 
 ## Versions and releases
 

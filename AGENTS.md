@@ -289,7 +289,7 @@ pytest                                              # run the tests
 pytest --cov --cov-report=term-missing              # with coverage
 FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too
 ruff check . && ruff format --check .               # lint
-mkdocs serve                                        # preview the docs
+mkdocs serve                                        # preview the docs site, if there is one
 python tools/check_guidance.py                      # has the guide changed?
 python tools/check_template.py                      # has the template changed?
 ```
