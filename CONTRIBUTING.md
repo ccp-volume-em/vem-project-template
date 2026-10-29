@@ -14,8 +14,9 @@ AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
 1. Every change starts on its own **branch**, never on `main`.
 2. Make **small commits** with clear messages.
 3. Open a **pull request (PR)**. Tests run automatically.
-4. **A person reviews and merges it.** Nobody merges their own PR unreviewed,
-   and AI assistants never merge.
+4. **Someone reviews it, then a person merges it.** Ideally a colleague
+   reviews it; if you work alone, review it yourself with the checklist in
+   [Review](#6-review). AI assistants never merge.
 
 ## Words you'll meet
 
@@ -131,10 +132,49 @@ those words only for issues the PR completely resolves. Otherwise write
 
 ### 6. Review
 
-A maintainer, or a colleague the maintainer asks, reviews the PR. Expect
-questions and suggestions: that's normal and useful. Push more commits to the
-same branch to respond. Once it's approved and the checks are green, the
-reviewer merges it.
+A second pair of eyes is good practice: a colleague, a maintainer, or someone
+from your institute's research software group. Expect questions and
+suggestions: that's normal and useful. Push more commits to the same branch to
+respond. Once it's approved and the checks are green, the reviewer merges it.
+
+Many projects have one developer, so a reviewer isn't required. If there's no
+one to ask, review the PR yourself, then merge it. For changes that alter
+scientific results, delete data, or go into a release, try to find a second
+person anyway, even occasionally: a colleague's half hour, or a question on
+[image.sc](https://forum.image.sc/).
+
+#### Reviewing your own PR
+
+The risk in self-review, especially of AI-written code, is reading the summary
+and agreeing with it. Treat the change as if someone you don't know wrote it:
+
+1. **Wait first.** Review after a break (the next day if you can), not
+   straight after writing it. Open it as a *draft* PR until you have.
+2. **Read the diff, not the summary.** Use the PR's *Files changed* tab and
+   read every line. Tick *Viewed* on each file as you go.
+3. **Explain it back.** Without looking at the AI's description, write two or
+   three sentences on what the change does and why. If you can't, it isn't
+   ready: ask the AI to explain the parts you can't.
+4. **Check the evidence yourself.** Look at the test results on the PR rather
+   than taking "tests pass" on trust. Run it on a small example whose answer
+   you worked out by hand.
+5. **Test the tests.** Were the expected values worked out independently of
+   the code? Ask the AI to break the code on purpose (e.g. swap two axes,
+   drop the voxel size) and check that a test fails.
+6. **Look for what's missing,** not just what's there: empty or single-slice
+   input, anisotropic voxels, units, unexpected data types, error messages a
+   user would understand.
+7. **Check the scope.** The diff contains only what you meant to change: no
+   unrelated edits, no deleted or weakened tests, no data or secrets.
+8. **Ask for an independent second opinion.** Start a *fresh* AI session that
+   hasn't seen the work, show it the diff, and ask "what could make this
+   wrong?" rather than "is this OK?". Treat what it finds as leads to check,
+   not verdicts.
+9. **Leave a note.** Add a PR comment saying what you checked and how. It's
+   the record a reviewer would have left, and it helps future you.
+
+The `review-changes` skill checks the project standards (changelog, commit
+messages, docs) for you, but the judgement in steps 3–6 is yours.
 
 **Reviewing someone else's PR?** Check that you understand the change, that
 it's tested, and that it follows [AGENTS.md](AGENTS.md) and

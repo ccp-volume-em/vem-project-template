@@ -27,8 +27,9 @@ much like a lab notebook that never loses a page.
   include Claude Code, GitHub Copilot, Cursor and Codex. Some run in your web
   browser and connect to GitHub directly, so there's nothing to install;
   others run on your own computer. Check which ones your institute approves.
-- **Someone to check your changes.** A colleague, supervisor or the project
-  maintainer. Every change is looked at by a person before it's accepted.
+- **Ideally, someone to check your changes:** a colleague, supervisor or the
+  project maintainer. If you work alone, you'll check them yourself, using
+  [*Before you merge*](#before-you-merge) below.
 
 ## Seven words you'll hear
 
@@ -57,14 +58,15 @@ the technical parts; you make the decisions.
 1. **You describe** what you want, in your own words.
 2. **The AI suggests a plan.** You agree to it, or ask questions first.
 3. **The AI makes the change** on a branch, runs the tests, and saves commits.
-4. **The AI opens a pull request.** You read its summary, try it out, and ask a
-   colleague to review it.
-5. **Your reviewer approves and merges it.** Now it's part of `main`, and
+4. **The AI opens a pull request.** You read the changes, try them out, and,
+   if you can, ask a colleague to review it.
+5. **Your reviewer (or you, after checking it yourself) merges it.** Now it's
+   part of `main`, and
    the AI deletes the branch: its work is safe in `main`, and this keeps the
    project tidy.
 
-Nothing reaches `main` without a person checking it. The AI never merges its
-own work.
+Nothing reaches `main` without a person checking it, even if that person is
+you. The AI never merges its own work.
 
 ## Your first session
 
@@ -83,8 +85,9 @@ own work.
 4. **Answer its questions.** It asks what the project is for, who's involved
    and a few choices. If you're unsure, say so and ask it to explain the
    options.
-5. **It opens your first pull request.** Ask your reviewer to look at it. Once
-   they've merged it, your project is ready.
+5. **It opens your first pull request.** Ask your reviewer to look at it, or
+   check it yourself (see *Before you merge*). Once it's merged, your project
+   is ready.
 
 ## Things you can say
 
@@ -99,15 +102,17 @@ helpful colleague. Some examples:
 | Check it on real data | "Run it on the example data and show me the results. How can I check one value by hand?" |
 | Save your progress | "Commit what we've done so far, with a clear message." |
 | Get it reviewed | "Open a pull request for this, and summarise it for my reviewer." |
+| Review it yourself | "I'm reviewing this alone. Walk me through the changes file by file, and tell me what could make it wrong." |
 | See what's changed | "What has changed in the project since last week?" |
 | Get unstuck | "Stop. Explain what went wrong, and don't change anything yet." |
 | Plan ahead | "Make an issue for adding a 3D view, so we don't forget." |
 | Work in Fiji | "Make a Fiji script that measures the volume of each object in my label image." (It's written so Fiji shows a dialog for the settings.) |
 | Tidy up | "The pull request was merged. Please tidy up the branch." |
 
-## Before you ask for a review
+## Before you merge
 
-Check these yourself. Your reviewer will ask about them too.
+Check these yourself, whether or not someone else reviews it. A reviewer will
+ask about them too.
 
 - [ ] **I understand what the change does.** If not, ask the AI to explain
       until you do. You're responsible for it, not the AI.
@@ -119,13 +124,30 @@ Check these yourself. Your reviewer will ask about them too.
 - [ ] **The checks passed** (green tick ✅ on the pull request).
 - [ ] **No data, images, passwords or personal information** were added.
 
+**Working alone?** The danger is reading the AI's summary and agreeing with
+it. A few habits help:
+
+- **Come back to it later,** ideally the next day, before merging.
+- **Read the changes, not the summary:** the *Files changed* tab on the pull
+  request shows every line.
+- **Explain it in your own words** before you merge. If you can't, ask the AI
+  until you can.
+- **Ask the AI to break it on purpose,** and check that a test catches it.
+- **Ask a fresh AI session** (one that didn't write it) "what could make this
+  wrong?", and check what it says yourself.
+- **For anything that changes your results,** try to get a colleague to look,
+  even briefly.
+
+The full checklist is in [CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr).
+
 ## Golden rules
 
 1. **Data never goes on GitHub.** Keep images and results on your institute's
    storage. The project is set up to ignore them, but stay alert.
 2. **Don't paste unpublished data, patient data or passwords into an AI tool**
    unless your institute has approved that tool for such data.
-3. **A person reviews every change** before it's merged.
+3. **Every change is reviewed before it's merged,** by a colleague if
+   possible, otherwise carefully by you. The AI never merges.
 4. **Scientific decisions are yours.** Thresholds, methods and parameters
    should be your choice, not the AI's default. Ask it for the options and
    their trade-offs.

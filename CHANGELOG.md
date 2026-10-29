@@ -24,6 +24,11 @@ Development (tests, CI and developer docs).
 
 ### Changed
 
+- Review by someone other than the author is now recommended rather than
+  required, since many projects have one developer. `CONTRIBUTING.md` gains a
+  self-review checklist, `START_HERE.md` a plain-language version, and
+  `AGENTS.md` tells AI assistants how to support an honest self-review. AI
+  assistants still never merge.
 - `AGENTS.md` asks AI assistants to teach as they go: explain git and GitHub
   steps the first time, run commands for the user, and stop before anything
   hard to undo ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
