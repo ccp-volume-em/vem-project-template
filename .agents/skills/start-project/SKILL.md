@@ -64,8 +64,10 @@ Create a branch `setup-project`. Then:
    they don't use Fiji (with `tests/test_fiji_scripts.py`). Keep
    `tests/test_installation.py` and `tests/test_project_files.py`, and adapt
    them.
-8. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
-   `Added` entry describing the initial project.
+8. **CHANGELOG.md:** remove the template's release history, leaving just
+   the `## [Unreleased]` heading, with an `Added` entry describing the
+   initial project, and one link line at the bottom:
+   `[Unreleased]: https://github.com/<owner>/<repo>/commits/main`.
 9. **ROADMAP.md:** replace the template's items with the user's first goals.
    **docs/decisions.md:** remove the template's example entry. If the user
    has already made choices (e.g. the method), record them as the first
