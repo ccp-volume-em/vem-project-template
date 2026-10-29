@@ -59,7 +59,9 @@ the technical parts; you make the decisions.
 3. **The AI makes the change** on a branch, runs the tests, and saves commits.
 4. **The AI opens a pull request.** You read its summary, try it out, and ask a
    colleague to review it.
-5. **Your reviewer approves and merges it.** Now it's part of `main`.
+5. **Your reviewer approves and merges it.** Now it's part of `main`, and
+   the AI deletes the branch: its work is safe in `main`, and this keeps the
+   project tidy.
 
 Nothing reaches `main` without a person checking it. The AI never merges its
 own work.
@@ -100,6 +102,7 @@ helpful colleague. Some examples:
 | See what's changed | "What has changed in the project since last week?" |
 | Get unstuck | "Stop. Explain what went wrong, and don't change anything yet." |
 | Plan ahead | "Make an issue for adding a 3D view, so we don't forget." |
+| Tidy up | "The pull request was merged. Please tidy up the branch." |
 
 ## Before you ask for a review
 

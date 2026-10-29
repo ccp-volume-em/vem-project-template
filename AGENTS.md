@@ -75,6 +75,14 @@ merges**. Never merge a PR yourself.
 7. **Push the branch and open a PR** using the template. Say what changed,
    why, how it was checked, and how AI was used. Then stop: a person reviews
    and merges.
+8. **Tidy up after the merge.** Once the PR shows as merged on GitHub, switch
+   to `main`, pull, and delete the branch, both locally and on GitHub (unless
+   GitHub already deleted it): `git branch -d <branch>` and
+   `git push origin --delete <branch>`. If `git branch -d` refuses because the
+   PR was squash- or rebase-merged, check the PR really is merged, then use
+   `-D`. If the branch has commits that never reached `main`, stop and ask.
+   Never delete a branch whose PR is still open or was closed unmerged
+   without asking.
 
 Other git rules:
 

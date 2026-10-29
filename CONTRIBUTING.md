@@ -140,6 +140,22 @@ reviewer merges it.
 it's tested, and that it follows [AGENTS.md](AGENTS.md) and
 [guidance/](guidance/README.md). Run it if in doubt.
 
+### 7. Tidy up
+
+Once the PR is merged, its branch has done its job: everything on it is now
+in `main`. Delete it, so the list of branches only shows work in progress:
+
+```bash
+git switch main
+git pull
+git branch -d 12-ome-tiff-reader                # on your computer
+git push origin --delete 12-ome-tiff-reader     # on GitHub, unless already gone
+```
+
+If `git branch -d` refuses, the PR may have been squash-merged: check on
+GitHub that it really is merged, then use `-D`. Never delete a branch whose
+PR is still open, or that has work not in `main`, without asking its owner.
+
 ## Tests
 
 - Run `pytest` before every commit. CI runs it on Linux, macOS and Windows.

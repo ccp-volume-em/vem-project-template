@@ -75,6 +75,10 @@ Explain these, and offer to do them with `gh` if it's installed:
   review, and passing checks, before merging. Settings → Rules → Rulesets.
   On a free GitHub plan this is only enforced on public repositories. For
   private ones, the rule is a team convention.
+- **Delete branches after merging:** Settings → General → *Automatically
+  delete head branches*, so merged branches don't pile up on GitHub
+  (`gh repo edit --delete-branch-on-merge`). Local copies are still tidied by
+  the AI after each merge.
 - **Dependabot alerts and security updates:** Settings → Code security.
 - **Issues** on, and labels for `bug`, `enhancement`, `documentation`.
 - **GitHub Pages** (for the docs site): Settings → Pages → *Deploy from a
