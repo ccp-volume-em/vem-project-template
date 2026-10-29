@@ -38,6 +38,9 @@ Development (tests, CI and developer docs).
 - Automated dependency updates (Dependabot) no longer need changelog entries
   ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
 
+- A pre-commit hook blocks commits made directly on `main`, and new projects
+  install the hooks during setup ([#10](https://github.com/ccp-volume-em/vem-project-template/pull/10)).
+
 ### Fixed
 
 - Release notes no longer include the link lines at the bottom of
