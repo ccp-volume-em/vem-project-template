@@ -27,3 +27,5 @@ Write "None" if none. See guidance/ai-use.md. -->
 - [ ] Docstrings, docs and `README.md` updated where needed
 - [ ] `CHANGELOG.md` entry under `[Unreleased]` (unless nothing user-facing changed)
 - [ ] I understand every line of this change and can explain it to a reviewer
+- [ ] Reviewing alone? I read the whole diff after a break and worked through
+      the self-review checklist in CONTRIBUTING.md

@@ -16,8 +16,9 @@ light and electron microscopy (CLEM). It builds in the
 [CCP-volumeEM good practice guide](https://ccp-volume-em.github.io/guide/) and
 a simple, safe way of working:
 
-- **Every change goes through a pull request that a person reviews.** Nothing
-  reaches `main` unreviewed.
+- **Every change goes through a pull request** that's reviewed before it
+  reaches `main`: by a colleague where possible, or by yourself with a
+  [self-review checklist](CONTRIBUTING.md#reviewing-your-own-pr) if you work alone.
 - **Small, regular commits** with clear [Conventional Commit](https://www.conventionalcommits.org/)
   messages.
 - **[Semantic Versioning](https://semver.org/)**, a [changelog](CHANGELOG.md),
