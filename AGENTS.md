@@ -55,7 +55,9 @@ user works alone, help them review it themselves (see *Self-review* below).
 1. **Start from an issue** if there is one, and from the latest `main`.
 2. **Create a branch** named `<issue-number>-<short-slug>` (e.g.
    `12-ome-tiff-reader`), or just a short slug without an issue. Never commit
-   to `main`.
+   to `main`. A pre-commit hook enforces this: in a new copy of the
+   repository, check it's installed (`.git/hooks/pre-commit` exists) and if
+   not, run `pre-commit install` once, after installing the `dev` extras.
 3. **Commit small and often.** One logical change per commit. Stage files by
    name (not `git add .`), and check `git status` and the diff first. Run the
    tests before committing.
@@ -104,6 +106,8 @@ Other git rules:
 
 - Never force-push, rewrite pushed history, or push to `main`. Amending a
   commit is fine until it's pushed.
+- Never skip the pre-commit checks (`git commit --no-verify` or `-n`). If one
+  fails, fix the cause or explain it to the user.
 - Never change the user's `git config`.
 - GitHub closes an issue when a merged PR or commit says *fixes*, *closes* or
   *resolves* before `#N`, even in phrases like "doesn't fix #N". Only write
@@ -273,6 +277,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 ```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"                   # install for development
+pre-commit install                                  # once per copy: checks before each commit
 pytest                                              # run the tests
 pytest --cov --cov-report=term-missing              # with coverage
 FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too
