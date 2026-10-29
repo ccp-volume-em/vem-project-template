@@ -16,11 +16,24 @@ Development (tests, CI and developer docs).
   GitHub, covering the key words, how a change happens, what to say to an AI
   assistant, and what to check before asking for review
   ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
+- Fiji script `fiji/measure_object_volumes.groovy`: the physical volume of each
+  object in a 3D label image, with a dialog built from Script Parameters, a
+  headless mode for batch and HPC runs, and a provenance record ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
+- `new-fiji-script` skill: Fiji work is written as Groovy scripts with Script
+  Parameters unless asked otherwise ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 
 ### Changed
 
 - `AGENTS.md` asks AI assistants to teach as they go: explain git and GitHub
   steps the first time, run commands for the user, and stop before anything
   hard to undo ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
+- AI assistants delete a branch, locally and on GitHub, once its pull request
+  is merged ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
+
+### Development
+
+- Tests check every Fiji script declares Script Parameters, and run the
+  scripts on synthetic images when `FIJI` points at a Fiji launcher; `tifffile`
+  added to the `test` extra ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 
 [Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main
