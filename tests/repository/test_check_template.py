@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 _spec = importlib.util.spec_from_file_location(
     "check_template", ROOT / "tools" / "check_template.py"
 )
@@ -34,7 +34,7 @@ def test_non_github_remote_is_rejected():
 @pytest.mark.parametrize(
     "path",
     ["AGENTS.md", ".agents/skills/new-fiji-script/SKILL.md", ".github/workflows/safety.yml",
-     "guidance/testing.md", "tools/check_guidance.py", "tests/test_project_files.py"],
+     "guidance/testing.md", "tools/check_guidance.py", "tests/repository/test_project_files.py"],
 )  # fmt: skip
 def test_template_maintained_files_are_shared(path):
     assert check_template.is_shared(path)
