@@ -18,7 +18,7 @@ a simple, safe way of working:
 
 - **Every change goes through a pull request** that's reviewed before it
   reaches `main`: by a colleague where possible, or by yourself with a
-  [self-review checklist](CONTRIBUTING.md#reviewing-your-own-pr) if you work alone.
+  [self-review checklist](REVIEWING.md#reviewing-your-own-pr) if you work alone.
 - **Small, regular commits** with clear [Conventional Commit](https://www.conventionalcommits.org/)
   messages.
 - **[Semantic Versioning](https://semver.org/)**, a [changelog](CHANGELOG.md),
@@ -50,6 +50,7 @@ explains everything in plain language, including these steps.
 ├── START_HERE.md          plain-language guide for people new to coding or GitHub
 ├── AGENTS.md              instructions for any AI assistant (CLAUDE.md points here)
 ├── CONTRIBUTING.md        how to work: branches, commits, PRs, releases
+├── REVIEWING.md           how to review a PR, someone else's or your own
 ├── CHANGELOG.md           what changed in each release
 ├── ROADMAP.md             what's planned next
 ├── CITATION.cff           how to cite this software

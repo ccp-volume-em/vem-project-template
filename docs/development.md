@@ -8,7 +8,7 @@ in the repository. In short:
 2. Make small commits with [Conventional Commit](https://www.conventionalcommits.org/) messages.
 3. Add tests, and update the docs and `CHANGELOG.md`.
 4. Open a pull request. It's reviewed (by a colleague where possible, or by
-   yourself with the self-review checklist in CONTRIBUTING.md) and merged.
+   yourself with the self-review checklist in REVIEWING.md) and merged.
 
 Set up a development environment:
 

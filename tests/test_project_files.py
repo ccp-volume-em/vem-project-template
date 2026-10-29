@@ -52,3 +52,33 @@ def test_skills_have_matching_names_and_descriptions():
         front = skill.read_text().split("---")[1]
         assert re.search(rf"^name: {skill.parent.name}$", front, re.MULTILINE), skill
         assert re.search(r"^description: .{20,}", front, re.MULTILINE), skill
+
+
+def _slug(heading):
+    # GitHub's anchor for a heading: lower case, punctuation dropped, spaces to hyphens.
+    return re.sub(r"[^\w\- ]", "", heading.strip().lower()).replace(" ", "-")
+
+
+def _markdown_files():
+    skip = {".venv", "site", ".git", "node_modules", ".tox"}
+    return [p for p in ROOT.rglob("*.md") if not skip & set(p.relative_to(ROOT).parts)]
+
+
+def test_relative_links_in_markdown_resolve():
+    broken = []
+    for page in _markdown_files():
+        text = re.sub(r"```.*?```", "", page.read_text(encoding="utf-8"), flags=re.DOTALL)
+        for target in re.findall(r"\]\(([^)\s]+)\)", text):
+            if re.match(r"[a-z]+:", target):
+                continue
+            path, _, anchor = target.partition("#")
+            dest = (page.parent / path).resolve() if path else page
+            if not dest.exists():
+                broken.append(f"{page.relative_to(ROOT)}: {target}")
+            elif anchor and dest.suffix == ".md":
+                headings = re.findall(
+                    r"^#+\s+(.*)$", dest.read_text(encoding="utf-8"), re.MULTILINE
+                )
+                if anchor not in {_slug(h) for h in headings}:
+                    broken.append(f"{page.relative_to(ROOT)}: {target}")
+    assert not broken, "broken links:\n" + "\n".join(broken)

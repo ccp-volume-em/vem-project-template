@@ -27,7 +27,7 @@ consequences rather than just listing options.
 4. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
-   PRs with the checklist in `CONTRIBUTING.md` (*Reviewing your own PR*).
+   PRs with the checklist in `REVIEWING.md` (*Reviewing your own PR*).
 5. **Licence.** The template uses BSD-3-Clause, common in scientific Python and
    napari. Explain the options in `guidance/publishing.md` briefly, and
    recommend they check with their institution if unsure.
