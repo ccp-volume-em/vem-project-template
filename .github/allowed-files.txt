@@ -1,0 +1,7 @@
+# Files allowed in the repository despite tools/check_repository_files.py,
+# which blocks image, volume and model data and files over 1 MB.
+# One glob pattern per line, matched against the path from the repository
+# root. Say why each exception is needed.
+#
+# Example:
+# docs/images/workflow-overview.png   # diagram for the documentation

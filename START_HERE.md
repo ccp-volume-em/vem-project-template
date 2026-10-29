@@ -143,7 +143,8 @@ The full checklist is in [REVIEWING.md](REVIEWING.md#reviewing-your-own-pr).
 ## Golden rules
 
 1. **Data never goes on GitHub.** Keep images and results on your institute's
-   storage. The project is set up to ignore them, but stay alert.
+   storage. The project is set up to ignore them, and automatic checks stop
+   images, large files and passwords from being added, but stay alert.
 2. **Don't paste unpublished data, patient data or passwords into an AI tool**
    unless your institute has approved that tool for such data.
 3. **Every change is reviewed before it's merged,** by a colleague if

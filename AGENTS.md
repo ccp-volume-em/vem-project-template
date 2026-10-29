@@ -205,6 +205,14 @@ Java plugin), write Fiji work as **Groovy scripts with Script Parameters**, in
 
 - **Never commit data**, images, results or model weights. `data/` and
   `results/` are git-ignored. Link to data in a public archive by DOI instead.
+- **Two safety checks** run on every PR (and the first also before each
+  commit, with pre-commit): `tools/check_repository_files.py` blocks data,
+  images, model weights and files over 1 MB, and gitleaks blocks secrets. If
+  one fails, don't just delete the file in a new commit: it stays in the
+  history. Explain this to the user and stop. A data file needs a fresh
+  branch without that commit. A secret must be treated as exposed: tell the
+  user to revoke and replace it, then ask a maintainer. Never weaken either
+  check, or add to `.github/allowed-files.txt`, without the user's agreement.
 - **Don't send research data to an AI service.** Don't paste unpublished
   images, patient or personal data, or credentials into a prompt unless the
   service's terms and the project's approvals allow it.
