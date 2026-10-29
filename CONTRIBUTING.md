@@ -1,8 +1,11 @@
 # Contributing
 
-Thank you for helping. This page explains how we work, step by step. It's
-written for people who are new to git and GitHub as well as experienced
-developers. If anything is unclear, open an issue or ask a maintainer.
+Thank you for helping. This page is the detailed reference for how we work.
+If anything is unclear, open an issue or ask a maintainer.
+
+**New to coding or GitHub?** Read [START_HERE.md](START_HERE.md) first. You
+don't need everything on this page to get started: your AI assistant runs the
+commands below for you.
 
 AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
 

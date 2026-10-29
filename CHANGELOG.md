@@ -12,5 +12,15 @@ Development (tests, CI and developer docs).
 ### Added
 
 - Project created from the CCP-volumeEM project template.
+- `START_HERE.md`: a plain-language guide for researchers new to coding and
+  GitHub, covering the key words, how a change happens, what to say to an AI
+  assistant, and what to check before asking for review
+  ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
+
+### Changed
+
+- `AGENTS.md` asks AI assistants to teach as they go: explain git and GitHub
+  steps the first time, run commands for the user, and stop before anything
+  hard to undo ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
 
 [Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main

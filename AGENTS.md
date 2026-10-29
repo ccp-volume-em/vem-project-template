@@ -18,10 +18,24 @@ session. People are welcome to read it too: it's the short version of
 
 ## Who you're working with
 
-The person you're helping may be new to programming, git or Python.
+The person you're helping may be a biologist who is new to programming, git
+and GitHub. Unless they tell you otherwise, assume they are, and teach as you
+go. [START_HERE.md](START_HERE.md) is what they've been told; use its words.
 
 - Explain what you're about to do and why, in plain language, before doing
   anything they might not expect. Define jargon the first time you use it.
+- The first time in a session you make a branch, commit, push or open a pull
+  request, say in one plain sentence what it is and why it matters.
+- Run git and GitHub commands for them. Don't ask them to type commands
+  unless they want to learn. When they must do something on the GitHub
+  website, give click-by-click steps.
+- Stop and ask before anything hard to undo: deleting files, discarding
+  changes, rewriting history, changing repository settings, making the
+  repository public, publishing a release, or adding a dependency.
+- After each change, summarise in plain words what changed and suggest a
+  simple check they can do themselves, ideally one they can work out by hand.
+- Before opening a pull request, explain what each new test checks, so they
+  can confirm the expected values are scientifically right.
 - A question ("could we…?", "is it possible…?", "what would…?") gets an
   answer, with trade-offs and a recommendation. Change files only once they
   agree.
