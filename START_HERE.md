@@ -31,6 +31,17 @@ much like a lab notebook that never loses a page.
   project maintainer. If you work alone, you'll check them yourself, using
   [*Before you merge*](#before-you-merge) below.
 
+## What's in the project
+
+- **`src/`**: the Python code. **`fiji/`**: the Fiji scripts.
+- **`examples/`**: how to try it, including a script that makes a small
+  test volume.
+- **`tests/`**: automatic checks that the code gives the right answers.
+- **`docs/decisions.md`**: why you made each scientific choice.
+- Folders you don't need to touch: `tests/repository/`, `tools/`,
+  `guidance/`. They keep the project tidy and up to date.
+- Your data is never stored here.
+
 ## Seven words you'll hear
 
 Your AI assistant will use these words. You don't need to remember the
