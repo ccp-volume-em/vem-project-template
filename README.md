@@ -64,11 +64,12 @@ explains everything in plain language, including these steps.
 │   └── update-from-template/ pull in later improvements to this template
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
 ├── fiji/                  example Fiji script (Groovy, with Script Parameters)
-├── tests/                 installation, unit, integration and Fiji tests
-├── examples/              example parameters and synthetic data
-├── docs/                  documentation website (MkDocs)
+├── tests/                 tests of the code (Python and Fiji)
+│   └── repository/          the template's checks on the repository itself
+├── examples/              how to run it, and test data for Python and Fiji
+├── docs/                  documentation site (optional) and the decision log
 ├── Dockerfile             container image
-├── tools/                 helper scripts
+├── tools/                 repository maintenance scripts (not analysis)
 └── .github/               CI workflows, issue and PR templates, Dependabot
 ```
 

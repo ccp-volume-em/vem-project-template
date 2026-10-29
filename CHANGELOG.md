@@ -9,12 +9,27 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+### Added
+
+- A "Where things go" guide to the folders, organised by role, and
+  start-project instructions for Python, Fiji-only and no-Fiji projects
+  ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+- `examples/make_example_data.py` makes the example volume for both the Python
+  tool (OME-Zarr) and Fiji (TIFF) ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+
 ### Changed
 
 - The documentation site is optional: setup asks whether others will use the
   software and removes the site if not, keeping the decision log. The
   install and quick-start text is written once, in the README, and reused by
   the site ([#15](https://github.com/ccp-volume-em/vem-project-template/pull/15)).
+- The template's checks on the repository moved to `tests/repository/`
+  ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+
+### Fixed
+
+- The Fiji script writes large volumes as plain numbers, not in scientific
+  notation ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
 
 ## [0.1.0] - 2026-10-29
 

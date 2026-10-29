@@ -9,6 +9,20 @@ commands below for you.
 
 AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
 
+## Where things go
+
+| Folder | What goes there |
+| --- | --- |
+| `src/<package>/` | Reusable Python code that others run: the analysis, as plain functions, with thin interfaces (CLI, napari) on top |
+| `fiji/` | Reusable Fiji scripts (Groovy with Script Parameters) |
+| `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
+| `tests/` | Tests of the project's code, Python and Fiji |
+| `tests/repository/` | The template's checks on the repository itself. Kept up to date by `update-from-template`; don't edit |
+| `tools/` | Scripts that maintain the repository (checks, updates), not analysis |
+| `docs/` | The documentation site, if the project has one, and the decision log (`decisions.md`) |
+| `guidance/` | The CCP-volumeEM guide, distilled. Updated by `update-guidance`; don't edit |
+| `data/`, `results/` | Never in git: data stays on institute storage |
+
 ## The short version
 
 1. Every change starts on its own **branch**, never on `main`.

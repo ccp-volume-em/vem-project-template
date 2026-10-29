@@ -65,9 +65,7 @@ SHARED = (
     "fiji/README.md",
     "guidance/",
     "tests/conftest.py",
-    "tests/test_check_template.py",
-    "tests/test_project_files.py",
-    "tests/test_repository_files.py",
+    "tests/repository/",
     "tools/",
 )
 
