@@ -62,7 +62,8 @@ outputDir.mkdirs()
 def csvFile = new File(outputDir, "object_volumes.csv")
 csvFile.withWriter("UTF-8") { out ->
 	out.println(cal.scaled() ? "label,volume_${unit}3" : "label,volume_voxels")
-	counts.each { label, n -> out.println("${label},${n * voxelVolume}") }
+	// Plain notation: Groovy would write large volumes as e.g. 1.96608E7.
+	counts.each { label, n -> out.println("${label},${BigDecimal.valueOf(n * voxelVolume).toPlainString()}") }
 }
 
 // Fiji passes in the path of the running script under this name.
