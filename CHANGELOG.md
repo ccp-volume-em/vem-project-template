@@ -29,11 +29,20 @@ Development (tests, CI and developer docs).
   hard to undo ([#3](https://github.com/ccp-volume-em/vem-project-template/pull/3)).
 - AI assistants delete a branch, locally and on GitHub, once its pull request
   is merged ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
+- Automated dependency updates (Dependabot) no longer need changelog entries
+  ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
+
+### Fixed
+
+- Release notes no longer include the link lines at the bottom of
+  `CHANGELOG.md` ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
 
 ### Development
 
 - Tests check every Fiji script declares Script Parameters, and run the
   scripts on synthetic images when `FIJI` points at a Fiji launcher; `tifffile`
   added to the `test` extra ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
+- The template itself is released from `vX.Y.Z` tags with notes only, keeping
+  `pyproject.toml` at `0.0.0` for new projects ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
 
 [Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main

@@ -93,6 +93,15 @@ and opens an issue when it changes. Then ask your AI assistant to run the
 `AGENTS.md`, and opens a pull request for review. Check by hand with
 `python tools/check_guidance.py`.
 
+### Template versions
+
+The template itself is versioned with git tags (`vX.Y.Z`) and GitHub
+Releases, following [Semantic Versioning](https://semver.org/). Its
+`CHANGELOG.md` describes each release. The version in `pyproject.toml` stays
+at `0.0.0`, because every new project copies it and starts out unreleased;
+tags aren't copied. To release the template, ask your AI assistant to run the
+**`prepare-release`** skill, which knows the difference.
+
 ---
 
 ## Installation
