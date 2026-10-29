@@ -123,3 +123,32 @@ def test_uncalibrated_image_is_refused(tmp_path):
 
     assert "has no voxel size" in log
     assert not (tmp_path / "out" / "object_volumes.csv").exists()
+
+
+@pytest.mark.fiji
+@pytest.mark.skipif(not FIJI, reason="set FIJI to the Fiji launcher to run Fiji scripts")
+def test_fiji_and_python_agree_on_the_example_data(tmp_path):
+    import importlib.util
+
+    from vem_project.io import read_ome_zarr
+    from vem_project.measure import object_volumes
+
+    script = FIJI_DIR.parent / "examples" / "make_example_data.py"
+    spec = importlib.util.spec_from_file_location("make_example_data", script)
+    example = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(example)
+    example.main(tmp_path)
+
+    out = tmp_path / "fiji-out"
+    log = run_fiji(
+        FIJI_DIR / "measure_object_volumes.groovy",
+        labelFile=tmp_path / "example_labels.tif",
+        outputDir=out,
+        requireCalibration=True,
+    )
+    assert (out / "object_volumes.csv").exists(), log
+    with open(out / "object_volumes.csv", newline="") as f:
+        fiji = {int(row["label"]): float(row["volume_nm3"]) for row in csv.DictReader(f)}
+
+    python = object_volumes(read_ome_zarr(tmp_path / "example_labels.ome.zarr"))
+    assert fiji == python == {1: 3_276_800.0, 2: 19_660_800.0}

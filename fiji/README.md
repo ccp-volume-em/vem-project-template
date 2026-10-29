@@ -9,6 +9,18 @@ also runs without a screen, e.g. as a batch job on an HPC cluster.
 | --- | --- |
 | [`measure_object_volumes.groovy`](measure_object_volumes.groovy) | Physical volume of each object in a 3D label image, with a provenance record |
 
+## Try it
+
+Make a small test volume (needs `tifffile`: `python -m pip install tifffile`):
+
+```bash
+python examples/make_example_data.py
+```
+
+Then run `measure_object_volumes.groovy` (below) on `data/example_labels.tif`.
+Object 1 should measure 3,276,800 nm³ and object 2 19,660,800 nm³, the same
+as the Python tool gives for the OME-Zarr version.
+
 ## Run a script in Fiji
 
 1. Drag the `.groovy` file onto the Fiji window, or use **File > Open**. It
