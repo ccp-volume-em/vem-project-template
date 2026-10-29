@@ -69,8 +69,10 @@ Create a branch `setup-project`. Then:
 9. **ROADMAP.md:** replace the template's items with the user's first goals.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
-install (`python -m pip install -e ".[dev]"` in a fresh virtual environment)
-and run `pytest` and `ruff check .`. Commit in logical steps, open a PR, and
+install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
+then run `pre-commit install`. Explain that this adds checks that run before
+every commit: tidy code, no data files, and no commits straight to `main`.
+Then run `pytest` and `ruff check .`. Commit in logical steps, open a PR, and
 ask the reviewer they named to review it. With no reviewer, walk them through
 self-review instead (`AGENTS.md`, *How work flows*).
 

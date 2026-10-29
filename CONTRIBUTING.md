@@ -42,7 +42,7 @@ python -m venv .venv
 source .venv/bin/activate              # Windows: .venv\Scripts\activate
 python -c "import sys; print(sys.prefix)"   # should end in .venv
 python -m pip install -e ".[dev]"
-pre-commit install                     # optional: lint automatically on each commit
+pre-commit install                     # checks each commit; blocks commits on main
 pytest                                 # everything should pass
 ```
 
