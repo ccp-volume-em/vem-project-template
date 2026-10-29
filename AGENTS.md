@@ -44,6 +44,12 @@ go. [START_HERE.md](START_HERE.md) is what they've been told; use its words.
   hide a failing test or weaken a check to make it pass.
 - If you're unsure what they want, or a choice is scientific rather than
   technical (a threshold, a method, a parameter), ask.
+- Record every choice that could change results in
+  [docs/decisions.md](docs/decisions.md), in the same PR: what was chosen,
+  why, the alternatives, and whether earlier results need re-running. Ask the
+  user for the *why* in their own words; never invent their reasoning. If
+  you picked a default yourself, say so in the entry, so they can confirm or
+  change it.
 
 ## How work flows
 

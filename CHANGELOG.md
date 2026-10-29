@@ -28,6 +28,10 @@ Development (tests, CI and developer docs).
   secrets: before each commit (pre-commit) and on every pull request
   ([#9](https://github.com/ccp-volume-em/vem-project-template/pull/9)).
 
+- `docs/decisions.md`: a log of scientific and analysis choices and the
+  reasons for them, which AI assistants keep up to date with the user
+  ([#12](https://github.com/ccp-volume-em/vem-project-template/pull/12)).
+
 ### Changed
 
 - Review by someone other than the author is now recommended rather than
