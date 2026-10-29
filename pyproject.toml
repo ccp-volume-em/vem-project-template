@@ -27,9 +27,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-cov", "tifffile"]
+# nbclient, ipykernel and matplotlib run the example notebook in the tests.
+test = ["pytest", "pytest-cov", "tifffile", "nbclient", "ipykernel", "matplotlib"]
 docs = ["mkdocs-material", "mkdocstrings[python]"]
-dev = ["vem-project[test,docs]", "pre-commit", "ruff", "tox"]
+notebooks = ["jupyterlab", "matplotlib"]
+dev = ["vem-project[test,docs,notebooks]", "pre-commit", "ruff", "tox"]
 
 [project.scripts]
 vem-project = "vem_project.cli:main"
