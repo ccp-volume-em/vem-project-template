@@ -22,6 +22,11 @@ Development (tests, CI and developer docs).
 - `new-fiji-script` skill: Fiji work is written as Groovy scripts with Script
   Parameters unless asked otherwise ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 
+- `update-from-template` skill and `tools/check_template.py`: bring the
+  template's later improvements into a project, keeping the project's own
+  edits; new projects record which template version they came from
+  ([#11](https://github.com/ccp-volume-em/vem-project-template/pull/11)).
+
 ### Changed
 
 - Review by someone other than the author is now recommended rather than
