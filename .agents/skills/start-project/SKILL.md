@@ -27,7 +27,7 @@ consequences rather than just listing options.
 4. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
-   PRs with the checklist in `CONTRIBUTING.md` (*Reviewing your own PR*).
+   PRs with the checklist in `REVIEWING.md` (*Reviewing your own PR*).
 5. **Licence.** The template uses BSD-3-Clause, common in scientific Python and
    napari. Explain the options in `guidance/publishing.md` briefly, and
    recommend they check with their institution if unsure.
@@ -67,6 +67,9 @@ Create a branch `setup-project`. Then:
 8. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
    `Added` entry describing the initial project.
 9. **ROADMAP.md:** replace the template's items with the user's first goals.
+   **docs/decisions.md:** remove the template's example entry. If the user
+   has already made choices (e.g. the method), record them as the first
+   entries, with their reasons.
 10. **Template version:** record which template version the project came
     from, so later template improvements can be merged in with the
     `update-from-template` skill:
@@ -74,8 +77,10 @@ Create a branch `setup-project`. Then:
     Commit the resulting `.github/template.json`.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
-install (`python -m pip install -e ".[dev]"` in a fresh virtual environment)
-and run `pytest` and `ruff check .`. Commit in logical steps, open a PR, and
+install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
+then run `pre-commit install`. Explain that this adds checks that run before
+every commit: tidy code, no data files, and no commits straight to `main`.
+Then run `pytest` and `ruff check .`. Commit in logical steps, open a PR, and
 ask the reviewer they named to review it. With no reviewer, walk them through
 self-review instead (`AGENTS.md`, *How work flows*).
 

@@ -10,6 +10,12 @@ merged, so use it only if this PR completely resolves it. Otherwise write
 - [ ] Expected values in new tests were worked out independently of the code
 - [ ] Tried on real or example data (say which, below)
 
+## Scientific decisions
+
+<!-- Does this change a method, threshold, parameter or default, or what's
+excluded? If so, add an entry to docs/decisions.md and summarise it here.
+Write "None" if not. -->
+
 ## Release impact
 
 <!-- Would releasing this be a patch (fix), minor (new feature) or major
@@ -28,4 +34,4 @@ Write "None" if none. See guidance/ai-use.md. -->
 - [ ] `CHANGELOG.md` entry under `[Unreleased]` (unless nothing user-facing changed)
 - [ ] I understand every line of this change and can explain it to a reviewer
 - [ ] Reviewing alone? I read the whole diff after a break and worked through
-      the self-review checklist in CONTRIBUTING.md
+      the self-review checklist in REVIEWING.md

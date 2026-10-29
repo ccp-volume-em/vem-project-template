@@ -42,7 +42,7 @@ python -m venv .venv
 source .venv/bin/activate              # Windows: .venv\Scripts\activate
 python -c "import sys; print(sys.prefix)"   # should end in .venv
 python -m pip install -e ".[dev]"
-pre-commit install                     # optional: lint automatically on each commit
+pre-commit install                     # checks each commit; blocks commits on main
 pytest                                 # everything should pass
 ```
 
@@ -79,7 +79,10 @@ git commit
 ```
 
 Stage files by name rather than `git add .`, so you never commit data or
-secrets by accident.
+secrets by accident. As a safety net, every PR is checked for data, images,
+model weights, files over 1 MB and secrets (the *Safety checks* workflow), and
+pre-commit runs the data check before each commit. If a check fails, ask a
+maintainer: the file has to come out of the history, not just be deleted.
 
 #### Commit messages
 
@@ -139,47 +142,12 @@ suggestions: that's normal and useful. Push more commits to the same branch to
 respond. Once it's approved and the checks are green, the reviewer merges it.
 
 Many projects have one developer, so a reviewer isn't required. If there's no
-one to ask, review the PR yourself, then merge it. For changes that alter
-scientific results, delete data, or go into a release, try to find a second
-person anyway, even occasionally: a colleague's half hour, or a question on
-[image.sc](https://forum.image.sc/).
+one to ask, review the PR yourself, then merge it.
 
-#### Reviewing your own PR
-
-The risk in self-review, especially of AI-written code, is reading the summary
-and agreeing with it. Treat the change as if someone you don't know wrote it:
-
-1. **Wait first.** Review after a break (the next day if you can), not
-   straight after writing it. Open it as a *draft* PR until you have.
-2. **Read the diff, not the summary.** Use the PR's *Files changed* tab and
-   read every line. Tick *Viewed* on each file as you go.
-3. **Explain it back.** Without looking at the AI's description, write two or
-   three sentences on what the change does and why. If you can't, it isn't
-   ready: ask the AI to explain the parts you can't.
-4. **Check the evidence yourself.** Look at the test results on the PR rather
-   than taking "tests pass" on trust. Run it on a small example whose answer
-   you worked out by hand.
-5. **Test the tests.** Were the expected values worked out independently of
-   the code? Ask the AI to break the code on purpose (e.g. swap two axes,
-   drop the voxel size) and check that a test fails.
-6. **Look for what's missing,** not just what's there: empty or single-slice
-   input, anisotropic voxels, units, unexpected data types, error messages a
-   user would understand.
-7. **Check the scope.** The diff contains only what you meant to change: no
-   unrelated edits, no deleted or weakened tests, no data or secrets.
-8. **Ask for an independent second opinion.** Start a *fresh* AI session that
-   hasn't seen the work, show it the diff, and ask "what could make this
-   wrong?" rather than "is this OK?". Treat what it finds as leads to check,
-   not verdicts.
-9. **Leave a note.** Add a PR comment saying what you checked and how. It's
-   the record a reviewer would have left, and it helps future you.
-
-The `review-changes` skill checks the project standards (changelog, commit
-messages, docs) for you, but the judgement in steps 3–6 is yours.
-
-**Reviewing someone else's PR?** Check that you understand the change, that
-it's tested, and that it follows [AGENTS.md](AGENTS.md) and
-[guidance/](guidance/README.md). Run it if in doubt.
+**How to review**, whether it's someone else's PR or your own, is in
+[REVIEWING.md](REVIEWING.md): what to check, how to spot problems in
+AI-written code, how to give feedback, and a checklist for
+[reviewing your own PR](REVIEWING.md#reviewing-your-own-pr).
 
 ### 7. Tidy up
 

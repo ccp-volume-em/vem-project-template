@@ -106,6 +106,7 @@ helpful colleague. Some examples:
 | See what's changed | "What has changed in the project since last week?" |
 | Get unstuck | "Stop. Explain what went wrong, and don't change anything yet." |
 | Plan ahead | "Make an issue for adding a 3D view, so we don't forget." |
+| Record a choice | "Add a decision: we use a 50 nm minimum size because smaller objects are noise in our data." |
 | Work in Fiji | "Make a Fiji script that measures the volume of each object in my label image." (It's written so Fiji shows a dialog for the settings.) |
 | Tidy up | "The pull request was merged. Please tidy up the branch." |
 
@@ -138,19 +139,21 @@ it. A few habits help:
 - **For anything that changes your results,** try to get a colleague to look,
   even briefly.
 
-The full checklist is in [CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr).
+The full checklist is in [REVIEWING.md](REVIEWING.md#reviewing-your-own-pr).
 
 ## Golden rules
 
 1. **Data never goes on GitHub.** Keep images and results on your institute's
-   storage. The project is set up to ignore them, but stay alert.
+   storage. The project is set up to ignore them, and automatic checks stop
+   images, large files and passwords from being added, but stay alert.
 2. **Don't paste unpublished data, patient data or passwords into an AI tool**
    unless your institute has approved that tool for such data.
 3. **Every change is reviewed before it's merged,** by a colleague if
    possible, otherwise carefully by you. The AI never merges.
 4. **Scientific decisions are yours.** Thresholds, methods and parameters
    should be your choice, not the AI's default. Ask it for the options and
-   their trade-offs.
+   their trade-offs, and record what you chose and why in
+   [docs/decisions.md](docs/decisions.md).
 5. **When unsure, stop and ask** a person.
 
 ## When to stop and ask a person

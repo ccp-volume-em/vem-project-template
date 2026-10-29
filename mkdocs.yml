@@ -9,6 +9,7 @@ nav:
   - Getting started: getting-started.md
   - Usage: usage.md
   - API reference: reference.md
+  - Decisions: decisions.md
   - Development: development.md
 
 theme:

@@ -44,6 +44,12 @@ go. [START_HERE.md](START_HERE.md) is what they've been told; use its words.
   hide a failing test or weaken a check to make it pass.
 - If you're unsure what they want, or a choice is scientific rather than
   technical (a threshold, a method, a parameter), ask.
+- Record every choice that could change results in
+  [docs/decisions.md](docs/decisions.md), in the same PR: what was chosen,
+  why, the alternatives, and whether earlier results need re-running. Ask the
+  user for the *why* in their own words; never invent their reasoning. If
+  you picked a default yourself, say so in the entry, so they can confirm or
+  change it.
 
 ## How work flows
 
@@ -55,7 +61,9 @@ user works alone, help them review it themselves (see *Self-review* below).
 1. **Start from an issue** if there is one, and from the latest `main`.
 2. **Create a branch** named `<issue-number>-<short-slug>` (e.g.
    `12-ome-tiff-reader`), or just a short slug without an issue. Never commit
-   to `main`.
+   to `main`. A pre-commit hook enforces this: in a new copy of the
+   repository, check it's installed (`.git/hooks/pre-commit` exists) and if
+   not, run `pre-commit install` once, after installing the `dev` extras.
 3. **Commit small and often.** One logical change per commit. Stage files by
    name (not `git add .`), and check `git status` and the diff first. Run the
    tests before committing.
@@ -89,7 +97,7 @@ user works alone, help them review it themselves (see *Self-review* below).
 
 Self-review, when the user is the only reviewer: the aim is an honest check,
 not agreement with your own summary
-([CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr) has their checklist).
+([REVIEWING.md](REVIEWING.md#reviewing-your-own-pr) has their checklist).
 
 - Walk them through the diff file by file, not your description of it.
 - Say where you're least sure: assumptions, untested paths, choices you made
@@ -104,6 +112,8 @@ Other git rules:
 
 - Never force-push, rewrite pushed history, or push to `main`. Amending a
   commit is fine until it's pushed.
+- Never skip the pre-commit checks (`git commit --no-verify` or `-n`). If one
+  fails, fix the cause or explain it to the user.
 - Never change the user's `git config`.
 - GitHub closes an issue when a merged PR or commit says *fixes*, *closes* or
   *resolves* before `#N`, even in phrases like "doesn't fix #N". Only write
@@ -205,6 +215,14 @@ Java plugin), write Fiji work as **Groovy scripts with Script Parameters**, in
 
 - **Never commit data**, images, results or model weights. `data/` and
   `results/` are git-ignored. Link to data in a public archive by DOI instead.
+- **Two safety checks** run on every PR (and the first also before each
+  commit, with pre-commit): `tools/check_repository_files.py` blocks data,
+  images, model weights and files over 1 MB, and gitleaks blocks secrets. If
+  one fails, don't just delete the file in a new commit: it stays in the
+  history. Explain this to the user and stop. A data file needs a fresh
+  branch without that commit. A secret must be treated as exposed: tell the
+  user to revoke and replace it, then ask a maintainer. Never weaken either
+  check, or add to `.github/allowed-files.txt`, without the user's agreement.
 - **Don't send research data to an AI service.** Don't paste unpublished
   images, patient or personal data, or credentials into a prompt unless the
   service's terms and the project's approvals allow it.
@@ -266,6 +284,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 ```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"                   # install for development
+pre-commit install                                  # once per copy: checks before each commit
 pytest                                              # run the tests
 pytest --cov --cov-report=term-missing              # with coverage
 FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too

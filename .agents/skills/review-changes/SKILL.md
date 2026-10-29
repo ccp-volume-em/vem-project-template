@@ -47,6 +47,8 @@ git diff origin/main...HEAD
 - [ ] User-facing changes are reflected in `README.md` / `docs/`.
 - [ ] `CHANGELOG.md` has an entry under `[Unreleased]`, in the right section,
       written for users. `ROADMAP.md` updated if relevant.
+- [ ] Any change to a method, threshold, parameter, default or exclusion has
+      an entry in `docs/decisions.md`, with the user's own reasons.
 
 **History**
 - [ ] Commit messages follow Conventional Commits, one logical change each.

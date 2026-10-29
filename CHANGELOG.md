@@ -21,7 +21,15 @@ Development (tests, CI and developer docs).
   headless mode for batch and HPC runs, and a provenance record ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 - `new-fiji-script` skill: Fiji work is written as Groovy scripts with Script
   Parameters unless asked otherwise ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
-
+- `REVIEWING.md`: how to review a pull request, someone else's or your own,
+  including the science to check, problems typical of AI-written code, and
+  GitHub's review tools ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
+- Safety checks that block data, images, model weights, files over 1 MB and
+  secrets: before each commit (pre-commit) and on every pull request
+  ([#9](https://github.com/ccp-volume-em/vem-project-template/pull/9)).
+- `docs/decisions.md`: a log of scientific and analysis choices and the
+  reasons for them, which AI assistants keep up to date with the user
+  ([#12](https://github.com/ccp-volume-em/vem-project-template/pull/12)).
 - `update-from-template` skill and `tools/check_template.py`: bring the
   template's later improvements into a project, keeping the project's own
   edits; new projects record which template version they came from
@@ -42,6 +50,8 @@ Development (tests, CI and developer docs).
   is merged ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 - Automated dependency updates (Dependabot) no longer need changelog entries
   ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
+- A pre-commit hook blocks commits made directly on `main`, and new projects
+  install the hooks during setup ([#10](https://github.com/ccp-volume-em/vem-project-template/pull/10)).
 
 ### Fixed
 
@@ -55,5 +65,7 @@ Development (tests, CI and developer docs).
   added to the `test` extra ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 - The template itself is released from `vX.Y.Z` tags with notes only, keeping
   `pyproject.toml` at `0.0.0` for new projects ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
+- Tests check that relative links and anchors in Markdown files resolve
+  ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
 
 [Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main

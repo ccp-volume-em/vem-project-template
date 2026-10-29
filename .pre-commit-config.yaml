@@ -1,4 +1,5 @@
-# Runs lint and formatting on each commit after `pre-commit install`.
+# Runs checks on each commit after `pre-commit install`: lint and formatting,
+# and blocks commits made directly on main (work on a branch instead).
 # Dependabot doesn't update these versions: run `pre-commit autoupdate`.
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -16,4 +17,11 @@ repos:
       - id: check-yaml
       - id: detect-private-key
       - id: end-of-file-fixer
+      - id: no-commit-to-branch # main and master
       - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: no-data-files
+        name: no data, images, model weights or large files
+        entry: python tools/check_repository_files.py
+        language: python
