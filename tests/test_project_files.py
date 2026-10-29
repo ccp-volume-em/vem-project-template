@@ -67,7 +67,7 @@ def _markdown_files():
 def test_relative_links_in_markdown_resolve():
     broken = []
     for page in _markdown_files():
-        text = re.sub(r"```.*?```", "", page.read_text(), flags=re.DOTALL)
+        text = re.sub(r"```.*?```", "", page.read_text(encoding="utf-8"), flags=re.DOTALL)
         for target in re.findall(r"\]\(([^)\s]+)\)", text):
             if re.match(r"[a-z]+:", target):
                 continue
@@ -76,7 +76,9 @@ def test_relative_links_in_markdown_resolve():
             if not dest.exists():
                 broken.append(f"{page.relative_to(ROOT)}: {target}")
             elif anchor and dest.suffix == ".md":
-                headings = re.findall(r"^#+\s+(.*)$", dest.read_text(), re.MULTILINE)
+                headings = re.findall(
+                    r"^#+\s+(.*)$", dest.read_text(encoding="utf-8"), re.MULTILINE
+                )
                 if anchor not in {_slug(h) for h in headings}:
                     broken.append(f"{page.relative_to(ROOT)}: {target}")
     assert not broken, "broken links:\n" + "\n".join(broken)
