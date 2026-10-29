@@ -16,6 +16,9 @@ Development (tests, CI and developer docs).
   ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
 - `examples/make_example_data.py` makes the example volume for both the Python
   tool (OME-Zarr) and Fiji (TIFF) ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+- `notebooks/` for the project's own analysis, with an example notebook and
+  outputs stripped automatically on commit; a `notebooks` extra installs
+  JupyterLab ([#17](https://github.com/ccp-volume-em/vem-project-template/pull/17)).
 
 ### Changed
 
