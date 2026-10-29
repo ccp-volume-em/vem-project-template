@@ -1,0 +1,14 @@
+.git
+.venv
+venv
+data
+results
+dist
+build
+site
+htmlcov
+**/__pycache__
+**/*.egg-info
+.pytest_cache
+.ruff_cache
+.tox
