@@ -67,6 +67,9 @@ Create a branch `setup-project`. Then:
 8. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
    `Added` entry describing the initial project.
 9. **ROADMAP.md:** replace the template's items with the user's first goals.
+   **docs/decisions.md:** remove the template's example entry. If the user
+   has already made choices (e.g. the method), record them as the first
+   entries, with their reasons.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment)
