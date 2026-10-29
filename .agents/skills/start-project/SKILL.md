@@ -18,8 +18,10 @@ consequences rather than just listing options.
    (underscores, `fibsem_mito_seg`). Check PyPI to see if the name is taken
    (`https://pypi.org/project/<name>/`) if they might publish there.
 2. **Purpose.** One or two sentences: what does it do, for which data?
-3. **Shape.** Command-line tool, napari plugin, notebooks, a library, or a
-   mix? If napari, point them to `guidance/napari-plugins.md` and the official
+3. **Shape.** Command-line tool, napari plugin, Fiji scripts, notebooks, a
+   library, or a mix? Fiji scripts are Groovy with Script Parameters (see
+   `fiji/README.md`); if they won't use Fiji, the `fiji/` folder and its tests
+   can go. If napari, point them to `guidance/napari-plugins.md` and the official
    napari plugin template, and explain that the analysis code in `src/` can be
    reused by the plugin.
 4. **People.** Authors (names, ORCIDs, affiliations), and at least one other
@@ -56,8 +58,10 @@ Create a branch `setup-project`. Then:
    `START_HERE.md`, then explain what this project does and how it's
    organised." Name the project's reviewers in *What you need*.
 7. **Example code:** if they don't want it, remove the modules, tests,
-   `examples/` and docs pages that use it. Keep `tests/test_installation.py`
-   and `tests/test_project_files.py`, and adapt them.
+   `examples/` and docs pages that use it, and the example Fiji script if
+   they don't use Fiji (with `tests/test_fiji_scripts.py`). Keep
+   `tests/test_installation.py` and `tests/test_project_files.py`, and adapt
+   them.
 8. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
    `Added` entry describing the initial project.
 9. **ROADMAP.md:** replace the template's items with the user's first goals.
@@ -75,6 +79,10 @@ Explain these, and offer to do them with `gh` if it's installed:
   review, and passing checks, before merging. Settings → Rules → Rulesets.
   On a free GitHub plan this is only enforced on public repositories. For
   private ones, the rule is a team convention.
+- **Delete branches after merging:** Settings → General → *Automatically
+  delete head branches*, so merged branches don't pile up on GitHub
+  (`gh repo edit --delete-branch-on-merge`). Local copies are still tidied by
+  the AI after each merge.
 - **Dependabot alerts and security updates:** Settings → Code security.
 - **Issues** on, and labels for `bug`, `enhancement`, `documentation`.
 - **GitHub Pages** (for the docs site): Settings → Pages → *Deploy from a

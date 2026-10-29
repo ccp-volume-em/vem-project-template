@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-cov"]
+test = ["pytest", "pytest-cov", "tifffile"]
 docs = ["mkdocs-material", "mkdocstrings[python]"]
 dev = ["vem-project[test,docs]", "pre-commit", "ruff", "tox"]
 
@@ -45,6 +45,7 @@ testpaths = ["tests", "src"]
 addopts = ["--strict-markers", "--doctest-modules", "--import-mode=importlib"]
 markers = [
     "gpu: needs a CUDA-capable GPU; skipped automatically when none is available",
+    "fiji: runs a Fiji script headless; skipped unless FIJI is set to the Fiji launcher",
 ]
 
 [tool.coverage.run]

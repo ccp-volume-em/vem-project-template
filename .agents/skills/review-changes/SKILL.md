@@ -38,6 +38,8 @@ git diff origin/main...HEAD
 - [ ] Voxel size, units, axis order and transforms are carried through to the
       output; measurements are in physical units.
 - [ ] Outputs record provenance (software version, parameters, inputs).
+- [ ] Fiji scripts are Groovy with Script Parameters, run headless, and pass
+      `FIJI=/path/to/Fiji.app/fiji pytest -m fiji` (CI can't run these).
 
 **Documentation**
 - [ ] Public functions have NumPy-style docstrings; comments explain *why*.
