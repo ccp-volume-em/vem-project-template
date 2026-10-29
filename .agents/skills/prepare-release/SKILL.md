@@ -35,6 +35,13 @@ before continuing. Don't default to minor.
 
 ## 3. Release pull request
 
+**If this repository is the project template itself** (`gh repo view --json
+isTemplate` says `true`), version only the template: skip steps 1, 2 and 5
+below and leave `pyproject.toml` and `CITATION.cff` at `0.0.0`, because every
+project made from the template copies them and starts unreleased. Only update
+`CHANGELOG.md` (step 3) and the AI-use statement (step 4). The release
+workflow recognises the template and publishes just the release notes.
+
 On a branch `release-vX.Y.Z`:
 
 1. `pyproject.toml`: set `version = "X.Y.Z"`.

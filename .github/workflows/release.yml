@@ -4,6 +4,8 @@
 # To also publish to PyPI: set up Trusted Publishing on pypi.org for this
 # workflow and an environment called "pypi", then set the repository variable
 # PUBLISH_TO_PYPI to "true". See guidance/publishing.md.
+# In the project template itself, a tag only publishes the release notes: the
+# template's pyproject.toml stays at 0.0.0 for the projects made from it.
 name: Release
 
 on:
@@ -14,7 +16,19 @@ permissions:
   contents: read
 
 jobs:
+  kind:
+    runs-on: ubuntu-latest
+    outputs:
+      is-template: ${{ steps.check.outputs.is-template }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "is-template=$(gh api "repos/$GITHUB_REPOSITORY" --jq .is_template)" >> "$GITHUB_OUTPUT"
+
   build:
+    needs: kind
+    if: needs.kind.outputs.is-template != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -66,6 +80,31 @@ jobs:
             found { print }
           ' CHANGELOG.md > notes.md
           gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+
+  template-release:
+    needs: kind
+    if: needs.kind.outputs.is-template == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Create the GitHub Release with notes only
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="$version" '
+            $0 ~ "^## \\[" v "\\]" { found = 1; next }
+            found && /^## \[/ { exit }
+            found && /^\[[^]]*\]: / { exit }
+            found { print }
+          ' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then
+            echo "::error::CHANGELOG.md has no section for $version"
+            exit 1
+          fi
+          gh release create "$GITHUB_REF_NAME" --title "Template $GITHUB_REF_NAME" --notes-file notes.md --verify-tag
 
   pypi:
     needs: build
