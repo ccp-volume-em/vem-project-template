@@ -9,6 +9,13 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+### Changed
+
+- The documentation site is optional: setup asks whether others will use the
+  software and removes the site if not, keeping the decision log. The
+  install and quick-start text is written once, in the README, and reused by
+  the site ([#15](https://github.com/ccp-volume-em/vem-project-template/pull/15)).
+
 ## [0.1.0] - 2026-10-29
 
 First release of the CCP-volumeEM project template.
