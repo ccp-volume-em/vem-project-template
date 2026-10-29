@@ -156,6 +156,17 @@ If `git branch -d` refuses, the PR may have been squash-merged: check on
 GitHub that it really is merged, then use `-D`. Never delete a branch whose
 PR is still open, or that has work not in `main`, without asking its owner.
 
+## Fiji scripts
+
+Fiji work is written as Groovy scripts with Script Parameters, in `fiji/`:
+Fiji builds the dialog from the `#@` lines, and the same script runs headless
+on a cluster. See [fiji/README.md](fiji/README.md). Run the Fiji tests
+locally before opening a PR that changes a script (CI has no Fiji):
+
+```bash
+FIJI=/path/to/Fiji.app/fiji pytest -m fiji
+```
+
 ## Tests
 
 - Run `pytest` before every commit. CI runs it on Linux, macOS and Windows.

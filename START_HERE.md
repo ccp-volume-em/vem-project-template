@@ -102,6 +102,7 @@ helpful colleague. Some examples:
 | See what's changed | "What has changed in the project since last week?" |
 | Get unstuck | "Stop. Explain what went wrong, and don't change anything yet." |
 | Plan ahead | "Make an issue for adding a 3D view, so we don't forget." |
+| Work in Fiji | "Make a Fiji script that measures the volume of each object in my label image." (It's written so Fiji shows a dialog for the settings.) |
 | Tidy up | "The pull request was merged. Please tidy up the branch." |
 
 ## Before you ask for a review

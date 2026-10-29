@@ -55,11 +55,13 @@ explains everything in plain language, including these steps.
 ├── guidance/              the CCP-volumeEM guide, distilled into checklists
 ├── .agents/skills/        step-by-step procedures for AI assistants
 │   ├── start-project/       set up a new repository from this template
+│   ├── new-fiji-script/     write a Fiji script with a dialog, and its tests
 │   ├── review-changes/      check a branch before opening a PR
 │   ├── prepare-release/     choose a version and release
 │   └── update-guidance/     pull in changes to the CCP-volumeEM guide
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
-├── tests/                 installation, unit and integration tests
+├── fiji/                  example Fiji script (Groovy, with Script Parameters)
+├── tests/                 installation, unit, integration and Fiji tests
 ├── examples/              example parameters and synthetic data
 ├── docs/                  documentation website (MkDocs)
 ├── Dockerfile             container image

@@ -141,6 +141,36 @@ them, not how the code changed.
 - Prefer well-established libraries over writing your own. Ask before adding
   a dependency, and add it to `pyproject.toml`.
 
+## Fiji scripts
+
+Unless the user asks for something else (e.g. an ImageJ macro, Jython or a
+Java plugin), write Fiji work as **Groovy scripts with Script Parameters**, in
+`fiji/`. Use the **new-fiji-script** skill, and
+`fiji/measure_object_volumes.groovy` as the model.
+
+- Declare every input as a Script Parameter (`#@ File`, `#@ Double`,
+  `#@ String (choices = …)`, …) at the top, with a label, a default, and
+  limits where they make sense. Fiji builds the dialog from them; never build
+  one by hand (`GenericDialog`) or wait for the user (`waitForUser`). A test
+  checks this.
+- No hard-coded paths, and nothing that needs a screen: the same script must
+  run headless (`fiji --headless --run script.groovy 'name="value",…'`), e.g.
+  on an HPC cluster. See `fiji/README.md`.
+- Check the image's calibration (voxel size and unit) and report results in
+  physical units. Stop with a clear message if it's missing, unless told
+  otherwise.
+- For large volumes, work slice by slice or block by block (virtual stacks,
+  or readers for OME-Zarr/N5), not on the whole volume in memory.
+- Write a `provenance.json` with every output: parameters, inputs, ImageJ
+  version, date, and the script's SHA-256 checksum.
+- Start with a comment saying what the script does, its inputs and outputs.
+  Comment *why*, as for Python. Use explicit getters (`imp.getStack()`), not
+  Groovy property shortcuts, which can pick the wrong method.
+- Test scripts on small synthetic images in `tests/test_fiji_scripts.py`,
+  marked `fiji`. They run only where Fiji is installed:
+  `FIJI=/path/to/Fiji.app/fiji pytest -m fiji`. Run them before opening a PR
+  that changes a script, since GitHub Actions has no Fiji.
+
 ## Tests
 
 - Use pytest. Every new behaviour or bug fix comes with a test.
@@ -208,6 +238,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | Skill              | Use it to…                                                         |
 | ------------------ | ------------------------------------------------------------------ |
 | `start-project`    | set up a new repository made from this template                   |
+| `new-fiji-script`  | write a Fiji script (Groovy with Script Parameters) and its tests |
 | `review-changes`   | check a branch against these standards before opening a PR        |
 | `prepare-release`  | choose a version and prepare a release                            |
 | `update-guidance`  | check the CCP-volumeEM guide for changes and update `guidance/`   |
@@ -219,6 +250,7 @@ python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\act
 python -m pip install -e ".[dev]"                   # install for development
 pytest                                              # run the tests
 pytest --cov --cov-report=term-missing              # with coverage
+FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too
 ruff check . && ruff format --check .               # lint
 mkdocs serve                                        # preview the docs
 python tools/check_guidance.py                      # has the guide changed?
