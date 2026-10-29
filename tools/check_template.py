@@ -58,13 +58,16 @@ SHARED = (
     "CLAUDE.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
+    "REVIEWING.md",
     "SECURITY.md",
     "START_HERE.md",
     "data/README.md",
     "fiji/README.md",
     "guidance/",
     "tests/conftest.py",
+    "tests/test_check_template.py",
     "tests/test_project_files.py",
+    "tests/test_repository_files.py",
     "tools/",
 )
 
