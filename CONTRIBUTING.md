@@ -79,7 +79,10 @@ git commit
 ```
 
 Stage files by name rather than `git add .`, so you never commit data or
-secrets by accident.
+secrets by accident. As a safety net, every PR is checked for data, images,
+model weights, files over 1 MB and secrets (the *Safety checks* workflow), and
+pre-commit runs the data check before each commit. If a check fails, ask a
+maintainer: the file has to come out of the history, not just be deleted.
 
 #### Commit messages
 
