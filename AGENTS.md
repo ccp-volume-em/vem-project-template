@@ -277,6 +277,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | `review-changes`   | check a branch against these standards before opening a PR        |
 | `prepare-release`  | choose a version and prepare a release                            |
 | `update-guidance`  | check the CCP-volumeEM guide for changes and update `guidance/`   |
+| `update-from-template` | bring the template's later improvements into this project     |
 
 ## Commands
 
@@ -290,6 +291,7 @@ FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too
 ruff check . && ruff format --check .               # lint
 mkdocs serve                                        # preview the docs
 python tools/check_guidance.py                      # has the guide changed?
+python tools/check_template.py                      # has the template changed?
 ```
 
 Before installing anything, check that the virtual environment is active

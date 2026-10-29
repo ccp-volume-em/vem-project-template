@@ -70,6 +70,11 @@ Create a branch `setup-project`. Then:
    **docs/decisions.md:** remove the template's example entry. If the user
    has already made choices (e.g. the method), record them as the first
    entries, with their reasons.
+10. **Template version:** record which template version the project came
+    from, so later template improvements can be merged in with the
+    `update-from-template` skill:
+    `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --init`.
+    Commit the resulting `.github/template.json`.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),

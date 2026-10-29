@@ -27,10 +27,13 @@ Development (tests, CI and developer docs).
 - Safety checks that block data, images, model weights, files over 1 MB and
   secrets: before each commit (pre-commit) and on every pull request
   ([#9](https://github.com/ccp-volume-em/vem-project-template/pull/9)).
-
 - `docs/decisions.md`: a log of scientific and analysis choices and the
   reasons for them, which AI assistants keep up to date with the user
   ([#12](https://github.com/ccp-volume-em/vem-project-template/pull/12)).
+- `update-from-template` skill and `tools/check_template.py`: bring the
+  template's later improvements into a project, keeping the project's own
+  edits; new projects record which template version they came from
+  ([#11](https://github.com/ccp-volume-em/vem-project-template/pull/11)).
 
 ### Changed
 

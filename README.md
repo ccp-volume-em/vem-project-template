@@ -60,7 +60,8 @@ explains everything in plain language, including these steps.
 │   ├── new-fiji-script/     write a Fiji script with a dialog, and its tests
 │   ├── review-changes/      check a branch before opening a PR
 │   ├── prepare-release/     choose a version and release
-│   └── update-guidance/     pull in changes to the CCP-volumeEM guide
+│   ├── update-guidance/     pull in changes to the CCP-volumeEM guide
+│   └── update-from-template/ pull in later improvements to this template
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
 ├── fiji/                  example Fiji script (Groovy, with Script Parameters)
 ├── tests/                 installation, unit, integration and Fiji tests
@@ -103,6 +104,16 @@ Releases, following [Semantic Versioning](https://semver.org/). Its
 at `0.0.0`, because every new project copies it and starts out unreleased;
 tags aren't copied. To release the template, ask your AI assistant to run the
 **`prepare-release`** skill, which knows the difference.
+
+### Keeping a project up to date with the template
+
+A project made from the template doesn't receive its later improvements by
+itself. `.github/template.json` records which template version a project
+came from. Ask your AI assistant to run the **`update-from-template`** skill:
+it shows what has changed in the template since, merges the template's
+changes into the shared files (rules, skills, checks, guidance) while keeping
+the project's own edits, and opens a pull request for review. Check by hand
+with `python tools/check_template.py`.
 
 ---
 
