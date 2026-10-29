@@ -16,6 +16,11 @@ What's left to do, most important first. Finished work moves to
 - [ ] Run the Fiji script tests in CI (e.g. a job that downloads Fiji):
       GitHub Actions skips them today, so they only run locally
       ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
+- [ ] Try the `update-from-template` skill on a real project made from the
+      template ([#11](https://github.com/ccp-volume-em/vem-project-template/pull/11)).
+- [ ] Check for template updates on a schedule, as for the guide. This needs
+      the template to be public (or a token), since a project's Actions can't
+      read a private template ([#11](https://github.com/ccp-volume-em/vem-project-template/pull/11)).
 - [ ] Review the docs tooling: Material for MkDocs reaches end of life in
       May 2027; its successor is [Zensical](https://zensical.org/).
 
