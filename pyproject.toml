@@ -41,7 +41,8 @@ Changelog = "https://github.com/ccp-volume-em/vem-project/blob/main/CHANGELOG.md
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "src"]
-addopts = ["--strict-markers", "--doctest-modules"]
+# importlib mode lets doctests in src/ run against an installed (non-editable) package
+addopts = ["--strict-markers", "--doctest-modules", "--import-mode=importlib"]
 markers = [
     "gpu: needs a CUDA-capable GPU; skipped automatically when none is available",
 ]
