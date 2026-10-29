@@ -17,3 +17,9 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: no-data-files
+        name: no data, images, model weights or large files
+        entry: python tools/check_repository_files.py
+        language: python
