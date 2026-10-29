@@ -161,6 +161,7 @@ Organise by role, not by language. Ask before adding a new top-level folder.
 | --- | --- |
 | `src/<package>/` | Reusable Python code that others run: the analysis, as plain functions, with thin interfaces (CLI, napari) on top |
 | `fiji/` | Reusable Fiji scripts (Groovy with Script Parameters) |
+| `notebooks/` | The project's own analysis: exploring data, choosing parameters, making figures. Uses the code above; outputs are stripped on commit |
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
 | `tests/repository/` | The template's checks on the repository itself. Kept up to date by `update-from-template`; don't edit |
@@ -183,6 +184,12 @@ Organise by role, not by language. Ask before adding a new top-level folder.
   `ruff check .` and `ruff format .` before committing.
 - Prefer well-established libraries over writing your own. Ask before adding
   a dependency, and add it to `pyproject.toml`.
+- Notebooks (`notebooks/`) are for the project's own analysis and figures,
+  not reusable code. Keep parameters in the first code cell, import from the
+  package, and once a function is reused or others will run it, move it into
+  `src/` with a docstring and a test. Before committing, restart the kernel
+  and run all cells. Outputs are stripped automatically; never commit them.
+  See `notebooks/README.md`.
 
 ## Fiji scripts
 

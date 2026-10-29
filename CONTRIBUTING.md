@@ -15,6 +15,7 @@ AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
 | --- | --- |
 | `src/<package>/` | Reusable Python code that others run: the analysis, as plain functions, with thin interfaces (CLI, napari) on top |
 | `fiji/` | Reusable Fiji scripts (Groovy with Script Parameters) |
+| `notebooks/` | The project's own analysis: exploring data, choosing parameters, making figures. Uses the code above; outputs are stripped on commit |
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
 | `tests/repository/` | The template's checks on the repository itself. Kept up to date by `update-from-template`; don't edit |
