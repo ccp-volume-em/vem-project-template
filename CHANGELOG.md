@@ -22,6 +22,9 @@ Development (tests, CI and developer docs).
 - `new-fiji-script` skill: Fiji work is written as Groovy scripts with Script
   Parameters unless asked otherwise ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 
+- `REVIEWING.md`: how to review a pull request, someone else's or your own,
+  including the science to check, problems typical of AI-written code, and
+  GitHub's review tools ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
 - Safety checks that block data, images, model weights, files over 1 MB and
   secrets: before each commit (pre-commit) and on every pull request
   ([#9](https://github.com/ccp-volume-em/vem-project-template/pull/9)).
@@ -54,5 +57,7 @@ Development (tests, CI and developer docs).
   added to the `test` extra ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 - The template itself is released from `vX.Y.Z` tags with notes only, keeping
   `pyproject.toml` at `0.0.0` for new projects ([#6](https://github.com/ccp-volume-em/vem-project-template/pull/6)).
+- Tests check that relative links and anchors in Markdown files resolve
+  ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
 
 [Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main

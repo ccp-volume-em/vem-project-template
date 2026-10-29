@@ -89,7 +89,7 @@ user works alone, help them review it themselves (see *Self-review* below).
 
 Self-review, when the user is the only reviewer: the aim is an honest check,
 not agreement with your own summary
-([CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr) has their checklist).
+([REVIEWING.md](REVIEWING.md#reviewing-your-own-pr) has their checklist).
 
 - Walk them through the diff file by file, not your description of it.
 - Say where you're least sure: assumptions, untested paths, choices you made
