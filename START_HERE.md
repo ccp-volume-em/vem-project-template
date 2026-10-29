@@ -138,7 +138,7 @@ it. A few habits help:
 - **For anything that changes your results,** try to get a colleague to look,
   even briefly.
 
-The full checklist is in [CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr).
+The full checklist is in [REVIEWING.md](REVIEWING.md#reviewing-your-own-pr).
 
 ## Golden rules
 
