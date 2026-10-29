@@ -124,7 +124,8 @@ which level and why. Don't make one unless asked. Use the
 entries under `## [Unreleased]` in sections `Added`, `Changed`, `Deprecated`,
 `Removed`, `Fixed`, `Security`, with a link to the PR and issue. Put tests,
 CI and project docs under `Development`. Write for users: what changed for
-them, not how the code changed.
+them, not how the code changed. Automated dependency updates (Dependabot PRs)
+don't get entries.
 
 ## Code
 

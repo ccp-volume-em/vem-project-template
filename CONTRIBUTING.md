@@ -112,7 +112,8 @@ commits.
 Add a line to [CHANGELOG.md](CHANGELOG.md) under `## [Unreleased]`, in the
 right section (`Added`, `Changed`, `Fixed`, …), describing the change **for
 users**, with a link to the PR. Tests, CI and developer docs go under
-`Development`.
+`Development`. Automated dependency updates from Dependabot don't need an
+entry.
 
 ### 5. Open a pull request
 
