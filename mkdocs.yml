@@ -1,3 +1,6 @@
+# Documentation site settings. Keep this file minimal: Material for MkDocs
+# reaches end of life in 2027, and its successor (Zensical) reads this file,
+# so the fewer custom settings, the easier the move.
 site_name: vem-project
 site_description: One-line description of what this tool does for volume EM / CLEM data.
 site_url: https://ccp-volume-em.github.io/vem-project/
