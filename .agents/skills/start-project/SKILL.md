@@ -7,7 +7,9 @@ description: Set up a new repository created from the CCP-volumeEM project templ
 
 The user has just created a repository from the template. Walk them through
 setup in a conversation. Explain each step briefly, ask the questions below,
-and don't assume answers.
+and don't assume answers. They may be new to coding and GitHub: use the plain
+language and vocabulary of `START_HERE.md`, and explain each choice's
+consequences rather than just listing options.
 
 ## 1. Ask
 
@@ -47,12 +49,18 @@ Create a branch `setup-project`. Then:
    text from <https://choosealicense.com>, and update `license` in
    `pyproject.toml` and `CITATION.cff` with its SPDX identifier.
 5. **AGENTS.md:** fill in *About this project*.
-6. **Example code:** if they don't want it, remove the modules, tests,
+6. **START_HERE.md:** keep it for future collaborators, but rewrite *Your
+   first session* for joining this project rather than copying the template:
+   how to get access (and from whom), opening the repository in an AI
+   assistant, and a first thing to say, such as "Read `AGENTS.md` and
+   `START_HERE.md`, then explain what this project does and how it's
+   organised." Name the project's reviewers in *What you need*.
+7. **Example code:** if they don't want it, remove the modules, tests,
    `examples/` and docs pages that use it. Keep `tests/test_installation.py`
    and `tests/test_project_files.py`, and adapt them.
-7. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
+8. **CHANGELOG.md:** leave just the `## [Unreleased]` heading, with an
    `Added` entry describing the initial project.
-8. **ROADMAP.md:** replace the template's items with the user's first goals.
+9. **ROADMAP.md:** replace the template's items with the user's first goals.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment)

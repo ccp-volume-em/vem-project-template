@@ -31,6 +31,9 @@ assistants are in [AGENTS.md](AGENTS.md), which most tools read automatically.
 
 ### Start a new project
 
+**New to coding or GitHub? Read [START_HERE.md](START_HERE.md) first.** It
+explains everything in plain language, including these steps.
+
 1. On GitHub, click **Use this template → Create a new repository**.
 2. Clone your new repository and set up a Python environment (see
    [Installation](#installation)).
@@ -43,6 +46,7 @@ assistants are in [AGENTS.md](AGENTS.md), which most tools read automatically.
 ### What's in the box
 
 ```text
+├── START_HERE.md          plain-language guide for people new to coding or GitHub
 ├── AGENTS.md              instructions for any AI assistant (CLAUDE.md points here)
 ├── CONTRIBUTING.md        how to work: branches, commits, PRs, releases
 ├── CHANGELOG.md           what changed in each release
@@ -122,7 +126,9 @@ general questions, use the [image.sc forum](https://forum.image.sc/).
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributions are welcome. New to coding or GitHub? Start with
+[START_HERE.md](START_HERE.md). The full details are in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Citation
 
