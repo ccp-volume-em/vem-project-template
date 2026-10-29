@@ -9,9 +9,23 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-29
+
+First release of the CCP-volumeEM project template.
+
+**AI use:** developed with AI assistance (Claude Code, Claude Opus 5.5) from
+the maintainer's design and requests. Every change went through a pull
+request that the maintainer merged, and the code is covered by the automated
+tests. The checklists in `guidance/` were distilled by AI from the
+CCP-volumeEM guide and link back to each source page.
+
 ### Added
 
-- Project created from the CCP-volumeEM project template.
+- The project template: a Python package with an example OME-Zarr
+  measurement tool and command-line interface, tests, CI on Linux, macOS and
+  Windows, a documentation site, a container image, release automation,
+  `CITATION.cff`, and instructions (`AGENTS.md`) and skills for any AI
+  assistant ([#1](https://github.com/ccp-volume-em/vem-project-template/pull/1)).
 - `START_HERE.md`: a plain-language guide for researchers new to coding and
   GitHub, covering the key words, how a change happens, what to say to an AI
   assistant, and what to check before asking for review
@@ -68,4 +82,5 @@ Development (tests, CI and developer docs).
 - Tests check that relative links and anchors in Markdown files resolve
   ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
 
-[Unreleased]: https://github.com/ccp-volume-em/vem-project/commits/main
+[Unreleased]: https://github.com/ccp-volume-em/vem-project-template/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/ccp-volume-em/vem-project-template/releases/tag/v0.1.0
