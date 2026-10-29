@@ -1,0 +1,16 @@
+# Lets GitHub show "Cite this repository". Fill in the authors and, after the
+# first release archived on Zenodo, the version DOI. Keep `version` equal to
+# the version in pyproject.toml (a test checks this).
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "vem-project"
+abstract: "One-line description of what this tool does for volume EM / CLEM data."
+type: software
+authors:
+  - family-names: "Surname"
+    given-names: "Given"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "Institute"
+version: "0.0.0"
+license: BSD-3-Clause
+repository-code: "https://github.com/ccp-volume-em/vem-project"
