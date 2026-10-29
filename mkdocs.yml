@@ -40,6 +40,9 @@ plugins:
 
 markdown_extensions:
   - admonition
+  # Reuses README sections (between --8<-- markers) so they're written once.
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
