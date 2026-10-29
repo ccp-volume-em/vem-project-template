@@ -18,10 +18,14 @@ consequences rather than just listing options.
    (underscores, `fibsem_mito_seg`). Check PyPI to see if the name is taken
    (`https://pypi.org/project/<name>/`) if they might publish there.
 2. **Purpose.** One or two sentences: what does it do, for which data?
-3. **Shape.** Command-line tool, napari plugin, Fiji scripts, notebooks, a
-   library, or a mix? Fiji scripts are Groovy with Script Parameters (see
-   `fiji/README.md`); if they won't use Fiji, the `fiji/` folder and its tests
-   can go. If napari, point them to `guidance/napari-plugins.md` and the official
+3. **Shape.** Which of these will the project be? This decides what to keep
+   (see *Where things go* in `AGENTS.md`):
+   - **Python** (a command-line tool, library or napari plugin), with or
+     without Fiji scripts;
+   - **Fiji scripts only** (Groovy with Script Parameters, see
+     `fiji/README.md`). Python is then used only for the tests and checks.
+
+   If napari, point them to `guidance/napari-plugins.md` and the official
    napari plugin template, and explain that the analysis code in `src/` can be
    reused by the plugin.
    **Documentation site?** Ask whether other people will install and use the
@@ -65,11 +69,41 @@ Create a branch `setup-project`. Then:
    assistant, and a first thing to say, such as "Read `AGENTS.md` and
    `START_HERE.md`, then explain what this project does and how it's
    organised." Name the project's reviewers, if any, in *What you need*.
-7. **Example code:** if they don't want it, remove the modules, tests,
-   `examples/` and docs pages that use it, and the example Fiji script if
-   they don't use Fiji (with `tests/test_fiji_scripts.py`). Keep
-   `tests/test_installation.py` and `tests/test_project_files.py`, and adapt
-   them.
+7. **Example code, by shape.** Never touch `tests/repository/` (the
+   template's checks), `tools/` or `docs/decisions.md`.
+   - **Python, keeping the example as a starting point:** rename it (step 1)
+     and adapt it.
+   - **Python, replacing the example:** replace the modules in `src/`, their
+     tests in `tests/`, and `examples/params.yml`. Keep
+     `tests/test_installation.py` (adapted) and `examples/make_example_data.py`
+     until they have their own test data.
+   - **No Fiji:** delete `fiji/`, `tests/test_fiji_scripts.py`, and the
+     *Fiji scripts* section of `CONTRIBUTING.md` (it links to `fiji/`). Keep
+     the Fiji rules in `AGENTS.md` and the `new-fiji-script` skill, so Fiji
+     scripts can be added later.
+   - **Fiji scripts only:**
+     - delete `src/`, the Python tests (`tests/test_installation.py`,
+       `test_io_and_cli.py`, `test_measure.py`, `test_examples.py`, and
+       `test_fiji_and_python_agree_on_the_example_data` in
+       `tests/test_fiji_scripts.py`), `examples/params.yml`, the OME-Zarr part
+       of `examples/make_example_data.py`, `Dockerfile`, `.dockerignore` and
+       `.github/workflows/container.yml`;
+     - in `pyproject.toml`, set `dependencies = []`, remove
+       `[project.scripts]` and `[tool.coverage.run]`, and add the block below
+       under `[build-system]`, so `pip install -e ".[dev]"` still installs the
+       test tools:
+
+       ```toml
+       # No Python package: the project is Fiji scripts. Python is only used
+       # for the tests and tools, so build an empty package pip can install.
+       [tool.hatch.build.targets.wheel]
+       bypass-selection = true
+       ```
+
+     - in the documentation site, if kept, delete `docs/reference.md` and its
+       entries in `mkdocs.yml` and `docs/index.md`, and rewrite
+       `docs/usage.md` for the Fiji scripts;
+     - rewrite the README's *Quick start* for Fiji, from `fiji/README.md`.
 8. **CHANGELOG.md:** remove the template's release history, leaving just
    the `## [Unreleased]` heading, with an `Added` entry describing the
    initial project, and one link line at the bottom:
