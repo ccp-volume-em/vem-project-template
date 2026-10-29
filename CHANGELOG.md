@@ -22,6 +22,10 @@ Development (tests, CI and developer docs).
 - `new-fiji-script` skill: Fiji work is written as Groovy scripts with Script
   Parameters unless asked otherwise ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
 
+- Safety checks that block data, images, model weights, files over 1 MB and
+  secrets: before each commit (pre-commit) and on every pull request
+  ([#9](https://github.com/ccp-volume-em/vem-project-template/pull/9)).
+
 ### Changed
 
 - Review by someone other than the author is now recommended rather than
