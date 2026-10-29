@@ -5,9 +5,10 @@ description: Review the current branch against this project's standards and the 
 
 # Review a branch before opening a pull request
 
-This review supports, and doesn't replace, review by a person. Report what
-you find as a short checklist the user can act on, and fix only what they
-agree to.
+This review supports, and doesn't replace, review by a person: a colleague,
+or the user themselves if they work alone (see `CONTRIBUTING.md`, *Reviewing
+your own PR*). Report what you find as a short checklist the user can act on,
+and fix only what they agree to.
 
 ## 1. See what changed
 

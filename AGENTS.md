@@ -48,7 +48,9 @@ go. [START_HERE.md](START_HERE.md) is what they've been told; use its words.
 ## How work flows
 
 Every change goes through a pull request (PR) that **a person reviews and
-merges**. Never merge a PR yourself.
+merges**. Never merge a PR yourself. Review by someone other than the author
+is good practice but not required: many projects have one developer. If the
+user works alone, help them review it themselves (see *Self-review* below).
 
 1. **Start from an issue** if there is one, and from the latest `main`.
 2. **Create a branch** named `<issue-number>-<short-slug>` (e.g.
@@ -74,7 +76,8 @@ merges**. Never merge a PR yourself.
    finishes or uncovers planned work.
 7. **Push the branch and open a PR** using the template. Say what changed,
    why, how it was checked, and how AI was used. Then stop: a person reviews
-   and merges.
+   and merges. If they review alone, suggest opening it as a draft and coming
+   back to it later.
 8. **Tidy up after the merge.** Once the PR shows as merged on GitHub, switch
    to `main`, pull, and delete the branch, both locally and on GitHub (unless
    GitHub already deleted it): `git branch -d <branch>` and
@@ -83,6 +86,19 @@ merges**. Never merge a PR yourself.
    `-D`. If the branch has commits that never reached `main`, stop and ask.
    Never delete a branch whose PR is still open or was closed unmerged
    without asking.
+
+Self-review, when the user is the only reviewer: the aim is an honest check,
+not agreement with your own summary
+([CONTRIBUTING.md](CONTRIBUTING.md#reviewing-your-own-pr) has their checklist).
+
+- Walk them through the diff file by file, not your description of it.
+- Say where you're least sure: assumptions, untested paths, choices you made
+  for them (defaults, thresholds, units). Don't describe your own work as
+  correct.
+- Offer to break the code on purpose to show a test catches it, and to
+  suggest a fresh session, without this one's context, for a second opinion.
+- Never hurry them to merge. Suggest stopping and coming back later, and
+  getting a colleague for changes that alter scientific results.
 
 Other git rules:
 
