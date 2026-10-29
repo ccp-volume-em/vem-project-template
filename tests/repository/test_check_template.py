@@ -49,6 +49,10 @@ def test_project_files_are_not_shared(path):
     assert not check_template.is_shared(path)
 
 
+@pytest.mark.skipif(
+    (ROOT / ".github" / "template.json").exists(),
+    reason="a project made from the template may delete shared files it doesn't use",
+)
 def test_every_shared_path_exists_in_the_template():
     for shared in check_template.SHARED:
         assert (ROOT / shared).exists(), f"{shared} is listed as shared but doesn't exist"
