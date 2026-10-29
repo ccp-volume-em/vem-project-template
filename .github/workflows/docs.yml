@@ -1,0 +1,40 @@
+# Build the documentation on every pull request, so broken links and
+# docstrings are caught early, and publish it to GitHub Pages from main.
+name: Docs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: python -m pip install ".[docs]"
+      - run: mkdocs build --strict
+
+  deploy:
+    needs: build
+    # GitHub Pages needs a public repository on the free plan.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: python -m pip install ".[docs]"
+      - run: mkdocs gh-deploy --force

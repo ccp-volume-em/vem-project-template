@@ -1,0 +1,49 @@
+# Data and results never go in git: keep them elsewhere and link by DOI.
+data/*
+!data/README.md
+results/
+*.zarr/
+*.tif
+*.tiff
+*.mrc
+*.h5
+*.hdf5
+*.n5/
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Tools
+.pytest_cache/
+.ruff_cache/
+.tox/
+.coverage
+coverage.xml
+htmlcov/
+site/
+.ipynb_checkpoints/
+
+# Personal settings, for you only
+CLAUDE.local.md
+AGENTS.local.md
+.claude/settings.local.json
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,59 @@
+# Once a month, check whether the CCP-volumeEM guide has changed since
+# guidance/ was last updated, and open an issue if it has. To act on the
+# issue, ask an AI assistant to run the update-guidance skill.
+name: Guidance check
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Compare with the guide
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          python tools/check_guidance.py --diff > report.txt
+          status=$?
+          set -e
+          cat report.txt
+          if [ "$status" -eq 2 ]; then exit 1; fi
+          echo "changed=$([ "$status" -eq 1 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Open an issue
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: The CCP-volumeEM guide has changed
+        run: |
+          if [ -n "$(gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq '.[].number')" ]; then
+            echo "An issue is already open."
+            exit 0
+          fi
+          {
+            echo "The [CCP-volumeEM guide](https://ccp-volume-em.github.io/guide/) has changed since \`guidance/\` was last updated."
+            echo
+            echo "To update, ask your AI assistant to run the **update-guidance** skill (\`.agents/skills/update-guidance/SKILL.md\`), or follow its steps by hand. It opens a pull request for review."
+            echo
+            echo '<details><summary>What changed</summary>'
+            echo
+            echo '```diff'
+            head -c 50000 report.txt
+            echo
+            echo '```'
+            echo '</details>'
+          } > body.md
+          gh issue create --title "$TITLE" --body-file body.md

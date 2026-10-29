@@ -1,0 +1,20 @@
+name: Feature request or task
+description: Suggest an improvement, or plan a piece of work
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: What are you trying to do, and with what data?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Suggested solution
+  - type: textarea
+    id: done
+    attributes:
+      label: How will we know it's done?
+      description: A short, checkable condition, e.g. "measures surface area in nm² for each object, with a test".

@@ -1,0 +1,50 @@
+{
+  "repository": "ccp-volume-em/guide",
+  "branch": "main",
+  "site": "https://ccp-volume-em.github.io/guide/",
+  "commit": "cf4d1e9ff82a03cb52bb9ad5d1933a50fb021942",
+  "commit_date": "2026-10-25",
+  "last_checked": "2026-10-29",
+  "pages": {
+    "docs/container_testing.md": {
+      "sha": "51cd60585f0fab0d60e0b031a612ad3d4ed19ae8",
+      "used_in": ["guidance/testing.md", "guidance/containers.md"]
+    },
+    "docs/fair.md": {
+      "sha": "4076a5346ef721b07e9427554a94f2923de82ab3",
+      "used_in": ["guidance/fair-data.md"]
+    },
+    "docs/green.md": {
+      "sha": "48234c5c2502017a41f3fc2dd0fbef867ae0e601",
+      "used_in": ["guidance/green-computing.md"]
+    },
+    "docs/index.md": {
+      "sha": "f05e9631a0b6ace94d4b65a7b7bfbf09bc0c6276",
+      "used_in": []
+    },
+    "docs/muvis-align.md": {
+      "sha": "033929451bd4e29d5f2680f02e6ca352e507eb20",
+      "used_in": ["guidance/large-data-and-workflows.md", "guidance/ome-zarr.md"]
+    },
+    "docs/ngff.md": {
+      "sha": "709f64de934a9da62b18249b0d41294b1dee3eef",
+      "used_in": ["guidance/ome-zarr.md"]
+    },
+    "docs/plugin_testing.md": {
+      "sha": "e511c4f5b6cddcffef556572445e7bfa2391582e",
+      "used_in": ["guidance/testing.md", "guidance/napari-plugins.md"]
+    },
+    "docs/plugins.md": {
+      "sha": "b9cfdb354524403a95df34a3a2ecd0e5707acc71",
+      "used_in": ["guidance/napari-plugins.md"]
+    },
+    "docs/software.md": {
+      "sha": "6143b2f804df45a9b1ef0f4a60a14f5cf7932909",
+      "used_in": ["guidance/software-development.md", "guidance/ai-use.md"]
+    },
+    "docs/software_publishing.md": {
+      "sha": "313458059d1be7fb93b3f2a1f84697a6b5443583",
+      "used_in": ["guidance/publishing.md", "guidance/containers.md", "guidance/ai-use.md"]
+    }
+  }
+}

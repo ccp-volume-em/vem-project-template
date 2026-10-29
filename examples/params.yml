@@ -1,0 +1,7 @@
+# Parameters for:  vem-project measure examples/params.yml
+# Paths are relative to this file. Keep a copy of the parameter file with
+# your results; the provenance.json written next to them records it too.
+
+labels: ../data/example_labels.ome.zarr  # integer label image, OME-Zarr
+level: 0                                 # pyramid level; 0 = full resolution
+output_dir: ../results/example

@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vem-project"
+# The version changes only in a release commit; see CONTRIBUTING.md.
+# 0.0.0 means nothing has been released yet.
+version = "0.0.0"
+description = "One-line description of what this tool does for volume EM / CLEM data."
+readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Your Name", email = "you@example.org" }]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+    "dask[array]",
+    "ngff-zarr",
+    "numpy",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+docs = ["mkdocs-material", "mkdocstrings[python]"]
+dev = ["vem-project[test,docs]", "pre-commit", "ruff", "tox"]
+
+[project.scripts]
+vem-project = "vem_project.cli:main"
+
+[project.urls]
+Source = "https://github.com/ccp-volume-em/vem-project"
+Issues = "https://github.com/ccp-volume-em/vem-project/issues"
+Changelog = "https://github.com/ccp-volume-em/vem-project/blob/main/CHANGELOG.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "src"]
+# importlib mode lets doctests in src/ run against an installed (non-editable) package
+addopts = ["--strict-markers", "--doctest-modules", "--import-mode=importlib"]
+markers = [
+    "gpu: needs a CUDA-capable GPU; skipped automatically when none is available",
+]
+
+[tool.coverage.run]
+source = ["vem_project"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# pyflakes, pycodestyle, isort, pyupgrade, bugbear, numpy-specific rules
+select = ["F", "E", "W", "I", "UP", "B", "NPY"]
