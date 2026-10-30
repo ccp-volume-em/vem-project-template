@@ -9,9 +9,9 @@ template-parts.toml) are made by hand, or by an AI assistant with the
 start-project or add-part skill.
 
 Usage:
-    python tools/parts.py list             # which parts this project has
-    python tools/parts.py remove container # delete a part's files
-    python tools/parts.py add container    # copy them back from the template
+    python .github/tools/parts.py list             # which parts this project has
+    python .github/tools/parts.py remove container # delete a part's files
+    python .github/tools/parts.py add container    # copy them back from the template
 
 `add` copies the files from the template version this project is based on
 (recorded in .github/template.json), with the template's example names
@@ -37,7 +37,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path, PurePosixPath
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 PARTS = Path(".github/template-parts.toml")
 RECORD = Path(".github/template.json")
 NOTES_HEADING = "## Project-specific notes"
@@ -61,7 +61,7 @@ def load_record(root: Path) -> dict:
     if not (root / RECORD).exists():
         raise SystemExit(
             f"{RECORD} is missing. In a project made from the template, run "
-            "`python tools/check_template.py --init` first. (Parts aren't "
+            "`python .github/tools/check_template.py --init` first. (Parts aren't "
             "removed from the template itself.)"
         )
     return json.loads((root / RECORD).read_text(encoding="utf-8"))

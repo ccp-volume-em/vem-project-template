@@ -4,7 +4,7 @@ This file tells any AI coding assistant how to work in this repository. Most
 assistants read `AGENTS.md` automatically (Claude Code reads it through
 `CLAUDE.md`). If yours doesn't, point it at this file at the start of a
 session. People are welcome to read it too: it's the short version of
-[CONTRIBUTING.md](CONTRIBUTING.md).
+[CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ## About this project
 
@@ -97,7 +97,7 @@ user works alone, help them review it themselves (see *Self-review* below).
 
 Self-review, when the user is the only reviewer: the aim is an honest check,
 not agreement with your own summary
-([REVIEWING.md](REVIEWING.md#reviewing-your-own-pr) has their checklist).
+([REVIEWING.md](.github/REVIEWING.md#reviewing-your-own-pr) has their checklist).
 
 - Walk them through the diff file by file, not your description of it.
 - Say where you're least sure: assumptions, untested paths, choices you made
@@ -165,7 +165,7 @@ Organise by role, not by language. Ask before adding a new top-level folder.
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
 | `tests/repository/` | The template's checks on the repository itself. Kept up to date by `update-from-template`; don't edit |
-| `tools/` | Scripts that maintain the repository (checks, updates), not analysis |
+| `.github/` | How to contribute and review, the checks that run on GitHub, and scripts that maintain the repository (`tools/`), not analysis |
 | `docs/` | The documentation site, if the project has one, and the decision log (`decisions.md`) |
 | `guidance/` | The CCP-volumeEM guide, distilled. Updated by `update-guidance`; don't edit |
 | `data/`, `results/` | Never in git: data stays on institute storage |
@@ -239,7 +239,7 @@ Java plugin), write Fiji work as **Groovy scripts with Script Parameters**, in
 - **Never commit data**, images, results or model weights. `data/` and
   `results/` are git-ignored. Link to data in a public archive by DOI instead.
 - **Two safety checks** run on every PR (and the first also before each
-  commit, with pre-commit): `tools/check_repository_files.py` blocks data,
+  commit, with pre-commit): `.github/tools/check_repository_files.py` blocks data,
   images, model weights and files over 1 MB, and gitleaks blocks secrets. If
   one fails, don't just delete the file in a new commit: it stays in the
   history. Explain this to the user and stop. A data file needs a fresh
@@ -314,9 +314,9 @@ pytest --cov --cov-report=term-missing              # with coverage
 FIJI=/path/to/Fiji.app/fiji pytest -m fiji          # run the Fiji scripts too
 ruff check . && ruff format --check .               # lint
 mkdocs serve                                        # preview the docs site, if there is one
-python tools/check_guidance.py                      # has the guide changed?
-python tools/check_template.py                      # has the template changed?
-python tools/parts.py list                          # optional parts: which this project has
+python .github/tools/check_guidance.py                      # has the guide changed?
+python .github/tools/check_template.py                      # has the template changed?
+python .github/tools/parts.py list                          # optional parts: which this project has
 ```
 
 Before installing anything, check that the virtual environment is active

@@ -26,7 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set +e
-          python tools/check_guidance.py --diff > report.txt
+          python .github/tools/check_guidance.py --diff > report.txt
           status=$?
           set -e
           cat report.txt

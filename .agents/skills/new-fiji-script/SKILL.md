@@ -65,6 +65,6 @@ Follow the rules in `AGENTS.md` → *Fiji scripts*. In order:
 - Add the script to the table in `fiji/README.md`. If the project has no
   `fiji/` folder yet, create it, copying `fiji/README.md` from the project
   template and replacing its example rows, and add the *Fiji scripts* section
-  back to `CONTRIBUTING.md` from the template.
+  back to `.github/CONTRIBUTING.md` from the template.
 - Add a `CHANGELOG.md` entry under `[Unreleased]` → `Added`.
 - Commit (`feat(fiji): add <script name>`) and open a pull request as usual.

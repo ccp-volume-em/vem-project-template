@@ -7,12 +7,12 @@ latest release (or its main branch, before the first release), and lists the
 files that changed. The update-from-template skill then merges them in.
 
 Usage:
-    python tools/check_template.py               # what changed?
-    python tools/check_template.py --fetch DIR   # also save the old and new
+    python .github/tools/check_template.py               # what changed?
+    python .github/tools/check_template.py --fetch DIR   # also save the old and new
                                                  # versions of shared files
-    python tools/check_template.py --init        # note the template version
+    python .github/tools/check_template.py --init        # note the template version
                                                  # this project was made from
-    python tools/check_template.py --record      # note the latest template
+    python .github/tools/check_template.py --record      # note the latest template
                                                  # version as merged
 
 The template version in use is kept in .github/template.json. Without it, the
@@ -39,7 +39,7 @@ import urllib.request
 from datetime import date
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 RECORD = ROOT / ".github" / "template.json"
 PARTS = ROOT / ".github" / "template-parts.toml"
 API = "https://api.github.com"
@@ -50,20 +50,21 @@ API = "https://api.github.com"
 SHARED = (
     ".agents/",
     ".github/ISSUE_TEMPLATE/",
+    ".github/CODE_OF_CONDUCT.md",
+    ".github/CONTRIBUTING.md",
+    ".github/REVIEWING.md",
+    ".github/SECURITY.md",
     ".github/workflows/",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
     ".github/template-parts.toml",
     ".github/rulesets/",
+    ".github/tools/",
     ".gitignore",
     ".dockerignore",
     ".pre-commit-config.yaml",
     "AGENTS.md",
     "CLAUDE.md",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.md",
-    "REVIEWING.md",
-    "SECURITY.md",
     "START_HERE.md",
     "data/README.md",
     "fiji/README.md",
@@ -71,7 +72,6 @@ SHARED = (
     "notebooks/README.md",
     "tests/conftest.py",
     "tests/repository/",
-    "tools/",
 )
 
 
@@ -80,7 +80,7 @@ def is_shared(path: str) -> bool:
 
 
 def left_out_files(base: dict) -> list[str]:
-    """Files of the optional parts this project left out (see tools/parts.py)."""
+    """Files of the optional parts this project left out (see .github/tools/parts.py)."""
     if not base.get("left_out") or not PARTS.exists():
         return []
     parts = tomllib.loads(PARTS.read_text(encoding="utf-8"))["parts"]

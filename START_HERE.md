@@ -46,8 +46,8 @@ much like a lab notebook that never loses a page.
   test volume.
 - **`tests/`**: automatic checks that the code gives the right answers.
 - **`docs/decisions.md`**: why you made each scientific choice.
-- Folders you don't need to touch: `tests/repository/`, `tools/`,
-  `guidance/`. They keep the project tidy and up to date.
+- Folders you don't need to touch: `tests/repository/`, `guidance/`, and the
+  hidden `.agents/` and `.github/`. They keep the project tidy and up to date.
 - Your data is never stored here.
 
 ## Seven words you'll hear
@@ -158,7 +158,7 @@ it. A few habits help:
 - **For anything that changes your results,** try to get a colleague to look,
   even briefly.
 
-The full checklist is in [REVIEWING.md](REVIEWING.md#reviewing-your-own-pr).
+The full checklist is in [REVIEWING.md](.github/REVIEWING.md#reviewing-your-own-pr).
 
 ## Golden rules
 
@@ -198,7 +198,7 @@ Then decide together what to do, and ask a person if you're unsure.
 
 ## Where next
 
-- **[CONTRIBUTING.md](CONTRIBUTING.md):** the detailed reference for how work
+- **[CONTRIBUTING.md](.github/CONTRIBUTING.md):** the detailed reference for how work
   flows. Useful as you get more confident. Your AI assistant follows it for you.
 - **[guidance/](guidance/README.md):** good practice from the CCP-volumeEM
   community, for example on file formats and testing.

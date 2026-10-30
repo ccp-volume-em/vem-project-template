@@ -1,7 +1,7 @@
 # Development
 
 Contributions are welcome. The full guide is
-[CONTRIBUTING.md](https://github.com/ccp-volume-em/vem-project/blob/main/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/ccp-volume-em/vem-project/blob/main/.github/CONTRIBUTING.md)
 in the repository.
 
 <!-- template-example:start -->
@@ -17,7 +17,7 @@ In short:
 2. Make small commits with [Conventional Commit](https://www.conventionalcommits.org/) messages.
 3. Add tests, and update the docs and `CHANGELOG.md`.
 4. Open a pull request. It's reviewed (by a colleague where possible, or by
-   yourself with the self-review checklist in REVIEWING.md) and merged.
+   yourself with the self-review checklist in `.github/REVIEWING.md`) and merged.
 
 Set up a development environment:
 

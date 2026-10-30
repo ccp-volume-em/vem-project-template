@@ -1,4 +1,4 @@
-"""Tests for tools/check_repository_files.py, which keeps data out of git."""
+"""Tests for .github/tools/check_repository_files.py, which keeps data out of git."""
 
 import importlib.util
 from pathlib import Path
@@ -7,7 +7,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 _spec = importlib.util.spec_from_file_location(
-    "check_repository_files", ROOT / "tools" / "check_repository_files.py"
+    "check_repository_files", ROOT / ".github" / "tools" / "check_repository_files.py"
 )
 checker = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(checker)

@@ -1,6 +1,6 @@
 # Optional parts of a project. Projects start small: the start-project skill
 # asks about each part and leaves out those not needed, and the add-part
-# skill adds one later. `python tools/parts.py` copies or deletes the files
+# skill adds one later. `python .github/tools/parts.py` copies or deletes the files
 # and records the choice; the assistant makes the edits listed here.
 #
 # Each part has:
@@ -33,7 +33,7 @@ files = [
 edits = [
     "pyproject.toml: remove the `docs` extra, and `docs` from the `dev` extra",
     "AGENTS.md: remove the `mkdocs serve` line under Commands",
-    "CONTRIBUTING.md, Documentation: keep only the bullets for projects without a site",
+    ".github/CONTRIBUTING.md, Documentation: keep only the bullets for projects without a site",
     "README.md, folder tree: describe `docs/` as just the decision log",
 ]
 after_add = """In mkdocs.yml, set site_name, site_url, repo_url and repo_name, and \
@@ -70,7 +70,7 @@ recommend = """Include it if you use Fiji. Fiji-only projects always include it.
 shapes = ["python", "fiji"]
 files = ["fiji", "tests/test_fiji_scripts.py"]
 edits = [
-    "CONTRIBUTING.md: remove the Fiji scripts section",
+    ".github/CONTRIBUTING.md: remove the Fiji scripts section",
     "README.md, folder tree: remove the `fiji/` line",
     "START_HERE.md, What's in the project: remove the `fiji/` sentence",
 ]

@@ -105,7 +105,11 @@ def test_example_addresses_are_explained():
     # In the template, visitors see links to the made-up example project;
     # each page that has one says so. In a set-up project neither remains.
     placeholder = re.compile(r"ccp-volume-em/vem-project(?!-template)")
-    for page in [ROOT / "README.md", ROOT / "CONTRIBUTING.md", *(ROOT / "docs").glob("*.md")]:
+    for page in [
+        ROOT / "README.md",
+        ROOT / ".github" / "CONTRIBUTING.md",
+        *(ROOT / "docs").glob("*.md"),
+    ]:
         text = page.read_text(encoding="utf-8")
         starts = text.count("<!-- template-example:start -->")
         assert starts == text.count("<!-- template-example:end -->"), page.name

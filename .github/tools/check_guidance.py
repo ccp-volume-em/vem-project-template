@@ -5,8 +5,8 @@ guide on GitHub and reports pages that are new, changed or removed. With
 --diff it also prints what changed in each page.
 
 Usage:
-    python tools/check_guidance.py           # summary
-    python tools/check_guidance.py --diff    # summary plus the changes
+    python .github/tools/check_guidance.py           # summary
+    python .github/tools/check_guidance.py --diff    # summary plus the changes
 
 Exit status: 0 up to date, 1 the guide has changed, 2 the check failed.
 
@@ -24,7 +24,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-SOURCE_FILE = Path(__file__).resolve().parent.parent / "guidance" / "source.json"
+SOURCE_FILE = Path(__file__).resolve().parents[2] / "guidance" / "source.json"
 API = "https://api.github.com"
 
 
