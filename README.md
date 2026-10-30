@@ -70,7 +70,8 @@ explains everything in plain language, including these steps.
 │   ├── review-changes/      check a branch before opening a PR
 │   ├── prepare-release/     choose a version and release
 │   ├── update-guidance/     pull in changes to the CCP-volumeEM guide
-│   └── update-from-template/ pull in later improvements to this template
+│   ├── update-from-template/ pull in later improvements to this template
+│   └── add-container/       add a container image later, if left out
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
 ├── fiji/                  example Fiji script (Groovy, with Script Parameters)
 ├── notebooks/             the project's own analysis (outputs stripped on commit)
@@ -78,7 +79,7 @@ explains everything in plain language, including these steps.
 │   └── repository/          the template's checks on the repository itself
 ├── examples/              how to run it, and test data for Python and Fiji
 ├── docs/                  documentation site (optional) and the decision log
-├── Dockerfile             container image
+├── Dockerfile             container image (optional)
 ├── tools/                 repository maintenance scripts (not analysis)
 └── .github/               CI workflows, issue and PR templates, Dependabot
 ```

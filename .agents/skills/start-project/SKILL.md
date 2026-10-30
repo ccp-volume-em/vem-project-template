@@ -43,6 +43,15 @@ consequences rather than just listing options.
    recommend they check with their institution if unsure.
 6. **Example code.** Keep the example (`io.py`, `measure.py`, `cli.py`) as a
    starting point, or remove it?
+7. **Container?** (Python projects only.) Explain: a container packages the
+   tool with the exact versions of everything it needs, so it runs the same
+   on a laptop, an HPC cluster (with Apptainer) or a colleague's computer,
+   years later. Recommend one if others will run the tool on clusters or
+   other computers, or if a published analysis must be re-run exactly
+   (`guidance/containers.md`). Otherwise recommend leaving it out: it's one
+   less thing to look after, and the `add-container` skill adds it back at
+   any time. Fiji-only projects don't get one: the template's container
+   packages the Python tool.
 
 ## 2. Make the changes on a branch
 
@@ -102,8 +111,7 @@ Create a branch `setup-project`. Then:
        `test_io_and_cli.py`, `test_measure.py`, `test_examples.py`, and
        `test_fiji_and_python_agree_on_the_example_data` in
        `tests/test_fiji_scripts.py`), `examples/params.yml`, the OME-Zarr part
-       of `examples/make_example_data.py`, `Dockerfile`, `.dockerignore` and
-       `.github/workflows/container.yml`;
+       of `examples/make_example_data.py`, and the container (step 12);
      - in `pyproject.toml`, set `dependencies = []`, remove
        `[project.scripts]` and `[tool.coverage.run]`, and add the block below
        under `[build-system]`, so `pip install -e ".[dev]"` still installs the
@@ -139,6 +147,18 @@ Create a branch `setup-project`. Then:
     from the `dev` extra); remove the `mkdocs serve` line from `AGENTS.md`;
     and in `CONTRIBUTING.md` → *Documentation*, keep only the bullets for
     projects without a site. The README is then the user documentation.
+12. **Container:** if they don't want one, delete `Dockerfile`,
+    `.dockerignore` and `.github/workflows/container.yml`; remove the
+    `docker` entry from `.github/dependabot.yml`, the `Dockerfile` line from
+    the folder tree in `README.md`, and, if the documentation site is kept,
+    the *Container* section of `docs/usage.md` and "and the container" in
+    `docs/index.md`. Tell them the `add-container` skill adds it back.
+13. **Record what was left out.** For each optional part removed (the
+    documentation site, Fiji scripts, the container), add a line under
+    *Project-specific notes* in `AGENTS.md`, e.g. "No container: left out at
+    setup; add one with the `add-container` skill." This tells
+    `update-from-template` not to offer those files back, and tells future
+    contributors (and their AI assistants) the choice was deliberate.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`;
 the only matches left should be links to `vem-project-template`, and

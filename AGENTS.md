@@ -301,6 +301,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | `prepare-release`  | choose a version and prepare a release                            |
 | `update-guidance`  | check the CCP-volumeEM guide for changes and update `guidance/`   |
 | `update-from-template` | bring the template's later improvements into this project     |
+| `add-container`    | add a container image (Docker, Apptainer) if it was left out      |
 
 ## Commands
 

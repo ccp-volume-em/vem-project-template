@@ -11,6 +11,11 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- The container is optional: setup asks whether the project will be
+  containerised and removes it if not, and the new `add-container` skill
+  adds it back later. Setup records each part it leaves out in
+  `AGENTS.md`, so `update-from-template` doesn't offer it back
+  ([#24](https://github.com/ccp-volume-em/vem-project-template/pull/24)).
 - Notes next to links and commands that use the example project's
   address, saying they're examples that setup fills in. The template's
   documentation site links to the template
