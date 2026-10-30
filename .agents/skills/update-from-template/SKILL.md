@@ -59,11 +59,11 @@ For each shared file:
 - **New in the template:** copy it from `latest/`. Replace the template's
   example names (`vem-project`, `vem_project`) with the project's own.
 - **Removed from the template:** ask the user before removing it here.
-- **The project deleted a file the template changed:** first check
-  *Project-specific notes* in `AGENTS.md`. If the part was left out on
-  purpose (e.g. "No container"), skip the file without asking. Otherwise ask
-  whether they want it back, and don't restore it unasked. To add an
-  optional part back, use its skill (e.g. `add-container`).
+- **The project deleted a file the template changed:** ask whether they
+  want it back, and don't restore it unasked. Files of optional parts the
+  project left out (the docs site, container, Fiji scripts, notebooks) are
+  already skipped by `check_template.py`; to add one, use the `add-part`
+  skill.
 
 For **project files**, don't merge anything automatically. Point out changes
 the user may want (e.g. a new dependency or test pattern) and offer to make

@@ -301,7 +301,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | `prepare-release`  | choose a version and prepare a release                            |
 | `update-guidance`  | check the CCP-volumeEM guide for changes and update `guidance/`   |
 | `update-from-template` | bring the template's later improvements into this project     |
-| `add-container`    | add a container image (Docker, Apptainer) if it was left out      |
+| `add-part`         | add an optional part left out at setup (docs site, container, Fiji, notebooks) |
 
 ## Commands
 
@@ -316,6 +316,7 @@ ruff check . && ruff format --check .               # lint
 mkdocs serve                                        # preview the docs site, if there is one
 python tools/check_guidance.py                      # has the guide changed?
 python tools/check_template.py                      # has the template changed?
+python tools/parts.py list                          # optional parts: which this project has
 ```
 
 Before installing anything, check that the virtual environment is active

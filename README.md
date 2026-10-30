@@ -71,7 +71,7 @@ explains everything in plain language, including these steps.
 │   ├── prepare-release/     choose a version and release
 │   ├── update-guidance/     pull in changes to the CCP-volumeEM guide
 │   ├── update-from-template/ pull in later improvements to this template
-│   └── add-container/       add a container image later, if left out
+│   └── add-part/            add an optional part later (docs site, container, …)
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
 ├── fiji/                  example Fiji script (Groovy, with Script Parameters)
 ├── notebooks/             the project's own analysis (outputs stripped on commit)

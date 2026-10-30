@@ -33,6 +33,7 @@ import os
 import re
 import subprocess
 import sys
+import tomllib
 import urllib.error
 import urllib.request
 from datetime import date
@@ -40,6 +41,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 RECORD = ROOT / ".github" / "template.json"
+PARTS = ROOT / ".github" / "template-parts.toml"
 API = "https://api.github.com"
 
 # Files the template maintains for every project. Everything else (code,
@@ -51,6 +53,7 @@ SHARED = (
     ".github/workflows/",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
+    ".github/template-parts.toml",
     ".github/rulesets/",
     ".gitignore",
     ".dockerignore",
@@ -74,6 +77,18 @@ SHARED = (
 
 def is_shared(path: str) -> bool:
     return any(path == s or (s.endswith("/") and path.startswith(s)) for s in SHARED)
+
+
+def left_out_files(base: dict) -> list[str]:
+    """Files of the optional parts this project left out (see tools/parts.py)."""
+    if not base.get("left_out") or not PARTS.exists():
+        return []
+    parts = tomllib.loads(PARTS.read_text(encoding="utf-8"))["parts"]
+    return [f for name in base["left_out"] if name in parts for f in parts[name]["files"]]
+
+
+def is_left_out(path: str, left_out: list[str]) -> bool:
+    return any(path == f or path.startswith(f + "/") for f in left_out)
 
 
 def github_get(path: str, raw: bool = False):
@@ -174,6 +189,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.init or args.record:
         version = latest if args.record else base
         record = {**version, "repository": template, "recorded": date.today().isoformat()}
+        if base.get("left_out"):
+            record["left_out"] = base["left_out"]
         RECORD.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
         print(f"Recorded {template} {describe(version)} in {RECORD.relative_to(ROOT)}")
         return 0
@@ -186,7 +203,10 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     compare = github_get(f"repos/{template}/compare/{base['commit']}...{latest['commit']}")
+    left_out = left_out_files(base)
     files = compare.get("files", [])
+    skipped = [f for f in files if is_left_out(f["filename"], left_out)]
+    files = [f for f in files if f not in skipped]
     shared = [f for f in files if is_shared(f["filename"])]
     own = [f for f in files if not is_shared(f["filename"])]
 
@@ -196,6 +216,10 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\nProject files changed in the template ({len(own)}), for information only:")
     for f in own:
         print(f"  {f['status']:<9} {f['filename']}")
+    if skipped:
+        print(f"\nFiles of parts this project left out ({len(skipped)}), skipped:")
+        for f in skipped:
+            print(f"  {f['status']:<9} {f['filename']}")
     print(f"\nWhat changed: https://github.com/{template}/compare/"
           f"{base['commit'][:7]}...{latest['commit'][:7]}")  # fmt: skip
 

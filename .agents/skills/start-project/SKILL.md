@@ -28,90 +28,85 @@ consequences rather than just listing options.
    If napari, point them to `guidance/napari-plugins.md` and the official
    napari plugin template, and explain that the analysis code in `src/` can be
    reused by the plugin.
-   **Documentation site?** Ask whether other people will install and use the
-   software. If so, keep the documentation website (`docs/`, `mkdocs.yml`). It
-   adds a user guide and a reference built from the docstrings, and is
-   published once the repository is public. If not (e.g. a private analysis or
-   a few scripts), recommend removing it: the README is enough, and the site
-   can be added back later.
-4. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
+4. **Optional parts.** Projects start small, and anything left out can be
+   added later with the `add-part` skill. Run `python tools/parts.py list`.
+   For each part whose `shapes` (in `.github/template-parts.toml`) include
+   theirs, ask its `question` in plain words and give its `recommend`
+   advice. Unless there's a reason to include a part, recommend leaving it
+   out: every file they keep is one more to understand. Fiji-only projects
+   always keep `fiji`.
+5. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
    PRs with the checklist in `REVIEWING.md` (*Reviewing your own PR*).
-5. **Licence.** The template uses BSD-3-Clause, common in scientific Python and
+6. **Licence.** The template uses BSD-3-Clause, common in scientific Python and
    napari. Explain the options in `guidance/publishing.md` briefly, and
    recommend they check with their institution if unsure.
-6. **Example code.** Keep the example (`io.py`, `measure.py`, `cli.py`) as a
+7. **Example code.** Keep the example (`io.py`, `measure.py`, `cli.py`) as a
    starting point, or remove it?
-7. **Container?** (Python projects only.) Explain: a container packages the
-   tool with the exact versions of everything it needs, so it runs the same
-   on a laptop, an HPC cluster (with Apptainer) or a colleague's computer,
-   years later. Recommend one if others will run the tool on clusters or
-   other computers, or if a published analysis must be re-run exactly
-   (`guidance/containers.md`). Otherwise recommend leaving it out: it's one
-   less thing to look after, and the `add-container` skill adds it back at
-   any time. Fiji-only projects don't get one: the template's container
-   packages the Python tool.
 
 ## 2. Make the changes on a branch
 
 Create a branch `setup-project`. Then:
 
-1. **Rename** everywhere: `vem-project` → distribution name, `vem_project` →
+1. **Template version:** record which template version the project came
+   from. Updates from the template (`update-from-template`) and adding parts
+   later (`add-part`) both start from it:
+   `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --init`.
+2. **Leave out the parts they don't want**, one at a time:
+   `python tools/parts.py remove <part>`. It deletes the part's files,
+   records the choice in `.github/template.json` and under *Project-specific
+   notes* in `AGENTS.md` (so updates skip it, and future contributors know
+   it was deliberate), and prints the edits to make in other files. Make
+   them. Commit each part separately, e.g. `chore: leave out the container`.
+3. **Rename** everywhere: `vem-project` → distribution name, `vem_project` →
    import name, including the `src/vem_project/` folder (use `git mv`). Search
    the whole repository, including `.github/`, `docs/`, `mkdocs.yml`,
-   `Dockerfile`, `tox.ini`, tests and examples:
-   `git grep -n -i "vem.project"`. Leave links to the template itself
-   (`ccp-volume-em/vem-project-template`, e.g. in `START_HERE.md`) as they
-   are: a plain find-and-replace of `vem-project` would break them.
-2. **Repository URLs:** replace `ccp-volume-em/vem-project` with the real
+   `Dockerfile`, tests and examples: `git grep -n -i "vem.project"`. Leave
+   links to the template itself (`ccp-volume-em/vem-project-template`, e.g.
+   in `START_HERE.md` and `.github/template.json`) as they are: a plain
+   find-and-replace of `vem-project` would break them.
+4. **Repository URLs:** replace `ccp-volume-em/vem-project` with the real
    `owner/repo` (from `git remote get-url origin`), again leaving links to
    `ccp-volume-em/vem-project-template` alone. Two places point at the
    template on purpose and must be changed to the new repository: the
    *Tests* badge at the top of `README.md`, and `site_url`, `repo_url` and
-   `repo_name` in `mkdocs.yml`. Then delete the *Example address* notes,
-   from each `<!-- template-example:start -->` to its `end` marker
-   (`git grep -n template-example`): they tell visitors to the template
-   that these addresses are examples.
-3. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
+   `repo_name` in `mkdocs.yml` (if the site is kept). Then delete the
+   *Example address* notes, from each `<!-- template-example:start -->` to
+   its `end` marker (`git grep -n template-example`): they tell visitors to
+   the template that these addresses are examples.
+5. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
    `README.md` (title, description; remove the *About this template* section,
-   and the template's status notice between the `template-status` markers),
-   `docs/index.md` (the same status notice), and `mkdocs.yml` (`site_name`, URLs).
-   Delete `overrides/` and the `custom_dir` line in `mkdocs.yml`: they add
-   the banner saying the site is the template's example.
-4. **Licence:** if they chose another, replace `LICENSE` with the unmodified
+   and the template's status notice between the `template-status` markers).
+   If the site is kept: `docs/index.md` (the same status notice) and
+   `mkdocs.yml` (`site_name`). Always delete `overrides/`, and the
+   `custom_dir` line in `mkdocs.yml` if there is one: they add the banner
+   saying the site is the template's example.
+6. **Licence:** if they chose another, replace `LICENSE` with the unmodified
    text from <https://choosealicense.com>, and update `license` in
    `pyproject.toml` and `CITATION.cff` with its SPDX identifier.
-5. **AGENTS.md:** fill in *About this project*.
-6. **START_HERE.md:** keep it for future collaborators, but rewrite *Your
+7. **AGENTS.md:** fill in *About this project*.
+8. **START_HERE.md:** keep it for future collaborators, but rewrite *Your
    first session* for joining this project rather than copying the template:
    how to get access (and from whom), opening the repository in an AI
    assistant, and a first thing to say, such as "Read `AGENTS.md` and
    `START_HERE.md`, then explain what this project does and how it's
    organised." Name the project's reviewers, if any, in *What you need*.
-7. **Example code, by shape.** Never touch `tests/repository/` (the
+9. **Example code, by shape.** Never touch `tests/repository/` (the
    template's checks), `tools/` or `docs/decisions.md`.
-   - **Python, keeping the example as a starting point:** rename it (step 1)
+   - **Python, keeping the example as a starting point:** rename it (step 3)
      and adapt it.
    - **Python, replacing the example:** replace the modules in `src/`, their
      tests in `tests/`, and `examples/params.yml`. Keep
      `tests/test_installation.py` (adapted) and `examples/make_example_data.py`
      until they have their own test data.
-   - **Notebooks:** keep `notebooks/` and its README for the project's own
-     analysis. Delete the example notebook and `tests/test_example_notebook.py`
-     once they have notebooks of their own, or straight away for a Fiji-only
-     project (it uses the Python package).
-   - **No Fiji:** delete `fiji/`, `tests/test_fiji_scripts.py`, and the
-     *Fiji scripts* section of `CONTRIBUTING.md` (it links to `fiji/`). Keep
-     the Fiji rules in `AGENTS.md` and the `new-fiji-script` skill, so Fiji
-     scripts can be added later.
    - **Fiji scripts only:**
      - delete `src/`, the Python tests (`tests/test_installation.py`,
        `test_io_and_cli.py`, `test_measure.py`, `test_examples.py`, and
        `test_fiji_and_python_agree_on_the_example_data` in
-       `tests/test_fiji_scripts.py`), `examples/params.yml`, the OME-Zarr part
-       of `examples/make_example_data.py`, and the container (step 12);
+       `tests/test_fiji_scripts.py`), `examples/params.yml`, and the OME-Zarr
+       part of `examples/make_example_data.py`;
      - in `pyproject.toml`, set `dependencies = []`, remove
        `[project.scripts]` and `[tool.coverage.run]`, and add the block below
        under `[build-system]`, so `pip install -e ".[dev]"` still installs the
@@ -128,37 +123,14 @@ Create a branch `setup-project`. Then:
        entries in `mkdocs.yml` and `docs/index.md`, and rewrite
        `docs/usage.md` for the Fiji scripts;
      - rewrite the README's *Quick start* for Fiji, from `fiji/README.md`.
-8. **CHANGELOG.md:** remove the template's release history, leaving just
-   the `## [Unreleased]` heading, with an `Added` entry describing the
-   initial project, and one link line at the bottom:
-   `[Unreleased]: https://github.com/<owner>/<repo>/commits/main`.
-9. **ROADMAP.md:** replace the template's items with the user's first goals.
-   **docs/decisions.md:** remove the template's example entry. If the user
-   has already made choices (e.g. the method), record them as the first
-   entries, with their reasons.
-10. **Template version:** record which template version the project came
-    from, so later template improvements can be merged in with the
-    `update-from-template` skill:
-    `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --init`.
-    Commit the resulting `.github/template.json`.
-11. **Documentation site:** if they don't want one, delete `mkdocs.yml`,
-    `.github/workflows/docs.yml` and every page in `docs/` except
-    `docs/decisions.md`; remove the `docs` extra from `pyproject.toml` (and
-    from the `dev` extra); remove the `mkdocs serve` line from `AGENTS.md`;
-    and in `CONTRIBUTING.md` → *Documentation*, keep only the bullets for
-    projects without a site. The README is then the user documentation.
-12. **Container:** if they don't want one, delete `Dockerfile`,
-    `.dockerignore` and `.github/workflows/container.yml`; remove the
-    `docker` entry from `.github/dependabot.yml`, the `Dockerfile` line from
-    the folder tree in `README.md`, and, if the documentation site is kept,
-    the *Container* section of `docs/usage.md` and "and the container" in
-    `docs/index.md`. Tell them the `add-container` skill adds it back.
-13. **Record what was left out.** For each optional part removed (the
-    documentation site, Fiji scripts, the container), add a line under
-    *Project-specific notes* in `AGENTS.md`, e.g. "No container: left out at
-    setup; add one with the `add-container` skill." This tells
-    `update-from-template` not to offer those files back, and tells future
-    contributors (and their AI assistants) the choice was deliberate.
+10. **CHANGELOG.md:** remove the template's release history, leaving just
+    the `## [Unreleased]` heading, with an `Added` entry describing the
+    initial project, and one link line at the bottom:
+    `[Unreleased]: https://github.com/<owner>/<repo>/commits/main`.
+11. **ROADMAP.md:** replace the template's items with the user's first goals.
+    **docs/decisions.md:** remove the template's example entry. If the user
+    has already made choices (e.g. the method), record them as the first
+    entries, with their reasons.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`;
 the only matches left should be links to `vem-project-template`, and
