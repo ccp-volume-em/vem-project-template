@@ -42,10 +42,20 @@ Development (tests, CI and developer docs).
 
 ### Fixed
 
+- The README's *Tests* badge shows the template's own tests, instead of a
+  broken image. The `start-project` skill points it at the new repository,
+  and keeps links to the template intact when renaming
+  ([#22](https://github.com/ccp-volume-em/vem-project-template/pull/22)).
 - The pre-commit YAML check no longer rejects `mkdocs.yml`
   ([#21](https://github.com/ccp-volume-em/vem-project-template/pull/21)).
 - The Fiji script writes large volumes as plain numbers, not in scientific
   notation ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+
+### Development
+
+- Test runs on `main` are no longer cancelled when another merge follows
+  quickly, so the tests badge doesn't show failing for a cancelled run
+  ([#22](https://github.com/ccp-volume-em/vem-project-template/pull/22)).
 
 ## [0.1.0] - 2026-10-29
 

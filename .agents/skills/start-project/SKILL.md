@@ -52,9 +52,14 @@ Create a branch `setup-project`. Then:
    import name, including the `src/vem_project/` folder (use `git mv`). Search
    the whole repository, including `.github/`, `docs/`, `mkdocs.yml`,
    `Dockerfile`, `tox.ini`, tests and examples:
-   `git grep -n -i "vem.project"`.
+   `git grep -n -i "vem.project"`. Leave links to the template itself
+   (`ccp-volume-em/vem-project-template`, e.g. in `START_HERE.md`) as they
+   are: a plain find-and-replace of `vem-project` would break them.
 2. **Repository URLs:** replace `ccp-volume-em/vem-project` with the real
-   `owner/repo` (from `git remote get-url origin`).
+   `owner/repo` (from `git remote get-url origin`), again leaving links to
+   `ccp-volume-em/vem-project-template` alone. The exception is the *Tests*
+   badge at the top of `README.md`: it shows the template's tests, so point
+   it at the new repository.
 3. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
    `README.md` (title, description; remove the *About this template* section,
@@ -131,7 +136,8 @@ Create a branch `setup-project`. Then:
     and in `CONTRIBUTING.md` → *Documentation*, keep only the bullets for
     projects without a site. The README is then the user documentation.
 
-Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`),
+Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`;
+the only matches left should be links to `vem-project-template`),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
 then run `pre-commit install`. Explain that this adds checks that run before
 every commit: tidy code, no data files, and no commits straight to `main`.

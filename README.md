@@ -9,7 +9,7 @@
 
 # vem-project
 
-[![Tests](https://github.com/ccp-volume-em/vem-project/actions/workflows/tests.yml/badge.svg)](https://github.com/ccp-volume-em/vem-project/actions/workflows/tests.yml)
+[![Tests](https://github.com/ccp-volume-em/vem-project-template/actions/workflows/tests.yml/badge.svg)](https://github.com/ccp-volume-em/vem-project-template/actions/workflows/tests.yml)
 
 One-line description of what this tool does for volume EM / CLEM data.
 
