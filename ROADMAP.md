@@ -5,12 +5,10 @@ What's left to do, most important first. Finished work moves to
 
 ## Next
 
-- [ ] Get a DOI for the template: an owner of `ccp-volume-em` connects the
-      repository at <https://zenodo.org/account/settings/github/>; check
-      the authors, affiliations and ORCIDs in `.zenodo.json`; release
-      v0.2.0 and check Zenodo archives it (the release is made by GitHub
-      Actions); then add the concept DOI and badge to the README's
-      *Citing the template* ([#31](https://github.com/ccp-volume-em/vem-project-template/pull/31)).
+- [ ] Get a DOI for the template: release v0.2.0 and check Zenodo archives
+      it (the release is made by GitHub Actions; Zenodo is connected), then
+      add the concept DOI and badge to the README's *Citing the template*
+      ([#31](https://github.com/ccp-volume-em/vem-project-template/pull/31)).
 - [ ] Once testing is finished, remove the work-in-progress notices from
       `README.md`, `START_HERE.md` and `docs/index.md`, the matching step
       in the `start-project` skill, and the "Work in progress, being tested"
@@ -35,7 +33,6 @@ What's left to do, most important first. Finished work moves to
 - [ ] More optional parts, added the same way (`.github/template-parts.toml`):
       e.g. a napari plugin, or publishing to PyPI.
 
-- [ ] First release (`v0.1.0`) archived on Zenodo.
 - [ ] Run the Fiji script tests in CI (e.g. a job that downloads Fiji):
       GitHub Actions skips them today, so they only run locally
       ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
