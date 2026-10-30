@@ -35,6 +35,15 @@ a simple, safe way of working:
 - **Tests that run automatically** on every pull request.
 - **Large-data habits** from the start: lazy loading, OME-Zarr, physical units
   and provenance.
+- **Start small.** Projects are kept as simple and beginner friendly as
+  possible. The documentation website, container, Fiji scripts and notebooks
+  are optional: setup asks about each and leaves out what isn't needed, and
+  any of them can be added later, the same way, with the `add-part` skill.
+
+*For template maintainers:* keep to that last principle. Before adding
+anything, ask whether every project needs it. If not, make it an optional
+part in [`.github/template-parts.toml`](.github/template-parts.toml), rather
+than something every project gets or has to delete.
 
 You can write code by hand or with any AI assistant. The rules for AI
 assistants are in [AGENTS.md](AGENTS.md), which most tools read automatically.
