@@ -6,14 +6,14 @@ description: Bring improvements from the CCP-volumeEM project template (new rule
 # Update from the project template
 
 A project made from the template doesn't receive the template's later
-improvements by itself. `tools/check_template.py` works out which template
+improvements by itself. `.github/tools/check_template.py` works out which template
 version the project is based on (from `.github/template.json`, or by asking
 GitHub) and what has changed since. Explain each step to the user as you go.
 
 ## 1. See what changed
 
 ```bash
-GITHUB_TOKEN=$(gh auth token) python tools/check_template.py
+GITHUB_TOKEN=$(gh auth token) python .github/tools/check_template.py
 ```
 
 `GITHUB_TOKEN` lets it read a private template; without `gh`, the user can
@@ -38,7 +38,7 @@ Then fetch the old and new template versions of the shared files into a
 folder **outside** the repository:
 
 ```bash
-GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --fetch /tmp/template-update
+GITHUB_TOKEN=$(gh auth token) python .github/tools/check_template.py --fetch /tmp/template-update
 ```
 
 For each shared file:
@@ -75,7 +75,7 @@ them separately.
    `pre-commit install`, `pytest`, `ruff check .`. Fix anything the update
    broke, and say what.
 2. Record the new template version:
-   `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --record`.
+   `GITHUB_TOKEN=$(gh auth token) python .github/tools/check_template.py --record`.
 3. Add a `CHANGELOG.md` entry under `[Unreleased]` → `Development`, e.g.
    "Updated from the project template (v0.3.0): …", listing what users of
    the project will notice, if anything.

@@ -18,7 +18,7 @@ Explain each step to the user as you go. They may not know git well.
 Run, from the repository root:
 
 ```bash
-python tools/check_guidance.py --diff
+python .github/tools/check_guidance.py --diff
 ```
 
 - Exit 0 means it's up to date. Tell the user, update `last_checked` in
@@ -67,7 +67,7 @@ Ask before going ahead if any change is large or conflicts with the project.
    blob hash, and `used_in` for any new or renamed pages. Get the hashes from:
    `https://api.github.com/repos/ccp-volume-em/guide/git/trees/main?recursive=1`
    (or `gh api "repos/ccp-volume-em/guide/git/trees/main?recursive=1"`).
-7. Run `python tools/check_guidance.py`: it should now report *up to date*.
+7. Run `python .github/tools/check_guidance.py`: it should now report *up to date*.
 
 ## 5. Commit and open a pull request
 

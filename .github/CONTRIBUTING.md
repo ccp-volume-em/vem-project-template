@@ -3,11 +3,11 @@
 Thank you for helping. This page is the detailed reference for how we work.
 If anything is unclear, open an issue or ask a maintainer.
 
-**New to coding or GitHub?** Read [START_HERE.md](START_HERE.md) first. You
+**New to coding or GitHub?** Read [START_HERE.md](../START_HERE.md) first. You
 don't need everything on this page to get started: your AI assistant runs the
 commands below for you.
 
-AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
+AI assistants follow the same rules, summarised in [AGENTS.md](../AGENTS.md).
 
 ## Where things go
 
@@ -19,7 +19,7 @@ AI assistants follow the same rules, summarised in [AGENTS.md](AGENTS.md).
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
 | `tests/repository/` | The template's checks on the repository itself. Kept up to date by `update-from-template`; don't edit |
-| `tools/` | Scripts that maintain the repository (checks, updates), not analysis |
+| `.github/` | How to contribute and review, the checks that run on GitHub, and scripts that maintain the repository (`tools/`), not analysis |
 | `docs/` | The documentation site, if the project has one, and the decision log (`decisions.md`) |
 | `guidance/` | The CCP-volumeEM guide, distilled. Updated by `update-guidance`; don't edit |
 | `data/`, `results/` | Never in git: data stays on institute storage |
@@ -135,7 +135,7 @@ commits.
 
 ### 4. Update the changelog
 
-Add a line to [CHANGELOG.md](CHANGELOG.md) under `## [Unreleased]`, in the
+Add a line to [CHANGELOG.md](../CHANGELOG.md) under `## [Unreleased]`, in the
 right section (`Added`, `Changed`, `Fixed`, …), describing the change **for
 users**, with a link to the PR. Tests, CI and developer docs go under
 `Development`. Automated dependency updates from Dependabot don't need an
@@ -191,7 +191,7 @@ PR is still open, or that has work not in `main`, without asking its owner.
 
 Fiji work is written as Groovy scripts with Script Parameters, in `fiji/`:
 Fiji builds the dialog from the `#@` lines, and the same script runs headless
-on a cluster. See [fiji/README.md](fiji/README.md). Run the Fiji tests
+on a cluster. See [fiji/README.md](../fiji/README.md). Run the Fiji tests
 locally before opening a PR that changes a script (CI has no Fiji):
 
 ```bash
@@ -206,7 +206,7 @@ FIJI=/path/to/Fiji.app/fiji pytest -m fiji
   volume), not by running the code and copying the result. This matters most
   for AI-written code.
 - Never commit real data for tests. Generate small synthetic data instead.
-- See [guidance/testing.md](guidance/testing.md).
+- See [guidance/testing.md](../guidance/testing.md).
 
 ## Documentation
 
@@ -235,7 +235,7 @@ We use [Semantic Versioning](https://semver.org/): `MAJOR.MINOR.PATCH`.
 Before 1.0.0, breaking changes bump the minor version and are marked
 **Breaking:** in the changelog. The version in `pyproject.toml` changes only
 in a release PR. Maintainers decide when to release, using the
-[prepare-release](.agents/skills/prepare-release/SKILL.md) steps.
+[prepare-release](../.agents/skills/prepare-release/SKILL.md) steps.
 
 ## Using AI assistants
 
@@ -248,7 +248,7 @@ you submit.
 - Don't share unpublished data, personal data or credentials with an AI
   service unless its terms and your approvals allow it.
 - Acknowledge AI help in commits (`Assisted-by:`) and in the PR.
-- See [guidance/ai-use.md](guidance/ai-use.md).
+- See [guidance/ai-use.md](../guidance/ai-use.md).
 
 ## Code of conduct
 

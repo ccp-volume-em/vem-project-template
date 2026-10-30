@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.13"
       - name: No data, images, model weights or large files
-        run: python tools/check_repository_files.py
+        run: python .github/tools/check_repository_files.py
 
   no-secrets:
     runs-on: ubuntu-latest

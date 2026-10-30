@@ -27,7 +27,7 @@ a simple, safe way of working:
 
 - **Every change goes through a pull request** that's reviewed before it
   reaches `main`: by a colleague where possible, or by yourself with a
-  [self-review checklist](REVIEWING.md#reviewing-your-own-pr) if you work alone.
+  [self-review checklist](.github/REVIEWING.md#reviewing-your-own-pr) if you work alone.
 - **Small, regular commits** with clear [Conventional Commit](https://www.conventionalcommits.org/)
   messages.
 - **[Semantic Versioning](https://semver.org/)**, a [changelog](CHANGELOG.md),
@@ -51,15 +51,13 @@ explains everything in plain language, including these steps.
    `.agents/skills/start-project/SKILL.md`"). It asks a few questions and
    renames the example package, fills in authors and the licence, and opens a
    pull request. You can also follow that file by hand.
-4. Read [CONTRIBUTING.md](CONTRIBUTING.md) for how day-to-day work flows.
+4. Read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for how day-to-day work flows.
 
 ### What's in the box
 
 ```text
 ├── START_HERE.md          plain-language guide for people new to coding or GitHub
 ├── AGENTS.md              instructions for any AI assistant (CLAUDE.md points here)
-├── CONTRIBUTING.md        how to work: branches, commits, PRs, releases
-├── REVIEWING.md           how to review a PR, someone else's or your own
 ├── CHANGELOG.md           what changed in each release
 ├── ROADMAP.md             what's planned next
 ├── CITATION.cff           how to cite this software
@@ -73,15 +71,15 @@ explains everything in plain language, including these steps.
 │   ├── update-from-template/ pull in later improvements to this template
 │   └── add-part/            add an optional part later (docs site, container, …)
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
-├── fiji/                  example Fiji script (Groovy, with Script Parameters)
-├── notebooks/             the project's own analysis (outputs stripped on commit)
+├── fiji/                  example Fiji script, Groovy with Script Parameters (optional)
+├── notebooks/             the project's own analysis, outputs stripped (optional)
 ├── tests/                 tests of the code (Python and Fiji)
 │   └── repository/          the template's checks on the repository itself
 ├── examples/              how to run it, and test data for Python and Fiji
 ├── docs/                  documentation site (optional) and the decision log
 ├── Dockerfile             container image (optional)
-├── tools/                 repository maintenance scripts (not analysis)
-└── .github/               CI workflows, issue and PR templates, Dependabot
+└── .github/               how to contribute (CONTRIBUTING.md) and review (REVIEWING.md),
+                           checks that run on GitHub, and maintenance scripts (tools/)
 ```
 
 The example package measures the physical volume of labelled objects in a
@@ -106,7 +104,7 @@ The CCP-volumeEM guide evolves. A scheduled GitHub Action checks it monthly
 and opens an issue when it changes. Then ask your AI assistant to run the
 **`update-guidance`** skill, which reads what changed, updates `guidance/` and
 `AGENTS.md`, and opens a pull request for review. Check by hand with
-`python tools/check_guidance.py`.
+`python .github/tools/check_guidance.py`.
 
 ### Template versions
 
@@ -125,7 +123,7 @@ came from. Ask your AI assistant to run the **`update-from-template`** skill:
 it shows what has changed in the template since, merges the template's
 changes into the shared files (rules, skills, checks, guidance) while keeping
 the project's own edits, and opens a pull request for review. Check by hand
-with `python tools/check_template.py`.
+with `python .github/tools/check_template.py`.
 
 ---
 
@@ -158,7 +156,7 @@ vem-project --version
 ```
 <!-- --8<-- [end:install] -->
 
-To work on the code itself, see [CONTRIBUTING.md](CONTRIBUTING.md).
+To work on the code itself, see [CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ## Quick start
 
@@ -199,7 +197,7 @@ general questions, use the [image.sc forum](https://forum.image.sc/).
 
 Contributions are welcome. New to coding or GitHub? Start with
 [START_HERE.md](START_HERE.md). The full details are in
-[CONTRIBUTING.md](CONTRIBUTING.md).
+[CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ## Citation
 

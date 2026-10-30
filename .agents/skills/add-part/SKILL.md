@@ -6,12 +6,12 @@ description: Add an optional part that the project left out at setup (the docume
 # Add an optional part
 
 Projects start small. The optional parts are described in
-`.github/template-parts.toml`, and `tools/parts.py` adds or removes their
+`.github/template-parts.toml`, and `.github/tools/parts.py` adds or removes their
 files the same way for every part. Explain each step in plain words.
 
 ## 1. Check and ask
 
-Run `python tools/parts.py list` to see which parts the project has. Read the
+Run `python .github/tools/parts.py list` to see which parts the project has. Read the
 part's entry in `.github/template-parts.toml`, and talk it through with the
 user: its `question` and `recommend` say what it's for. If it doesn't suit
 the project's shape (`shapes`), say so and stop, unless they still want it.
@@ -23,7 +23,7 @@ For the container, also read `guidance/containers.md`; for the docs site,
 On a branch (e.g. `add-container`):
 
 ```bash
-GITHUB_TOKEN=$(gh auth token) python tools/parts.py add <part>
+GITHUB_TOKEN=$(gh auth token) python .github/tools/parts.py add <part>
 ```
 
 It copies the part's files from the template version in

@@ -29,7 +29,7 @@ consequences rather than just listing options.
    napari plugin template, and explain that the analysis code in `src/` can be
    reused by the plugin.
 4. **Optional parts.** Projects start small, and anything left out can be
-   added later with the `add-part` skill. Run `python tools/parts.py list`.
+   added later with the `add-part` skill. Run `python .github/tools/parts.py list`.
    For each part whose `shapes` (in `.github/template-parts.toml`) include
    theirs, ask its `question` in plain words and give its `recommend`
    advice. Unless there's a reason to include a part, recommend leaving it
@@ -38,7 +38,7 @@ consequences rather than just listing options.
 5. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
-   PRs with the checklist in `REVIEWING.md` (*Reviewing your own PR*).
+   PRs with the checklist in `.github/REVIEWING.md` (*Reviewing your own PR*).
 6. **Licence.** The template uses BSD-3-Clause, common in scientific Python and
    napari. Explain the options in `guidance/publishing.md` briefly, and
    recommend they check with their institution if unsure.
@@ -52,9 +52,9 @@ Create a branch `setup-project`. Then:
 1. **Template version:** record which template version the project came
    from. Updates from the template (`update-from-template`) and adding parts
    later (`add-part`) both start from it:
-   `GITHUB_TOKEN=$(gh auth token) python tools/check_template.py --init`.
+   `GITHUB_TOKEN=$(gh auth token) python .github/tools/check_template.py --init`.
 2. **Leave out the parts they don't want**, one at a time:
-   `python tools/parts.py remove <part>`. It deletes the part's files,
+   `python .github/tools/parts.py remove <part>`. It deletes the part's files,
    records the choice in `.github/template.json` and under *Project-specific
    notes* in `AGENTS.md` (so updates skip it, and future contributors know
    it was deliberate), and prints the edits to make in other files. Make
@@ -94,7 +94,7 @@ Create a branch `setup-project`. Then:
    `START_HERE.md`, then explain what this project does and how it's
    organised." Name the project's reviewers, if any, in *What you need*.
 9. **Example code, by shape.** Never touch `tests/repository/` (the
-   template's checks), `tools/` or `docs/decisions.md`.
+   template's checks), `.github/tools/` or `docs/decisions.md`.
    - **Python, keeping the example as a starting point:** rename it (step 3)
      and adapt it.
    - **Python, replacing the example:** replace the modules in `src/`, their

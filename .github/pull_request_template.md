@@ -34,4 +34,4 @@ Write "None" if none. See guidance/ai-use.md. -->
 - [ ] `CHANGELOG.md` entry under `[Unreleased]` (unless nothing user-facing changed)
 - [ ] I understand every line of this change and can explain it to a reviewer
 - [ ] Reviewing alone? I read the whole diff after a break and worked through
-      the self-review checklist in REVIEWING.md
+      the self-review checklist in .github/REVIEWING.md

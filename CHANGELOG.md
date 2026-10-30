@@ -45,12 +45,23 @@ Development (tests, CI and developer docs).
 
 ### Changed
 
+- A tidier top level: `CONTRIBUTING.md`, `REVIEWING.md`, `SECURITY.md`,
+  `CODE_OF_CONDUCT.md` and the maintenance scripts (`tools/`) moved into
+  `.github/`, where GitHub still finds them. Run the scripts as
+  `python .github/tools/<script>.py`
+  ([#26](https://github.com/ccp-volume-em/vem-project-template/pull/26)).
 - The documentation site is optional: setup asks whether others will use the
   software and removes the site if not, keeping the decision log. The
   install and quick-start text is written once, in the README, and reused by
   the site ([#15](https://github.com/ccp-volume-em/vem-project-template/pull/15)).
 - The template's checks on the repository moved to `tests/repository/`
   ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
+
+### Removed
+
+- `tox.ini` and `tox`: the tests run on every Python version in CI, and
+  beginners don't need a second way to run them
+  ([#26](https://github.com/ccp-volume-em/vem-project-template/pull/26)).
 
 ### Fixed
 

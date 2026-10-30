@@ -4,8 +4,8 @@ Once a file is committed it stays in the history, even after it's deleted, so
 this check runs before each commit (pre-commit) and on every pull request.
 
 Usage:
-    python tools/check_repository_files.py            # every tracked file
-    python tools/check_repository_files.py FILE ...   # just these files
+    python .github/tools/check_repository_files.py            # every tracked file
+    python .github/tools/check_repository_files.py FILE ...   # just these files
 
 Exit status: 0 all fine, 1 problems found.
 
@@ -21,7 +21,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 ALLOWLIST = ROOT / ".github" / "allowed-files.txt"
 MAX_BYTES = 1_000_000
 

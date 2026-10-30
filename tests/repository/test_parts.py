@@ -1,4 +1,4 @@
-"""Tests for the optional parts (.github/template-parts.toml and tools/parts.py)."""
+"""Tests for the optional parts (.github/template-parts.toml and .github/tools/parts.py)."""
 
 import importlib.util
 import io
@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-_spec = importlib.util.spec_from_file_location("parts", ROOT / "tools" / "parts.py")
+_spec = importlib.util.spec_from_file_location("parts", ROOT / ".github" / "tools" / "parts.py")
 parts = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(parts)
 

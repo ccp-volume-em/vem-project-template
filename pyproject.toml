@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "vem-project"
-# The version changes only in a release commit; see CONTRIBUTING.md.
+# The version changes only in a release commit; see .github/CONTRIBUTING.md.
 # 0.0.0 means nothing has been released yet.
 version = "0.0.0"
 description = "One-line description of what this tool does for volume EM / CLEM data."
@@ -31,7 +31,7 @@ dependencies = [
 test = ["pytest", "pytest-cov", "tifffile", "nbclient", "ipykernel", "matplotlib"]
 docs = ["mkdocs-material", "mkdocstrings[python]"]
 notebooks = ["jupyterlab", "matplotlib"]
-dev = ["vem-project[test,docs,notebooks]", "pre-commit", "ruff", "tox"]
+dev = ["vem-project[test,docs,notebooks]", "pre-commit", "ruff"]
 
 [project.scripts]
 vem-project = "vem_project.cli:main"
