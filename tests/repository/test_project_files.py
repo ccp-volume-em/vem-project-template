@@ -82,3 +82,20 @@ def test_relative_links_in_markdown_resolve():
                 if anchor not in {_slug(h) for h in headings}:
                     broken.append(f"{page.relative_to(ROOT)}: {target}")
     assert not broken, "broken links:\n" + "\n".join(broken)
+
+
+def test_ruleset_requires_checks_that_exist():
+    # A required check that no workflow runs blocks every pull request.
+    ruleset = json.loads((ROOT / ".github" / "rulesets" / "main.json").read_text())
+    required = [
+        check["context"]
+        for rule in ruleset["rules"]
+        if rule["type"] == "required_status_checks"
+        for check in rule["parameters"]["required_status_checks"]
+    ]
+    jobs = set()
+    for workflow in (ROOT / ".github" / "workflows").glob("*.yml"):
+        jobs.update(re.findall(r"^  ([\w-]+):$", workflow.read_text(), re.MULTILINE))
+    assert required
+    for context in required:
+        assert context in jobs, f"the ruleset requires {context!r}, which no workflow runs"

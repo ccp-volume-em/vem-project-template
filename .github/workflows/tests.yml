@@ -43,3 +43,13 @@ jobs:
         run: python -m pip install ".[test]"
       - name: Run tests
         run: python -m pytest -v --cov --cov-report=term-missing
+
+  # The one test check that the rule protecting main requires
+  # (.github/rulesets/main.json), so the rule needn't list every platform and
+  # Python version, and keeps working when the matrix changes.
+  all-tests:
+    if: always()
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: test "${{ needs.test.result }}" = success
