@@ -42,6 +42,8 @@ Development (tests, CI and developer docs).
 
 ### Fixed
 
+- The pre-commit YAML check no longer rejects `mkdocs.yml`
+  ([#21](https://github.com/ccp-volume-em/vem-project-template/pull/21)).
 - The Fiji script writes large volumes as plain numbers, not in scientific
   notation ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
 
