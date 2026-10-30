@@ -14,7 +14,20 @@ What's left to do, most important first. Finished work moves to
 - [ ] Decide the supported interfaces (CLI, napari plugin, Fiji scripts,
       notebooks).
 
+- [ ] Ask testers what they found intimidating or confusing on first
+      opening a project, and simplify further.
+
 ## Later
+
+- [ ] A simpler starting point for Fiji-only projects, with no Python for the
+      user to install: Groovy scripts and tests, expected results in CSV,
+      and Python only inside GitHub's checks. Probably a second template
+      (e.g. `vem-fiji-template`) synced from this one for shared files.
+      Needs the Fiji tests running in CI first. Trade-off: no checks on the
+      user's own computer before each commit, so it suits public
+      repositories best.
+- [ ] More optional parts, added the same way (`.github/template-parts.toml`):
+      e.g. a napari plugin, or publishing to PyPI.
 
 - [ ] First release (`v0.1.0`) archived on Zenodo.
 - [ ] Publish the documentation site: the Docs workflow now builds it into

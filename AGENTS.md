@@ -155,7 +155,11 @@ don't get entries.
 
 ## Where things go
 
-Organise by role, not by language. Ask before adding a new top-level folder.
+Organise by role, not by language. Keep the repository as small and plain as
+the project allows: the people using it may be new to all this. Ask before
+adding a new top-level folder. Add an optional part (documentation website,
+container, Fiji scripts, notebooks) with the **add-part** skill, not by hand,
+so it's set up the same way as in every other project.
 
 | Folder | What goes there |
 | --- | --- |

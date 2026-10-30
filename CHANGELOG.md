@@ -76,6 +76,9 @@ Development (tests, CI and developer docs).
 
 ### Development
 
+- The "start small" principle is written down for template maintainers
+  (README) and AI assistants (`AGENTS.md`), with follow-ups in the roadmap
+  ([#27](https://github.com/ccp-volume-em/vem-project-template/pull/27)).
 - Test runs on `main` are no longer cancelled when another merge follows
   quickly, so the tests badge doesn't show failing for a cancelled run
   ([#22](https://github.com/ccp-volume-em/vem-project-template/pull/22)).
