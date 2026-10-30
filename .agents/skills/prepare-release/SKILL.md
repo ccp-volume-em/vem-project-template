@@ -77,6 +77,10 @@ broken, make a new patch release that explains the problem.
 ## 5. Afterwards
 
 - If Zenodo is connected, add the new version DOI to `CITATION.cff` and the
-  README in a follow-up PR.
+  README in a follow-up PR. In the template itself, `CITATION.cff` holds
+  the example project's placeholders, so leave it alone: put the template's
+  *concept* DOI (all versions) in the README's *Citing the template*
+  section, once, and update the creators in `.zenodo.json` if the authors
+  have changed.
 - If the project publishes to PyPI or a container registry, check that
   installing the new version works with the documented commands.

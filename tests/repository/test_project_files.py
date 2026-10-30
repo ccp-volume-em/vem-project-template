@@ -9,6 +9,8 @@ import re
 import tomllib
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -115,3 +117,15 @@ def test_example_addresses_are_explained():
         assert starts == text.count("<!-- template-example:end -->"), page.name
         if placeholder.search(text):
             assert starts, f"{page.name} links to the example project without a note"
+
+
+def test_zenodo_record_describes_the_template():
+    # Zenodo prefers .zenodo.json to CITATION.cff, which in the template holds
+    # the example project's placeholders. Setup deletes it from new projects.
+    path = ROOT / ".zenodo.json"
+    if not path.exists():
+        pytest.skip("only the template archives itself with .zenodo.json")
+    record = json.loads(path.read_text(encoding="utf-8"))
+    assert "vem-project" not in record["title"]
+    assert record["creators"]
+    assert all(c.get("name") and "Surname" not in c["name"] for c in record["creators"])

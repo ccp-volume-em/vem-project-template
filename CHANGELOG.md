@@ -11,6 +11,10 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- The template can be cited: `.zenodo.json` describes it for Zenodo, which
+  archives each release with a DOI. Setup deletes the file from new
+  projects, and their README says they were set up with the template
+  ([#31](https://github.com/ccp-volume-em/vem-project-template/pull/31)).
 - Projects start small. The documentation site, container, Fiji scripts and
   notebooks are optional parts, listed in `.github/template-parts.toml`:
   setup asks about each, in plain words, and recommends leaving it out unless

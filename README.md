@@ -124,6 +124,18 @@ at `0.0.0`, because every new project copies it and starts out unreleased;
 tags aren't copied. To release the template, ask your AI assistant to run the
 **`prepare-release`** skill, which knows the difference.
 
+### Citing the template
+
+Each release of the template is archived on [Zenodo](https://zenodo.org),
+which gives it a DOI. If the template helped your work, please cite it: use
+the DOI for *all versions*, so citations of every release count together.
+`.zenodo.json` holds the template's record (title, authors, description);
+setup deletes it from new projects, which describe themselves in
+`CITATION.cff`.
+
+<!-- Add the concept DOI and its badge here after the first release that
+Zenodo archives. -->
+
 ### Keeping a project up to date with the template
 
 A project made from the template doesn't receive its later improvements by
@@ -212,6 +224,9 @@ Contributions are welcome. New to coding or GitHub? Start with
 
 If you use this software, please cite it using [CITATION.cff](CITATION.cff)
 (GitHub's **Cite this repository** button).
+
+This project was set up with the
+[CCP-volumeEM project template](https://github.com/ccp-volume-em/vem-project-template).
 
 ## Use of AI
 
