@@ -11,6 +11,9 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- Work-in-progress notices in the README, START_HERE.md and the documentation
+  site, while the template is being tested
+  ([#18](https://github.com/ccp-volume-em/vem-project-template/pull/18)).
 - A "Where things go" guide to the folders, organised by role, and
   start-project instructions for Python, Fiji-only and no-Fiji projects
   ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
