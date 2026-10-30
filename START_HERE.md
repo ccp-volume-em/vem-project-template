@@ -147,7 +147,12 @@ ask about them too.
 **Working alone?** The danger is reading the AI's summary and agreeing with
 it. A few habits help:
 
-- **Come back to it later,** ideally the next day, before merging.
+- **Come back to it later,** ideally the next day, before merging. To help,
+  the AI opens your pull request as a **draft**: GitHub marks it *Draft* and
+  won't let anyone merge it yet, so it can't be merged by accident before
+  you've checked it. When you have, click **Ready for review** near the
+  bottom of the pull request (or ask the AI to), then **Merge pull
+  request**.
 - **Read the changes, not the summary:** the *Files changed* tab on the pull
   request shows every line.
 - **Explain it in your own words** before you merge. If you can't, ask the AI

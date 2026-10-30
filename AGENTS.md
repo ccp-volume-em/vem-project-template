@@ -84,8 +84,10 @@ user works alone, help them review it themselves (see *Self-review* below).
    finishes or uncovers planned work.
 7. **Push the branch and open a PR** using the template. Say what changed,
    why, how it was checked, and how AI was used. Then stop: a person reviews
-   and merges. If they review alone, suggest opening it as a draft and coming
-   back to it later.
+   and merges. If they review alone, open it as a draft (`gh pr create
+   --draft`) and say why: GitHub won't merge a draft, so it waits until
+   they've checked it after a break. Tell them that once they have, they
+   click **Ready for review** (or ask you to: `gh pr ready`), then merge.
 8. **Tidy up after the merge.** Once the PR shows as merged on GitHub, switch
    to `main`, pull, and delete the branch, both locally and on GitHub (unless
    GitHub already deleted it): `git branch -d <branch>` and

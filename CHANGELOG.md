@@ -76,6 +76,10 @@ Development (tests, CI and developer docs).
 
 ### Development
 
+- START_HERE, AGENTS.md and REVIEWING.md explain draft pull requests: why
+  the AI opens one when you review alone, and to click **Ready for review**
+  once you've checked it
+  ([#30](https://github.com/ccp-volume-em/vem-project-template/pull/30)).
 - The "start small" principle is written down for template maintainers
   (README) and AI assistants (`AGENTS.md`), with follow-ups in the roadmap
   ([#27](https://github.com/ccp-volume-em/vem-project-template/pull/27)).
