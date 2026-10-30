@@ -9,6 +9,18 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-30
+
+Projects start smaller: optional parts are left out unless needed, and setup
+handles Fiji-only projects better. The template can now be cited, with
+releases archived on Zenodo.
+
+**AI use:** developed with AI assistance (Claude Code, Claude Opus 5.5) from
+the maintainer's design and requests, including testing setup as a beginner
+on a Fiji-only project, which found several of the fixes below. Every change
+went through a pull request that the maintainer reviewed and merged, and the
+code is covered by the automated tests.
+
 ### Added
 
 - The template can be cited: `.zenodo.json` describes it for Zenodo, which
@@ -177,5 +189,6 @@ CCP-volumeEM guide and link back to each source page.
 - Tests check that relative links and anchors in Markdown files resolve
   ([#8](https://github.com/ccp-volume-em/vem-project-template/pull/8)).
 
-[Unreleased]: https://github.com/ccp-volume-em/vem-project-template/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ccp-volume-em/vem-project-template/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ccp-volume-em/vem-project-template/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ccp-volume-em/vem-project-template/releases/tag/v0.1.0
