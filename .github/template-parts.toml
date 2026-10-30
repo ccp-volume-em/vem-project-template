@@ -1,0 +1,94 @@
+# Optional parts of a project. Projects start small: the start-project skill
+# asks about each part and leaves out those not needed, and the add-part
+# skill adds one later. `python tools/parts.py` copies or deletes the files
+# and records the choice; the assistant makes the edits listed here.
+#
+# Each part has:
+#   title      its name, in plain words
+#   question   what setup asks
+#   recommend  when to include it (otherwise leave it out)
+#   shapes     the project shapes it suits: "python", "fiji" (Fiji scripts only)
+#   files      files and folders it owns, removed or added whole
+#   edits      changes to other files, made by hand when removing it
+#              (and undone, from the template's version, when adding it)
+#   after_add  anything else to do after adding it
+
+[parts.docs-site]
+title = "Documentation website"
+question = """Will other people install and use this software? A documentation \
+website gives them a user guide, and a reference built from the code's \
+docstrings, published on GitHub Pages once the repository is public."""
+recommend = """Include it if people outside the team will use the software. \
+For a private analysis or a few scripts, the README is enough."""
+shapes = ["python", "fiji"]
+files = [
+    "mkdocs.yml",
+    "docs/index.md",
+    "docs/getting-started.md",
+    "docs/usage.md",
+    "docs/reference.md",
+    "docs/development.md",
+    ".github/workflows/docs.yml",
+]
+edits = [
+    "pyproject.toml: remove the `docs` extra, and `docs` from the `dev` extra",
+    "AGENTS.md: remove the `mkdocs serve` line under Commands",
+    "CONTRIBUTING.md, Documentation: keep only the bullets for projects without a site",
+    "README.md, folder tree: describe `docs/` as just the decision log",
+]
+after_add = """In mkdocs.yml, set site_name, site_url, repo_url and repo_name, and \
+delete the custom_dir line (the template's example-site banner). Once \
+the repository is public and the Docs workflow has run on main, turn on \
+GitHub Pages: Settings → Pages → Deploy from a branch → gh-pages, / (root)."""
+
+[parts.container]
+title = "Container (Docker, Apptainer)"
+question = """Will the tool run on an HPC cluster or other people's computers, \
+or must a published analysis be re-run exactly? A container packages the tool \
+with the exact versions of everything it needs, so it runs the same anywhere."""
+recommend = """Include it for HPC use, for sharing with people who shouldn't \
+have to install Python, or for exact re-runs. See guidance/containers.md."""
+shapes = ["python"]
+files = ["Dockerfile", ".dockerignore", ".github/workflows/container.yml"]
+edits = [
+    ".github/dependabot.yml: remove the `docker` entry",
+    "README.md, folder tree: remove the `Dockerfile` line",
+    "docs/usage.md (if the site is kept): remove the Container section",
+    "docs/index.md (if the site is kept): remove \"and the container\"",
+]
+after_add = """In the Dockerfile, check ENTRYPOINT is the project's command from \
+[project.scripts]; if there is none, ask what the container should run and \
+change the --version and --help checks in container.yml to match. For GPU \
+code, use a CUDA base image. Publishing images on release is off until the \
+repository variable PUBLISH_CONTAINER is true: that's the user's decision."""
+
+[parts.fiji]
+title = "Fiji scripts"
+question = """Will you write Fiji (ImageJ) scripts, for example to measure or \
+process images in Fiji's interface or headless on a cluster?"""
+recommend = """Include it if you use Fiji. Fiji-only projects always include it."""
+shapes = ["python", "fiji"]
+files = ["fiji", "tests/test_fiji_scripts.py"]
+edits = [
+    "CONTRIBUTING.md: remove the Fiji scripts section",
+    "README.md, folder tree: remove the `fiji/` line",
+    "START_HERE.md, What's in the project: remove the `fiji/` sentence",
+]
+after_add = """Use the new-fiji-script skill to write the project's own scripts. \
+Delete the example script once there is one."""
+
+[parts.notebooks]
+title = "Jupyter notebooks"
+question = """Will you explore data, choose parameters or make figures in \
+Jupyter notebooks, using the project's Python code?"""
+recommend = """Include it if you work in notebooks. Reusable code still goes \
+in the package, with tests."""
+shapes = ["python"]
+files = ["notebooks", "tests/test_example_notebook.py"]
+edits = [
+    "pyproject.toml: remove the `notebooks` extra, `notebooks` from the `dev` extra, and nbclient, ipykernel and matplotlib (and their comment) from the `test` extra",
+    "README.md, folder tree: remove the `notebooks/` line",
+    "START_HERE.md, What's in the project: remove the `notebooks/` line",
+]
+after_add = """Delete the example notebook and tests/test_example_notebook.py \
+once the project has notebooks of its own."""

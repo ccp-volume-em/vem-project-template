@@ -11,11 +11,14 @@ Development (tests, CI and developer docs).
 
 ### Added
 
-- The container is optional: setup asks whether the project will be
-  containerised and removes it if not, and the new `add-container` skill
-  adds it back later. Setup records each part it leaves out in
-  `AGENTS.md`, so `update-from-template` doesn't offer it back
-  ([#24](https://github.com/ccp-volume-em/vem-project-template/pull/24)).
+- Projects start small. The documentation site, container, Fiji scripts and
+  notebooks are optional parts, listed in `.github/template-parts.toml`:
+  setup asks about each, in plain words, and recommends leaving it out unless
+  it's needed. `tools/parts.py` removes or adds a part's files the same way
+  for every part, and records the choice so `update-from-template` skips
+  parts a project left out. The `add-part` skill adds one later
+  ([#24](https://github.com/ccp-volume-em/vem-project-template/pull/24),
+  [#25](https://github.com/ccp-volume-em/vem-project-template/pull/25)).
 - Notes next to links and commands that use the example project's
   address, saying they're examples that setup fills in. The template's
   documentation site links to the template

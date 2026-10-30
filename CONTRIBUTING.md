@@ -220,9 +220,7 @@ FIJI=/path/to/Fiji.app/fiji pytest -m fiji
   `mkdocs serve`, then open <http://127.0.0.1:8000>. Pull requests check that
   it builds.
 - **Without one:** the README is the user documentation. To add a site
-  later, ask your AI assistant to restore it from the project template
-  (`docs/`, `mkdocs.yml`, `.github/workflows/docs.yml` and the `docs` extra in
-  `pyproject.toml`).
+  later, ask your AI assistant to run the `add-part` skill.
 
 ## Versions and releases
 

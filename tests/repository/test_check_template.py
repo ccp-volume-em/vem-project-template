@@ -56,3 +56,12 @@ def test_project_files_are_not_shared(path):
 def test_every_shared_path_exists_in_the_template():
     for shared in check_template.SHARED:
         assert (ROOT / shared).exists(), f"{shared} is listed as shared but doesn't exist"
+
+
+def test_files_of_left_out_parts_are_recognised():
+    left_out = check_template.left_out_files({"left_out": ["container", "unknown"]})
+    assert "Dockerfile" in left_out
+    assert check_template.is_left_out(".github/workflows/container.yml", left_out)
+    assert check_template.is_left_out("fiji/README.md", ["fiji"])
+    assert not check_template.is_left_out("fiji-tools/x.groovy", ["fiji"])
+    assert check_template.left_out_files({}) == []
