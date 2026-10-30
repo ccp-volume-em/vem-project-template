@@ -1,3 +1,12 @@
+<!-- template-status:start -->
+> [!WARNING]
+> **Work in progress: this template is being tested.** It isn't ready for
+> real projects yet. Its files, rules and skills may change, or be removed,
+> without notice, and projects made from it now may need manual updates
+> later. Please try it and tell us what works and what doesn't: open an
+> [issue](https://github.com/ccp-volume-em/vem-project-template/issues).
+<!-- template-status:end -->
+
 # vem-project
 
 [![Tests](https://github.com/ccp-volume-em/vem-project/actions/workflows/tests.yml/badge.svg)](https://github.com/ccp-volume-em/vem-project/actions/workflows/tests.yml)

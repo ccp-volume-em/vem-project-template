@@ -1,5 +1,12 @@
 # Start here
 
+> [!WARNING]
+> **This template is a work in progress and is being tested.** Things may
+> change, and some instructions may be wrong or missing. If something is
+> confusing or doesn't work, that's useful to know: please tell the
+> maintainers by opening an
+> [issue](https://github.com/ccp-volume-em/vem-project-template/issues).
+
 **For researchers who are new to coding or GitHub.** You don't need to know how
 to program to use this project. An AI assistant writes and runs the code. You
 decide what it should do, check the results, and stay in charge of the science.

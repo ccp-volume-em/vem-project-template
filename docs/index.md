@@ -1,5 +1,13 @@
 # vem-project
 
+<!-- template-status:start -->
+!!! warning "Work in progress"
+
+    This template is being tested and isn't ready for real projects yet.
+    Things may change without notice. Please report problems in the
+    [template's issue tracker](https://github.com/ccp-volume-em/vem-project-template/issues).
+<!-- template-status:end -->
+
 One-line description of what this tool does for volume EM / CLEM data.
 
 <!-- Say who it's for, what data it works on, and what it produces. A picture
