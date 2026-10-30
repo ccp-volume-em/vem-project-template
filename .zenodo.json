@@ -1,0 +1,30 @@
+{
+  "title": "CCP-volumeEM project template",
+  "description": "A starting point for writing analysis code for volume electron microscopy (vEM) and correlative light and electron microscopy (CLEM), built on the CCP-volumeEM good practice guide. Projects start small, with optional parts (documentation site, container, Fiji scripts, notebooks), and come with instructions and skills for AI coding assistants, so researchers new to coding can work safely: every change goes through a reviewed pull request, with automatic tests and checks that keep data and secrets out of the repository.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "BSD-3-Clause",
+  "creators": [
+    {
+      "name": "Jones, Martin",
+      "affiliation": "The Francis Crick Institute"
+    }
+  ],
+  "keywords": [
+    "volume electron microscopy",
+    "vEM",
+    "CLEM",
+    "research software",
+    "project template",
+    "good practice",
+    "Fiji",
+    "OME-Zarr"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://ccp-volume-em.github.io/guide/",
+      "relation": "references",
+      "resource_type": "publication-other"
+    }
+  ]
+}

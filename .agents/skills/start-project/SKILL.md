@@ -104,7 +104,9 @@ Create a branch `setup-project`. Then:
    If the site is kept: `docs/index.md` (the same status notice) and
    `mkdocs.yml` (`site_name`). Always delete `overrides/`, and the
    `custom_dir` line in `mkdocs.yml` if there is one: they add the banner
-   saying the site is the template's example.
+   saying the site is the template's example. Always delete `.zenodo.json`
+   too: it describes the template for Zenodo, and would replace the
+   project's own `CITATION.cff` there.
 6. **Licence:** if they chose another, replace `LICENSE` with the unmodified
    text from <https://choosealicense.com>, and update `license` in
    `pyproject.toml` and `CITATION.cff` with its SPDX identifier.
