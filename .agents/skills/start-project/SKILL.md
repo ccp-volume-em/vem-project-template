@@ -57,8 +57,9 @@ Create a branch `setup-project`. Then:
    `owner/repo` (from `git remote get-url origin`).
 3. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
-   `README.md` (title, description; remove the *About this template* section),
-   `docs/index.md`, and `mkdocs.yml` (`site_name`, URLs).
+   `README.md` (title, description; remove the *About this template* section,
+   and the template's status notice between the `template-status` markers),
+   `docs/index.md` (the same status notice), and `mkdocs.yml` (`site_name`, URLs).
 4. **Licence:** if they chose another, replace `LICENSE` with the unmodified
    text from <https://choosealicense.com>, and update `license` in
    `pyproject.toml` and `CITATION.cff` with its SPDX identifier.
