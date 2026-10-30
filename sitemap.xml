@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/decisions/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/decisions/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/development/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/development/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/getting-started/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/getting-started/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/reference/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/reference/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://ccp-volume-em.github.io/vem-project/usage/</loc>
+         <loc>https://ccp-volume-em.github.io/vem-project-template/usage/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
 </urlset>
