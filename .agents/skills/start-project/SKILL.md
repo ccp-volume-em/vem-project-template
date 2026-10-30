@@ -77,6 +77,10 @@ Create a branch `setup-project`. Then:
      tests in `tests/`, and `examples/params.yml`. Keep
      `tests/test_installation.py` (adapted) and `examples/make_example_data.py`
      until they have their own test data.
+   - **Notebooks:** keep `notebooks/` and its README for the project's own
+     analysis. Delete the example notebook and `tests/test_example_notebook.py`
+     once they have notebooks of their own, or straight away for a Fiji-only
+     project (it uses the Python package).
    - **No Fiji:** delete `fiji/`, `tests/test_fiji_scripts.py`, and the
      *Fiji scripts* section of `CONTRIBUTING.md` (it links to `fiji/`). Keep
      the Fiji rules in `AGENTS.md` and the `new-fiji-script` skill, so Fiji

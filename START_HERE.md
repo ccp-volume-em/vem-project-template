@@ -34,6 +34,7 @@ much like a lab notebook that never loses a page.
 ## What's in the project
 
 - **`src/`**: the Python code. **`fiji/`**: the Fiji scripts.
+- **`notebooks/`**: your own analysis and figures, using that code.
 - **`examples/`**: how to try it, including a script that makes a small
   test volume.
 - **`tests/`**: automatic checks that the code gives the right answers.

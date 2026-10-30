@@ -64,6 +64,7 @@ explains everything in plain language, including these steps.
 │   └── update-from-template/ pull in later improvements to this template
 ├── src/vem_project/       example package: OME-Zarr I/O, a measurement, a CLI
 ├── fiji/                  example Fiji script (Groovy, with Script Parameters)
+├── notebooks/             the project's own analysis (outputs stripped on commit)
 ├── tests/                 tests of the code (Python and Fiji)
 │   └── repository/          the template's checks on the repository itself
 ├── examples/              how to run it, and test data for Python and Fiji

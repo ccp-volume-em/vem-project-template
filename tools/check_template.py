@@ -64,6 +64,7 @@ SHARED = (
     "data/README.md",
     "fiji/README.md",
     "guidance/",
+    "notebooks/README.md",
     "tests/conftest.py",
     "tests/repository/",
     "tools/",
