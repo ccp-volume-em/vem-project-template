@@ -11,6 +11,11 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- A rule protecting `main` (`.github/rulesets/main.json`): changes arrive
+  only through pull requests whose tests and safety checks pass. The
+  `start-project` skill adds it to new projects. A single `all-tests` check
+  sums up the test matrix for it
+  ([#19](https://github.com/ccp-volume-em/vem-project-template/pull/19)).
 - A "Where things go" guide to the folders, organised by role, and
   start-project instructions for Python, Fiji-only and no-Fiji projects
   ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).

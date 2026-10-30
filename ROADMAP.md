@@ -5,6 +5,9 @@ What's left to do, most important first. Finished work moves to
 
 ## Next
 
+- [ ] Once the template is public, add the rule protecting `main`:
+      `gh api -X POST repos/ccp-volume-em/vem-project-template/rulesets --input .github/rulesets/main.json`
+      ([#19](https://github.com/ccp-volume-em/vem-project-template/pull/19)).
 - [ ] Replace the example measurement with the project's first real analysis.
 - [ ] Decide the supported interfaces (CLI, napari plugin, Fiji scripts,
       notebooks).
