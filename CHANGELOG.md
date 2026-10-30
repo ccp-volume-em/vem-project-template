@@ -51,6 +51,12 @@ Development (tests, CI and developer docs).
 - The Fiji script writes large volumes as plain numbers, not in scientific
   notation ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
 
+### Development
+
+- Test runs on `main` are no longer cancelled when another merge follows
+  quickly, so the tests badge doesn't show failing for a cancelled run
+  ([#22](https://github.com/ccp-volume-em/vem-project-template/pull/22)).
+
 ## [0.1.0] - 2026-10-29
 
 First release of the CCP-volumeEM project template.

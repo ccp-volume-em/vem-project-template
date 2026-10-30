@@ -10,9 +10,11 @@ on:
 permissions:
   contents: read
 
+# A new push to a pull request cancels its older runs. Runs on main always
+# finish, because a cancelled run shows as failing on the README badge.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   lint:
