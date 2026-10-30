@@ -108,7 +108,10 @@ The risk in self-review, especially of AI-written code, is reading the summary
 and agreeing with it. Treat the change as if someone you don't know wrote it:
 
 1. **Wait first.** Review after a break (the next day if you can), not
-   straight after writing it. Open it as a *draft* PR until you have.
+   straight after writing it. Open it as a *draft* PR until you have:
+   GitHub won't merge a draft, so it can't go in by accident. When you've
+   reviewed it, click **Ready for review** near the bottom of the PR, then
+   merge.
 2. **Read the diff, not the summary.** Use the PR's *Files changed* tab and
    read every line. Tick *Viewed* on each file as you go.
 3. **Explain it back.** Without looking at the AI's description, write two or
