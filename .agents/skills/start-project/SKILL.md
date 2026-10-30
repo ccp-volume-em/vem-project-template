@@ -78,7 +78,8 @@ Create a branch `setup-project`. Then:
 5. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
    `README.md` (title, description; remove the *About this template* section,
-   and the template's status notice between the `template-status` markers).
+   and the template's status notice between the `template-status` markers),
+   and the same status notice at the top of `START_HERE.md`.
    If the site is kept: `docs/index.md` (the same status notice) and
    `mkdocs.yml` (`site_name`). Always delete `overrides/`, and the
    `custom_dir` line in `mkdocs.yml` if there is one: they add the banner
