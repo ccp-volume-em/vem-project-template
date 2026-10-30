@@ -28,7 +28,7 @@ def test_each_part_is_wholly_included_or_left_out(name):
     # The template includes every part. A project either has all of a part's
     # files or has recorded it as left out, so updates skip it.
     record = ROOT / ".github" / "template.json"
-    left_out = json.loads(record.read_text())["left_out"] if record.exists() else []
+    left_out = json.loads(record.read_text()).get("left_out", []) if record.exists() else []
     expected = "left out" if name in left_out else "included"
     assert parts.status(ROOT, PARTS[name]) == expected
 

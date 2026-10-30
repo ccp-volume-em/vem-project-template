@@ -11,6 +11,16 @@ and don't assume answers. They may be new to coding and GitHub: use the plain
 language and vocabulary of `START_HERE.md`, and explain each choice's
 consequences rather than just listing options.
 
+## Before you start
+
+The setup tools in `.github/tools/` need Python 3.11 or newer, which the
+system Python on some computers (e.g. macOS) isn't. Make a virtual
+environment with a recent Python, check `sys.prefix` points into `.venv`,
+and install the development tools (`python -m pip install -e ".[dev]"`).
+Then run `pre-commit install`, so the setup commits are checked too.
+Explain that this adds checks that run before every commit: tidy code, no
+data files, and no commits straight to `main`.
+
 ## 1. Ask
 
 1. **Name.** What's the project called? Suggest a distribution name (lower
@@ -34,7 +44,9 @@ consequences rather than just listing options.
    theirs, ask its `question` in plain words and give its `recommend`
    advice. Unless there's a reason to include a part, recommend leaving it
    out: every file they keep is one more to understand. Fiji-only projects
-   always keep `fiji`.
+   always keep `fiji`. Parts whose `shapes` don't include theirs (the
+   container and notebooks, for a Fiji-only project) are left out without
+   asking: tell them so, and why.
 5. **People.** Authors (names, ORCIDs, affiliations), and whether anyone
    else will review pull requests. Recommend a reviewer if they can find
    one, but a sole developer is fine: explain that they'll review their own
@@ -44,6 +56,14 @@ consequences rather than just listing options.
    recommend they check with their institution if unsure.
 7. **Example code.** Keep the example (`io.py`, `measure.py`, `cli.py`) as a
    starting point, or remove it?
+8. **GitHub settings.** Two settings are on by default. Say you'll turn
+   them on unless they'd rather not, and what each does:
+   - *delete branches after merging*: merged branches don't pile up on
+     GitHub;
+   - *Dependabot alerts*: GitHub warns when a package the project uses has a
+     known security problem.
+
+   If they don't answer, or have no preference, use the defaults.
 
 ## 2. Make the changes on a branch
 
@@ -53,7 +73,8 @@ Create a branch `setup-project`. Then:
    from. Updates from the template (`update-from-template`) and adding parts
    later (`add-part`) both start from it:
    `GITHUB_TOKEN=$(gh auth token) python .github/tools/check_template.py --init`.
-2. **Leave out the parts they don't want**, one at a time:
+2. **Leave out the parts they don't want, and those that don't fit their
+   shape**, one at a time:
    `python .github/tools/parts.py remove <part>`. It deletes the part's files,
    records the choice in `.github/template.json` and under *Project-specific
    notes* in `AGENTS.md` (so updates skip it, and future contributors know
@@ -78,7 +99,8 @@ Create a branch `setup-project`. Then:
 5. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
    `README.md` (title, description; remove the *About this template* section,
-   and the template's status notice between the `template-status` markers).
+   and the template's status notice between the `template-status` markers),
+   and the same status notice at the top of `START_HERE.md`.
    If the site is kept: `docs/index.md` (the same status notice) and
    `mkdocs.yml` (`site_name`). Always delete `overrides/`, and the
    `custom_dir` line in `mkdocs.yml` if there is one: they add the banner
@@ -108,9 +130,10 @@ Create a branch `setup-project`. Then:
        `tests/test_fiji_scripts.py`), `examples/params.yml`, and the OME-Zarr
        part of `examples/make_example_data.py`;
      - in `pyproject.toml`, set `dependencies = []`, remove
-       `[project.scripts]` and `[tool.coverage.run]`, and add the block below
-       under `[build-system]`, so `pip install -e ".[dev]"` still installs the
-       test tools:
+       `[project.scripts]` and `[tool.coverage.run]`, remove `"src"` from
+       `testpaths` (and the comment above it about doctests in `src/`), and
+       add the block below under `[build-system]`, so
+       `pip install -e ".[dev]"` still installs the test tools:
 
        ```toml
        # No Python package: the project is Fiji scripts. Python is only used
@@ -122,7 +145,15 @@ Create a branch `setup-project`. Then:
      - in the documentation site, if kept, delete `docs/reference.md` and its
        entries in `mkdocs.yml` and `docs/index.md`, and rewrite
        `docs/usage.md` for the Fiji scripts;
-     - rewrite the README's *Quick start* for Fiji, from `fiji/README.md`.
+     - rewrite the README's *Quick start* for Fiji, from `fiji/README.md`;
+     - in `fiji/README.md`, *Try it*, drop the comparison with the Python
+       tool;
+     - in `START_HERE.md`, *What's in the project*, drop `src/`;
+     - in `.github/ISSUE_TEMPLATE/bug_report.yml`, ask for the project's
+       release or commit and the Fiji version (Help > About ImageJ), not
+       the output of `<name> --version`;
+     - in `.github/CONTRIBUTING.md`, make the `git add` example stage a Fiji
+       script and its test, not files in `src/`.
 10. **CHANGELOG.md:** remove the template's release history, leaving just
     the `## [Unreleased]` heading, with an `Added` entry describing the
     initial project, and one link line at the bottom:
@@ -134,17 +165,28 @@ Create a branch `setup-project`. Then:
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`;
 the only matches left should be links to `vem-project-template`, and
-`git grep -n "template-status\|template-example"` should find nothing),
-install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
-then run `pre-commit install`. Explain that this adds checks that run before
-every commit: tidy code, no data files, and no commits straight to `main`.
-Then run `pytest` and `ruff check .`. Commit in logical steps, open a PR, and
-ask the reviewer they named to review it. With no reviewer, walk them through
-self-review instead (`AGENTS.md`, *How work flows*).
+`git grep -n "template-status\|template-example"` should find nothing).
+The package's name has changed, so make a fresh virtual environment and
+install again (`python -m pip install -e ".[dev]"`). Then run `pytest` and
+`ruff check .`. Commit in logical steps, open a PR, and ask the reviewer they
+named to review it. With no reviewer, walk them through self-review instead
+(`AGENTS.md`, *How work flows*).
 
-## 3. Repository settings to suggest
+## 3. Repository settings
 
-Explain these, and offer to do them with `gh` if it's installed:
+Turn on the default settings (question 8), except any they said no to:
+
+```bash
+gh repo edit <owner>/<repo> --delete-branch-on-merge
+gh api -X PUT repos/<owner>/<repo>/vulnerability-alerts
+```
+
+Without `gh`, give click-by-click steps: Settings → General → *Automatically
+delete head branches*; Settings → Code security → *Dependabot alerts* →
+**Enable**. Local copies of merged branches are still tidied by the AI after
+each merge.
+
+Then explain these, and offer to do them with `gh` if it's installed:
 
 - **Protect `main`.** Explain in plain words: the pre-commit hook stops
   commits to `main` only on computers where it's installed, and AI
@@ -171,11 +213,8 @@ Explain these, and offer to do them with `gh` if it's installed:
   repository goes public. If they rename or remove one of those checks in
   `.github/workflows/`, update the rule too, or pull requests can't be
   merged (a test checks the file agrees with the workflows).
-- **Delete branches after merging:** Settings → General → *Automatically
-  delete head branches*, so merged branches don't pile up on GitHub
-  (`gh repo edit --delete-branch-on-merge`). Local copies are still tidied by
-  the AI after each merge.
-- **Dependabot alerts and security updates:** Settings → Code security.
+- **Dependabot security updates:** Settings → Code security. Dependabot
+  then opens pull requests that fix the problems its alerts find.
 - **Issues** on, and labels for `bug`, `enhancement`, `documentation`.
 - **Documentation site on GitHub Pages** (if they kept the site): GitHub's
   free plan only serves sites for public repositories. Once the repository

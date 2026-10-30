@@ -1,11 +1,13 @@
 # Start here
 
+<!-- template-status:start -->
 > [!WARNING]
 > **This template is a work in progress and is being tested.** Things may
 > change, and some instructions may be wrong or missing. If something is
 > confusing or doesn't work, that's useful to know: please tell the
 > maintainers by opening an
 > [issue](https://github.com/ccp-volume-em/vem-project-template/issues).
+<!-- template-status:end -->
 
 **For researchers who are new to coding or GitHub.** You don't need to know how
 to program to use this project. An AI assistant writes and runs the code. You
@@ -103,7 +105,8 @@ you. The AI never merges its own work.
    > then run the start-project skill. Explain each step in plain language.
 4. **Answer its questions.** It asks what the project is for, who's involved
    and a few choices. If you're unsure, say so and ask it to explain the
-   options.
+   options. A few choices, such as two GitHub settings, have a sensible
+   default: if you have no preference, it uses that.
 5. **It opens your first pull request.** Ask your reviewer to look at it, or
    check it yourself (see *Before you merge*). Once it's merged, your project
    is ready.
