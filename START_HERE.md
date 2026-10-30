@@ -105,7 +105,8 @@ you. The AI never merges its own work.
    > then run the start-project skill. Explain each step in plain language.
 4. **Answer its questions.** It asks what the project is for, who's involved
    and a few choices. If you're unsure, say so and ask it to explain the
-   options.
+   options. A few choices, such as two GitHub settings, have a sensible
+   default: if you have no preference, it uses that.
 5. **It opens your first pull request.** Ask your reviewer to look at it, or
    check it yourself (see *Before you merge*). Once it's merged, your project
    is ready.

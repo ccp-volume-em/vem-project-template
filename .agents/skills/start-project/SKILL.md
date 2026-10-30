@@ -56,6 +56,14 @@ data files, and no commits straight to `main`.
    recommend they check with their institution if unsure.
 7. **Example code.** Keep the example (`io.py`, `measure.py`, `cli.py`) as a
    starting point, or remove it?
+8. **GitHub settings.** Two settings are on by default. Say you'll turn
+   them on unless they'd rather not, and what each does:
+   - *delete branches after merging*: merged branches don't pile up on
+     GitHub;
+   - *Dependabot alerts*: GitHub warns when a package the project uses has a
+     known security problem.
+
+   If they don't answer, or have no preference, use the defaults.
 
 ## 2. Make the changes on a branch
 
@@ -164,9 +172,21 @@ install again (`python -m pip install -e ".[dev]"`). Then run `pytest` and
 named to review it. With no reviewer, walk them through self-review instead
 (`AGENTS.md`, *How work flows*).
 
-## 3. Repository settings to suggest
+## 3. Repository settings
 
-Explain these, and offer to do them with `gh` if it's installed:
+Turn on the default settings (question 8), except any they said no to:
+
+```bash
+gh repo edit <owner>/<repo> --delete-branch-on-merge
+gh api -X PUT repos/<owner>/<repo>/vulnerability-alerts
+```
+
+Without `gh`, give click-by-click steps: Settings → General → *Automatically
+delete head branches*; Settings → Code security → *Dependabot alerts* →
+**Enable**. Local copies of merged branches are still tidied by the AI after
+each merge.
+
+Then explain these, and offer to do them with `gh` if it's installed:
 
 - **Protect `main`.** Explain in plain words: the pre-commit hook stops
   commits to `main` only on computers where it's installed, and AI
@@ -193,11 +213,8 @@ Explain these, and offer to do them with `gh` if it's installed:
   repository goes public. If they rename or remove one of those checks in
   `.github/workflows/`, update the rule too, or pull requests can't be
   merged (a test checks the file agrees with the workflows).
-- **Delete branches after merging:** Settings → General → *Automatically
-  delete head branches*, so merged branches don't pile up on GitHub
-  (`gh repo edit --delete-branch-on-merge`). Local copies are still tidied by
-  the AI after each merge.
-- **Dependabot alerts and security updates:** Settings → Code security.
+- **Dependabot security updates:** Settings → Code security. Dependabot
+  then opens pull requests that fix the problems its alerts find.
 - **Issues** on, and labels for `bug`, `enhancement`, `documentation`.
 - **Documentation site on GitHub Pages** (if they kept the site): GitHub's
   free plan only serves sites for public repositories. Once the repository
