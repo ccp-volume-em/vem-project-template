@@ -17,6 +17,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides  # the template's example-site banner
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

@@ -11,6 +11,9 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- The template's documentation site says on every page that it's an example
+  of a project's site, not a guide to the template, and links to the README
+  and START_HERE ([#21](https://github.com/ccp-volume-em/vem-project-template/pull/21)).
 - A rule protecting `main` (`.github/rulesets/main.json`): changes arrive
   only through pull requests whose tests and safety checks pass. The
   `start-project` skill adds it to new projects. A single `all-tests` check
@@ -39,6 +42,8 @@ Development (tests, CI and developer docs).
 
 ### Fixed
 
+- The pre-commit YAML check no longer rejects `mkdocs.yml`
+  ([#21](https://github.com/ccp-volume-em/vem-project-template/pull/21)).
 - The Fiji script writes large volumes as plain numbers, not in scientific
   notation ([#16](https://github.com/ccp-volume-em/vem-project-template/pull/16)).
 

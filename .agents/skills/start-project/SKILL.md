@@ -60,6 +60,8 @@ Create a branch `setup-project`. Then:
    `README.md` (title, description; remove the *About this template* section,
    and the template's status notice between the `template-status` markers),
    `docs/index.md` (the same status notice), and `mkdocs.yml` (`site_name`, URLs).
+   Delete `overrides/` and the `custom_dir` line in `mkdocs.yml`: they add
+   the banner saying the site is the template's example.
 4. **Licence:** if they chose another, replace `LICENSE` with the unmodified
    text from <https://choosealicense.com>, and update `license` in
    `pyproject.toml` and `CITATION.cff` with its SPDX identifier.
