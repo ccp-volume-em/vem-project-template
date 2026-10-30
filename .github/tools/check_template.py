@@ -33,11 +33,15 @@ import os
 import re
 import subprocess
 import sys
-import tomllib
 import urllib.error
 import urllib.request
 from datetime import date
 from pathlib import Path
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # added in Python 3.11
+    sys.exit("This tool needs Python 3.11 or newer. Run it from the project's virtual environment.")
 
 ROOT = Path(__file__).resolve().parents[2]
 RECORD = ROOT / ".github" / "template.json"

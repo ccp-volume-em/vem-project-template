@@ -32,10 +32,14 @@ import shutil
 import subprocess
 import sys
 import tarfile
-import tomllib
 import urllib.error
 import urllib.request
 from pathlib import Path, PurePosixPath
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # added in Python 3.11
+    sys.exit("This tool needs Python 3.11 or newer. Run it from the project's virtual environment.")
 
 ROOT = Path(__file__).resolve().parents[2]
 PARTS = Path(".github/template-parts.toml")
