@@ -30,8 +30,6 @@ What's left to do, most important first. Finished work moves to
       e.g. a napari plugin, or publishing to PyPI.
 
 - [ ] First release (`v0.1.0`) archived on Zenodo.
-- [ ] Publish the documentation site: the Docs workflow now builds it into
-      the `gh-pages` branch; turn on GitHub Pages from that branch.
 - [ ] Run the Fiji script tests in CI (e.g. a job that downloads Fiji):
       GitHub Actions skips them today, so they only run locally
       ([#4](https://github.com/ccp-volume-em/vem-project-template/pull/4)).
