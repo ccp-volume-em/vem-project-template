@@ -2,7 +2,16 @@
 
 Contributions are welcome. The full guide is
 [CONTRIBUTING.md](https://github.com/ccp-volume-em/vem-project/blob/main/CONTRIBUTING.md)
-in the repository. In short:
+in the repository.
+
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->
+
+In short:
 
 1. Work on a branch, never on `main`.
 2. Make small commits with [Conventional Commit](https://www.conventionalcommits.org/) messages.

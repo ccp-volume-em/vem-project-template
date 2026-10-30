@@ -61,6 +61,13 @@ pre-commit install                     # checks each commit; blocks commits on m
 pytest                                 # everything should pass
 ```
 
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->
+
 ## Making a change
 
 ### 1. Start from an issue and the latest `main`

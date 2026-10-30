@@ -11,6 +11,10 @@ Development (tests, CI and developer docs).
 
 ### Added
 
+- Notes next to links and commands that use the example project's
+  address, saying they're examples that setup fills in. The template's
+  documentation site links to the template
+  ([#23](https://github.com/ccp-volume-em/vem-project-template/pull/23)).
 - The template's documentation site says on every page that it's an example
   of a project's site, not a guide to the template, and links to the README
   and START_HERE ([#21](https://github.com/ccp-volume-em/vem-project-template/pull/21)).
