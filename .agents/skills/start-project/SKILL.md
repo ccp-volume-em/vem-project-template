@@ -57,9 +57,13 @@ Create a branch `setup-project`. Then:
    are: a plain find-and-replace of `vem-project` would break them.
 2. **Repository URLs:** replace `ccp-volume-em/vem-project` with the real
    `owner/repo` (from `git remote get-url origin`), again leaving links to
-   `ccp-volume-em/vem-project-template` alone. The exception is the *Tests*
-   badge at the top of `README.md`: it shows the template's tests, so point
-   it at the new repository.
+   `ccp-volume-em/vem-project-template` alone. Two places point at the
+   template on purpose and must be changed to the new repository: the
+   *Tests* badge at the top of `README.md`, and `site_url`, `repo_url` and
+   `repo_name` in `mkdocs.yml`. Then delete the *Example address* notes,
+   from each `<!-- template-example:start -->` to its `end` marker
+   (`git grep -n template-example`): they tell visitors to the template
+   that these addresses are examples.
 3. **Descriptions and authors:** `pyproject.toml` (`description`, `authors`),
    `CITATION.cff` (`title`, `abstract`, `authors`), `LICENSE` (copyright line),
    `README.md` (title, description; remove the *About this template* section,
@@ -137,7 +141,8 @@ Create a branch `setup-project`. Then:
     projects without a site. The README is then the user documentation.
 
 Then check nothing was missed (`git grep -n -i "vem.project\|Your Name\|you@example"`;
-the only matches left should be links to `vem-project-template`),
+the only matches left should be links to `vem-project-template`, and
+`git grep -n "template-status\|template-example"` should find nothing),
 install (`python -m pip install -e ".[dev]"` in a fresh virtual environment),
 then run `pre-commit install`. Explain that this adds checks that run before
 every commit: tidy code, no data files, and no commits straight to `main`.

@@ -37,6 +37,13 @@ of an input and output helps. -->
 Report bugs in the [issue tracker](https://github.com/ccp-volume-em/vem-project/issues),
 and ask questions on the [image.sc forum](https://forum.image.sc/).
 
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->
+
 ## Citing
 
 Please cite the version you used: see `CITATION.cff` in the repository, or

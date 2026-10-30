@@ -56,3 +56,10 @@ On an HPC cluster with Apptainer, once an image is published:
 apptainer pull vem-project.sif docker://ghcr.io/ccp-volume-em/vem-project:v0.1.0
 apptainer run --bind /path/to/project:/data vem-project.sif measure /data/params.yml
 ```
+
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->

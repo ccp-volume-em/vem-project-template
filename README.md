@@ -143,6 +143,13 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 python -m pip install "vem-project @ git+https://github.com/ccp-volume-em/vem-project"
 ```
 
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->
+
 Check it worked:
 
 ```bash
@@ -179,6 +186,13 @@ Object 1 is 8 × 20 × 20 voxels of 1,024 nm³ each, so its volume should be
 Report bugs and ask for features in the
 [issue tracker](https://github.com/ccp-volume-em/vem-project/issues). For
 general questions, use the [image.sc forum](https://forum.image.sc/).
+
+<!-- template-example:start -->
+> **Example address:** `ccp-volume-em/vem-project` is a made-up example
+> project, so links and commands that use it don't work here. When you
+> create your own project from the template, setup (the `start-project`
+> skill) fills in your project's address automatically.
+<!-- template-example:end -->
 
 ## Contributing
 
