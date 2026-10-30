@@ -65,10 +65,12 @@ code is covered by the automated tests.
   merging, and Dependabot alerts. It still asks, and uses the defaults if
   you have no preference
   ([#29](https://github.com/ccp-volume-em/vem-project-template/pull/29)).
-- A tidier top level: `CONTRIBUTING.md`, `REVIEWING.md`, `SECURITY.md`,
-  `CODE_OF_CONDUCT.md` and the maintenance scripts (`tools/`) moved into
-  `.github/`, where GitHub still finds them. Run the scripts as
-  `python .github/tools/<script>.py`
+- **Breaking:** a tidier top level: `CONTRIBUTING.md`, `REVIEWING.md`,
+  `SECURITY.md`, `CODE_OF_CONDUCT.md` and the maintenance scripts (`tools/`)
+  moved into `.github/`, where GitHub still finds them. Run the scripts as
+  `python .github/tools/<script>.py`. Projects made from v0.1.0 get the new
+  paths through `update-from-template`; update anything of your own that
+  runs `tools/<script>.py`
   ([#26](https://github.com/ccp-volume-em/vem-project-template/pull/26)).
 - The documentation site is optional: setup asks whether others will use the
   software and removes the site if not, keeping the decision log. The
