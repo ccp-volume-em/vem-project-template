@@ -45,6 +45,10 @@ Development (tests, CI and developer docs).
 
 ### Changed
 
+- Setup turns on two GitHub settings by default: deleting branches after
+  merging, and Dependabot alerts. It still asks, and uses the defaults if
+  you have no preference
+  ([#29](https://github.com/ccp-volume-em/vem-project-template/pull/29)).
 - A tidier top level: `CONTRIBUTING.md`, `REVIEWING.md`, `SECURITY.md`,
   `CODE_OF_CONDUCT.md` and the maintenance scripts (`tools/`) moved into
   `.github/`, where GitHub still finds them. Run the scripts as
@@ -65,6 +69,15 @@ Development (tests, CI and developer docs).
 
 ### Fixed
 
+- A new project's tests no longer fail when setup leaves no optional part
+  out ([#29](https://github.com/ccp-volume-em/vem-project-template/pull/29)).
+- The setup tools say they need Python 3.11 or newer, instead of failing
+  with "No module named 'tomllib'". Setup now makes the virtual environment
+  first ([#29](https://github.com/ccp-volume-em/vem-project-template/pull/29)).
+- Setup removes the template's status notice from `START_HERE.md`, leaves
+  out parts that don't fit the project (the container and notebooks, for
+  Fiji-only projects), and tidies four more mentions of the Python package
+  in Fiji-only projects ([#29](https://github.com/ccp-volume-em/vem-project-template/pull/29)).
 - The README's *Tests* badge shows the template's own tests, instead of a
   broken image. The `start-project` skill points it at the new repository,
   and keeps links to the template intact when renaming
