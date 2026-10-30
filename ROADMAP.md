@@ -5,6 +5,9 @@ What's left to do, most important first. Finished work moves to
 
 ## Next
 
+- [ ] Once the template is public, add the rule protecting `main`:
+      `gh api -X POST repos/ccp-volume-em/vem-project-template/rulesets --input .github/rulesets/main.json`
+      ([#19](https://github.com/ccp-volume-em/vem-project-template/pull/19)).
 - [ ] Once testing is finished, remove the work-in-progress notices from
       `README.md`, `START_HERE.md` and `docs/index.md`, and the matching
       step in the `start-project` skill

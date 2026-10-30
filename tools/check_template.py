@@ -51,6 +51,7 @@ SHARED = (
     ".github/workflows/",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
+    ".github/rulesets/",
     ".gitignore",
     ".dockerignore",
     ".pre-commit-config.yaml",

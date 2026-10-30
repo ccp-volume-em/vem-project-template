@@ -141,12 +141,31 @@ self-review instead (`AGENTS.md`, *How work flows*).
 
 Explain these, and offer to do them with `gh` if it's installed:
 
-- **Protect `main`:** require a pull request and passing checks before
-  merging. Settings → Rules → Rulesets. Require an approving review only if
-  someone else reviews: GitHub doesn't let authors approve their own PRs, so
-  that rule would block a sole developer. On a free GitHub plan rulesets are
-  only enforced on public repositories. For private ones, the rule is a team
-  convention.
+- **Protect `main`.** Explain in plain words: the pre-commit hook stops
+  commits to `main` only on computers where it's installed, and AI
+  assistants can ignore instructions. A rule on GitHub itself makes sure
+  every change reaches `main` through a pull request, with the tests and
+  safety checks passing, whoever makes it and however. Settings aren't copied
+  from the template, so each project adds the rule itself.
+  `.github/rulesets/main.json` holds the rule: a pull request is needed,
+  `lint`, `all-tests`, `no-data-files` and `no-secrets` must pass, and `main`
+  can't be force-pushed or deleted. Approvals aren't required, because
+  GitHub doesn't let authors approve their own pull requests, which would
+  block a sole developer; if someone else will review, offer to set
+  `required_approving_review_count` to 1. Add it after the setup PR is
+  merged, so the `all-tests` check exists on `main`:
+
+  ```bash
+  gh api -X POST repos/<owner>/<repo>/rulesets --input .github/rulesets/main.json
+  ```
+
+  On GitHub's free plan, rules only work on public repositories (the command
+  fails with *Upgrade to GitHub Pro or make this repository public*). For a
+  private repository, explain that the pre-commit hook and the habit of
+  always using a pull request are the only guards, and add the rule when the
+  repository goes public. If they rename or remove one of those checks in
+  `.github/workflows/`, update the rule too, or pull requests can't be
+  merged (a test checks the file agrees with the workflows).
 - **Delete branches after merging:** Settings → General → *Automatically
   delete head branches*, so merged branches don't pile up on GitHub
   (`gh repo edit --delete-branch-on-merge`). Local copies are still tidied by
