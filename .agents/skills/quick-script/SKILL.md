@@ -61,8 +61,8 @@ Keep it short and readable: the user should be able to follow it.
   worked out by hand, and show the user the result next to the expected
   answer.
 - Either way, give the user one simple check they can do themselves (e.g.
-  "this cube is 10 × 10 × 10 voxels of 8 nm, so its volume should be
-  0.512 µm³"), and ask them to run it once on their data and look at the
+  "this box is 100 × 100 × 50 voxels of 10 × 10 × 20 nm, so 1 µm on each
+  side, and its volume should be 1 µm³"), and ask them to run it once on their data and look at the
   output before trusting it.
 
 ## 4. Hand it over
