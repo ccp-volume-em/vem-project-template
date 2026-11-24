@@ -118,6 +118,7 @@ helpful colleague. Some examples:
 
 | You want to… | Try saying… |
 | --- | --- |
+| Check what already exists | "Is there already a tool that measures surface area in 3D? Search before we write anything, and tell me the options." |
 | Start something new | "I'd like to measure the surface area of each mitochondrion in my segmentation. Before writing anything, can you suggest how, and what could go wrong?" |
 | Understand code | "Explain what `measure.py` does, in plain words, without jargon." |
 | Check it works | "Run the tests and tell me what they check." |

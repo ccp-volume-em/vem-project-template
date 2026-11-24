@@ -20,24 +20,6 @@ What's left to do, most important first. Finished work moves to
 
 - [ ] Ask testers what they found intimidating or confusing on first
       opening a project, and simplify further.
-- [ ] Search for existing tools before building anything. Once the user
-      has described what they want (e.g. in `start-project`'s *Purpose*
-      question), search for tools that already do it, or nearly do it:
-      napari hub, Fiji update sites, PyPI and conda-forge, the image.sc
-      forum, BioImage Model Zoo and GitHub. Give the user a short report:
-      - each option found (if any), what it does, and how well it fits;
-      - how to use it: install and use as-is, contribute the missing part
-        to the existing project, or fork and adapt (last resort);
-      - roughly how much extra development each option needs;
-      - anything else that matters: licence, whether it's maintained and
-        still has active maintainers, community and documentation,
-        compatible file formats, and how to cite it.
-
-      Encourage reusing and contributing over reinventing the wheel: it
-      saves effort and helps keep existing projects sustainable. Only
-      write new code for what's left. Probably its own skill (e.g.
-      `find-existing-tools`) that `start-project` calls and the user can
-      also run before any new feature.
 
 - [ ] A lighter way to use the template's guidance, with no repository to
       set up: for a one-off standalone script or macro (e.g. a Fiji script

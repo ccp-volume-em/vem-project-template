@@ -9,6 +9,16 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+### Added
+
+- The `find-existing-tools` skill searches for tools that already do what
+  the user wants (Fiji, napari, Python packages, pretrained models) and
+  reports the options: use as-is, contribute to the existing project, or
+  fork and adapt, with how much extra work each needs. Setup runs it after
+  asking what the project is for, so projects reuse and support existing
+  software rather than reinventing it
+  ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
+
 ## [0.2.0] - 2026-10-30
 
 Projects start smaller: optional parts are left out unless needed, and setup
