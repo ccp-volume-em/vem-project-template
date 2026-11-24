@@ -39,15 +39,6 @@ What's left to do, most important first. Finished work moves to
       `find-existing-tools`) that `start-project` calls and the user can
       also run before any new feature.
 
-## Later
-
-- [ ] A simpler starting point for Fiji-only projects, with no Python for the
-      user to install: Groovy scripts and tests, expected results in CSV,
-      and Python only inside GitHub's checks. Probably a second template
-      (e.g. `vem-fiji-template`) synced from this one for shared files.
-      Needs the Fiji tests running in CI first. Trade-off: no checks on the
-      user's own computer before each commit, so it suits public
-      repositories best.
 - [ ] A lighter way to use the template's guidance, with no repository to
       set up: for a one-off standalone script or macro (e.g. a Fiji script
       to measure one dataset), the user points their AI assistant at the
@@ -60,6 +51,16 @@ What's left to do, most important first. Finished work moves to
       offers to move it into one later. Probably a skill (e.g.
       `quick-script`) that works from a clone or from the template's GitHub
       page, plus a short section in `START_HERE.md` or the README.
+
+## Later
+
+- [ ] A simpler starting point for Fiji-only projects, with no Python for the
+      user to install: Groovy scripts and tests, expected results in CSV,
+      and Python only inside GitHub's checks. Probably a second template
+      (e.g. `vem-fiji-template`) synced from this one for shared files.
+      Needs the Fiji tests running in CI first. Trade-off: no checks on the
+      user's own computer before each commit, so it suits public
+      repositories best.
 - [ ] More optional parts, added the same way (`.github/template-parts.toml`):
       e.g. a napari plugin, or publishing to PyPI.
 
