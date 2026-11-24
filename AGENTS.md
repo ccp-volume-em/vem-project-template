@@ -305,6 +305,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | ------------------ | ------------------------------------------------------------------ |
 | `start-project`    | set up a new repository made from this template                   |
 | `find-existing-tools` | look for existing tools that already do the job, before building one |
+| `quick-script`     | write a single standalone script for a one-off job, without a project |
 | `new-fiji-script`  | write a Fiji script (Groovy with Script Parameters) and its tests |
 | `review-changes`   | check a branch against these standards before opening a PR        |
 | `prepare-release`  | choose a version and prepare a release                            |

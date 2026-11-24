@@ -20,19 +20,11 @@ What's left to do, most important first. Finished work moves to
 
 - [ ] Ask testers what they found intimidating or confusing on first
       opening a project, and simplify further.
-
-- [ ] A lighter way to use the template's guidance, with no repository to
-      set up: for a one-off standalone script or macro (e.g. a Fiji script
-      to measure one dataset), the user points their AI assistant at the
-      template and asks for the script. The assistant follows the same
-      rules (Script Parameters, physical units, provenance, no hard-coded
-      paths) and hands back a single file, with a short note on how to run
-      and check it. It also reminds the user that a full GitHub repository
-      (tests, version history, reviews, citation) is more sustainable once
-      a script grows, gets reused or shared, or feeds into a paper, and
-      offers to move it into one later. Probably a skill (e.g.
-      `quick-script`) that works from a clone or from the template's GitHub
-      page, plus a short section in `START_HERE.md` or the README.
+- [ ] Try `quick-script` and `find-existing-tools` with a tester: a
+      one-off script from the template's GitHub page in a browser-based
+      assistant, and a search for a task with known tools (e.g. 3D object
+      volumes, which MorphoLibJ covers)
+      ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
 
 ## Later
 

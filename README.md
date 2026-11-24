@@ -66,6 +66,15 @@ Setup starts by searching for existing tools that already do what you need
 (the `find-existing-tools` skill): using or improving one is often less work
 than writing your own, and helps keep it maintained.
 
+### Just one script?
+
+For a one-off job you don't need a project. Point your AI assistant at this
+repository and ask it to follow the **`quick-script`** skill
+(`.agents/skills/quick-script/SKILL.md`): it writes a single Fiji or Python
+script that follows the same good practice, and reminds you that a full
+repository is more sustainable once the script grows, is shared, or its
+results are published.
+
 ### What's in the box
 
 ```text
@@ -78,6 +87,7 @@ than writing your own, and helps keep it maintained.
 ├── .agents/skills/        step-by-step procedures for AI assistants
 │   ├── start-project/       set up a new repository from this template
 │   ├── find-existing-tools/ look for tools that already do the job, before building
+│   ├── quick-script/        write one standalone script, without a project
 │   ├── new-fiji-script/     write a Fiji script with a dialog, and its tests
 │   ├── review-changes/      check a branch before opening a PR
 │   ├── prepare-release/     choose a version and release

@@ -18,6 +18,11 @@ Development (tests, CI and developer docs).
   asking what the project is for, so projects reuse and support existing
   software rather than reinventing it
   ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
+- The `quick-script` skill writes a single standalone Fiji or Python script
+  for a one-off job, following the template's good practice, with no
+  repository to set up. It reminds the user that a full repository is more
+  sustainable once a script grows, is shared, or its results are published
+  ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
 
 ## [0.2.0] - 2026-10-30
 
