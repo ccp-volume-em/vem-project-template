@@ -48,6 +48,18 @@ What's left to do, most important first. Finished work moves to
       Needs the Fiji tests running in CI first. Trade-off: no checks on the
       user's own computer before each commit, so it suits public
       repositories best.
+- [ ] A lighter way to use the template's guidance, with no repository to
+      set up: for a one-off standalone script or macro (e.g. a Fiji script
+      to measure one dataset), the user points their AI assistant at the
+      template and asks for the script. The assistant follows the same
+      rules (Script Parameters, physical units, provenance, no hard-coded
+      paths) and hands back a single file, with a short note on how to run
+      and check it. It also reminds the user that a full GitHub repository
+      (tests, version history, reviews, citation) is more sustainable once
+      a script grows, gets reused or shared, or feeds into a paper, and
+      offers to move it into one later. Probably a skill (e.g.
+      `quick-script`) that works from a clone or from the template's GitHub
+      page, plus a short section in `START_HERE.md` or the README.
 - [ ] More optional parts, added the same way (`.github/template-parts.toml`):
       e.g. a napari plugin, or publishing to PyPI.
 
