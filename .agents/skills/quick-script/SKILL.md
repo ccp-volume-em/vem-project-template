@@ -39,8 +39,11 @@ lines around an existing tool.
 Follow `AGENTS.md`, *Fiji scripts* and *Volume EM and CLEM data*, which
 apply to a single file just as to a project:
 
-- **Fiji:** a Groovy script with Script Parameters, unless the user asks for
-  an ImageJ macro or another language (see `new-fiji-script` for how).
+- **Fiji:** Script Parameters (`#@` lines) for every input, never a
+  hand-built dialog (`GenericDialog`, or `Dialog.create` in a macro), in any
+  language. Groovy, unless the user asks for another: if they say "macro",
+  ask whether they need the ImageJ macro language itself. Script Parameters
+  work in ImageJ macros too (see `new-fiji-script` for how).
 - **Python:** one `.py` file. Take settings on the command line
   (`argparse`), with defaults. List the packages it needs, with versions, in
   an [inline script metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/)

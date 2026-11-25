@@ -14,7 +14,7 @@ AI assistants follow the same rules, summarised in [AGENTS.md](../AGENTS.md).
 | Folder | What goes there |
 | --- | --- |
 | `src/<package>/` | Reusable Python code that others run: the analysis, as plain functions, with thin interfaces (CLI, napari) on top |
-| `fiji/` | Reusable Fiji scripts (Groovy with Script Parameters) |
+| `fiji/` | Reusable Fiji scripts (Script Parameters; Groovy by default) |
 | `notebooks/` | The project's own analysis: exploring data, choosing parameters, making figures. Uses the code above; outputs are stripped on commit |
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
@@ -189,7 +189,8 @@ PR is still open, or that has work not in `main`, without asking its owner.
 
 ## Fiji scripts
 
-Fiji work is written as Groovy scripts with Script Parameters, in `fiji/`:
+Fiji work is written with Script Parameters, in `fiji/`, in Groovy unless
+there's a reason for another language (e.g. an ImageJ macro):
 Fiji builds the dialog from the `#@` lines, and the same script runs headless
 on a cluster. See [fiji/README.md](../fiji/README.md). Run the Fiji tests
 locally before opening a PR that changes a script (CI has no Fiji):

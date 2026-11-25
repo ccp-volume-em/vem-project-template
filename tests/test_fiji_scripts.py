@@ -16,7 +16,7 @@ import numpy as np
 import pytest
 
 FIJI_DIR = Path(__file__).resolve().parent.parent / "fiji"
-SCRIPTS = sorted(FIJI_DIR.glob("*.groovy"))
+SCRIPTS = sorted([*FIJI_DIR.glob("*.groovy"), *FIJI_DIR.glob("*.ijm")])
 FIJI = os.environ.get("FIJI")
 
 # Dialogs that wait for a person break headless and batch runs; Script
@@ -24,17 +24,45 @@ FIJI = os.environ.get("FIJI")
 BLOCKING_UI = re.compile(
     r"\b(GenericDialog|WaitForUserDialog|waitForUser|NonBlockingGenericDialog)\b"
 )
+# The ImageJ macro language's own dialogs and prompts.
+MACRO_BLOCKING_UI = re.compile(
+    r"\b(Dialog\.create|File\.openDialog|getNumber|getString|getBoolean|waitForUser)\s*\("
+)
+
+
+def uses_hand_built_dialogs(text, suffix):
+    """Whether a script asks for input itself instead of through Script Parameters."""
+    if suffix == ".ijm" and MACRO_BLOCKING_UI.search(text):
+        return True
+    return bool(BLOCKING_UI.search(text))
 
 
 def test_there_are_fiji_scripts():
-    assert SCRIPTS, "fiji/ has no .groovy scripts"
+    assert SCRIPTS, "fiji/ has no .groovy or .ijm scripts"
 
 
 @pytest.mark.parametrize("script", SCRIPTS, ids=lambda p: p.name)
 def test_inputs_are_script_parameters(script):
     lines = script.read_text().splitlines()
     assert lines[0].startswith("#@"), "inputs should be declared as #@ Script Parameters first"
-    assert not BLOCKING_UI.search(script.read_text()), "use Script Parameters, not dialogs"
+    assert not uses_hand_built_dialogs(script.read_text(), script.suffix), (
+        "use Script Parameters, not dialogs"
+    )
+
+
+@pytest.mark.parametrize(
+    ("text", "suffix", "expected"),
+    [
+        ('#@ Double (label = "Sigma", value = 2) sigma\nrun("Gaussian Blur...");', ".ijm", False),
+        ('Dialog.create("Settings");\nDialog.addNumber("Sigma", 2);', ".ijm", True),
+        ('path = File.openDialog("Choose an image");', ".ijm", True),
+        ('sigma = getNumber("Sigma", 2);', ".ijm", True),
+        ("def gd = new GenericDialog('Settings')", ".groovy", True),
+        ("#@ File inputFile\ndef props = new Properties()", ".groovy", False),
+    ],
+)
+def test_hand_built_dialogs_are_caught(text, suffix, expected):
+    assert uses_hand_built_dialogs(text, suffix) is expected
 
 
 @pytest.mark.parametrize("script", SCRIPTS, ids=lambda p: p.name)

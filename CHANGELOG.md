@@ -24,6 +24,16 @@ Development (tests, CI and developer docs).
   sustainable once a script grows, is shared, or its results are published
   ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
 
+### Changed
+
+- Fiji scripts take their inputs as Script Parameters in every language,
+  including ImageJ macros, never through a hand-built dialog such as the
+  macro language's `Dialog.create`. Groovy stays the default language; when
+  a user asks for a "macro", the assistant asks whether they need the ImageJ
+  macro language itself. The check for hand-built dialogs now covers `.ijm`
+  macros too
+  ([#36](https://github.com/ccp-volume-em/vem-project-template/pull/36)).
+
 ## [0.2.0] - 2026-10-30
 
 Projects start smaller: optional parts are left out unless needed, and setup
