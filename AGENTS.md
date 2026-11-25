@@ -188,8 +188,10 @@ so it's set up the same way as in every other project.
   "fixed bug"): that's what commits are for.
 - Match the style, naming and comment density of the surrounding code. Run
   `ruff check .` and `ruff format .` before committing.
-- Prefer well-established libraries over writing your own. Ask before adding
-  a dependency, and add it to `pyproject.toml`.
+- Prefer well-established libraries over writing your own. Before building a
+  new tool or feature, check whether one already exists (the
+  **find-existing-tools** skill). Ask before adding a dependency, and add it
+  to `pyproject.toml`.
 - Notebooks (`notebooks/`) are for the project's own analysis and figures,
   not reusable code. Keep parameters in the first code cell, import from the
   package, and once a function is reused or others will run it, move it into
@@ -302,6 +304,8 @@ assistant doesn't load skills automatically, read the file and follow it.
 | Skill              | Use it to…                                                         |
 | ------------------ | ------------------------------------------------------------------ |
 | `start-project`    | set up a new repository made from this template                   |
+| `find-existing-tools` | look for existing tools that already do the job, before building one |
+| `quick-script`     | write a single standalone script for a one-off job, without a project |
 | `new-fiji-script`  | write a Fiji script (Groovy with Script Parameters) and its tests |
 | `review-changes`   | check a branch against these standards before opening a PR        |
 | `prepare-release`  | choose a version and prepare a release                            |

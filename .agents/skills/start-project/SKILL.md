@@ -28,6 +28,9 @@ data files, and no commits straight to `main`.
    (underscores, `fibsem_mito_seg`). Check PyPI to see if the name is taken
    (`https://pypi.org/project/<name>/`) if they might publish there.
 2. **Purpose.** One or two sentences: what does it do, for which data?
+   Then run the `find-existing-tools` skill and go through its report with
+   them before carrying on. If an existing tool already does the job, they
+   may not need a project: say so, and ask whether to continue setup.
 3. **Shape.** Which of these will the project be? This decides what to keep
    (see *Where things go* in `AGENTS.md`):
    - **Python** (a command-line tool, library or napari plugin), with or

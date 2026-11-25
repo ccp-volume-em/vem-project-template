@@ -20,37 +20,11 @@ What's left to do, most important first. Finished work moves to
 
 - [ ] Ask testers what they found intimidating or confusing on first
       opening a project, and simplify further.
-- [ ] Search for existing tools before building anything. Once the user
-      has described what they want (e.g. in `start-project`'s *Purpose*
-      question), search for tools that already do it, or nearly do it:
-      napari hub, Fiji update sites, PyPI and conda-forge, the image.sc
-      forum, BioImage Model Zoo and GitHub. Give the user a short report:
-      - each option found (if any), what it does, and how well it fits;
-      - how to use it: install and use as-is, contribute the missing part
-        to the existing project, or fork and adapt (last resort);
-      - roughly how much extra development each option needs;
-      - anything else that matters: licence, whether it's maintained and
-        still has active maintainers, community and documentation,
-        compatible file formats, and how to cite it.
-
-      Encourage reusing and contributing over reinventing the wheel: it
-      saves effort and helps keep existing projects sustainable. Only
-      write new code for what's left. Probably its own skill (e.g.
-      `find-existing-tools`) that `start-project` calls and the user can
-      also run before any new feature.
-
-- [ ] A lighter way to use the template's guidance, with no repository to
-      set up: for a one-off standalone script or macro (e.g. a Fiji script
-      to measure one dataset), the user points their AI assistant at the
-      template and asks for the script. The assistant follows the same
-      rules (Script Parameters, physical units, provenance, no hard-coded
-      paths) and hands back a single file, with a short note on how to run
-      and check it. It also reminds the user that a full GitHub repository
-      (tests, version history, reviews, citation) is more sustainable once
-      a script grows, gets reused or shared, or feeds into a paper, and
-      offers to move it into one later. Probably a skill (e.g.
-      `quick-script`) that works from a clone or from the template's GitHub
-      page, plus a short section in `START_HERE.md` or the README.
+- [ ] Try `quick-script` and `find-existing-tools` with a tester: a
+      one-off script from the template's GitHub page in a browser-based
+      assistant, and a search for a task with known tools (e.g. 3D object
+      volumes, which MorphoLibJ covers)
+      ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
 
 ## Later
 

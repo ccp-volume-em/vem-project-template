@@ -9,6 +9,21 @@ Development (tests, CI and developer docs).
 
 ## [Unreleased]
 
+### Added
+
+- The `find-existing-tools` skill searches for tools that already do what
+  the user wants (Fiji, napari, Python packages, pretrained models) and
+  reports the options: use as-is, contribute to the existing project, or
+  fork and adapt, with how much extra work each needs. Setup runs it after
+  asking what the project is for, so projects reuse and support existing
+  software rather than reinventing it
+  ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
+- The `quick-script` skill writes a single standalone Fiji or Python script
+  for a one-off job, following the template's good practice, with no
+  repository to set up. It reminds the user that a full repository is more
+  sustainable once a script grows, is shared, or its results are published
+  ([#35](https://github.com/ccp-volume-em/vem-project-template/pull/35)).
+
 ## [0.2.0] - 2026-10-30
 
 Projects start smaller: optional parts are left out unless needed, and setup

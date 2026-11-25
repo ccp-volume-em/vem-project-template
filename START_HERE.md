@@ -28,6 +28,19 @@ automatically to catch mistakes.
 It lives on **GitHub**, a website that stores code and keeps its full history,
 much like a lab notebook that never loses a page.
 
+**Just need one script?** For a small, one-off job, such as measuring the
+objects in a single segmentation, you don't have to set up a project. Ask
+your AI assistant:
+
+> Read https://github.com/ccp-volume-em/vem-project-template and follow its
+> quick-script skill (`.agents/skills/quick-script/SKILL.md`) to write me a
+> script that …
+
+It writes a single file that follows the same good practice. If the script
+grows, gets reused or shared, or its results go into a paper, move it into a
+full project: that keeps its history, tests and reviews, and makes it
+citable.
+
 ## What you need
 
 - **A GitHub account.** Free at [github.com](https://github.com). Ask your group
@@ -118,6 +131,7 @@ helpful colleague. Some examples:
 
 | You want to… | Try saying… |
 | --- | --- |
+| Check what already exists | "Is there already a tool that measures surface area in 3D? Search before we write anything, and tell me the options." |
 | Start something new | "I'd like to measure the surface area of each mitochondrion in my segmentation. Before writing anything, can you suggest how, and what could go wrong?" |
 | Understand code | "Explain what `measure.py` does, in plain words, without jargon." |
 | Check it works | "Run the tests and tell me what they check." |
