@@ -206,8 +206,10 @@ language. The language is **Groovy** unless the user asks for another (e.g.
 the ImageJ macro language, Jython or a Java plugin). People often say "macro"
 for any Fiji script: if they do, ask whether they need the ImageJ macro
 language itself, and explain that Groovy is the default because it's easier
-to test. Use the **new-fiji-script** skill, and
-`fiji/measure_object_volumes.groovy` as the model.
+to test. One-off scripts outside a project (the **quick-script** skill) are
+the exception: there a "macro" means an ImageJ macro. Use the
+**new-fiji-script** skill, and `fiji/measure_object_volumes.groovy` as the
+model.
 
 - Declare every input as a Script Parameter (`#@ File`, `#@ Double`,
   `#@ String (choices = …)`, …) at the top, with a label, a default, and
