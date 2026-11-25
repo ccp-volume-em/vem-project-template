@@ -28,7 +28,9 @@ As in `new-fiji-script`, confirm in plain language:
 - the input (file type, 2D or 3D, how big) and the output;
 - every setting they'll want to change, with sensible defaults;
 - any scientific choice (method, threshold): theirs to make, not yours;
-- where it will run: Fiji, Python on their computer, or a cluster.
+- where it will run: Fiji, Python on their computer, or a cluster;
+- for Fiji, the language: an ImageJ macro unless they'd prefer Groovy
+  (see step 2).
 
 Then run the `find-existing-tools` skill, briefly: if Fiji, napari or a
 package already does this, they may not need a script at all, or only a few
@@ -41,9 +43,23 @@ apply to a single file just as to a project:
 
 - **Fiji:** Script Parameters (`#@` lines) for every input, never a
   hand-built dialog (`GenericDialog`, or `Dialog.create` in a macro), in any
-  language. Groovy, unless the user asks for another: if they say "macro",
-  ask whether they need the ImageJ macro language itself. Script Parameters
-  work in ImageJ macros too (see `new-fiji-script` for how).
+  language (see `new-fiji-script` for how).
+  - **Language:** if the user asks for a "macro", or doesn't say, write an
+    **ImageJ macro** (`.ijm`). It's what most Fiji users know, and for a
+    one-off job it's usually the shortest and easiest to read. Write Groovy
+    when they ask for it, or when the job needs something the macro
+    language can't do well (e.g. reading OME-Zarr, or working block by
+    block on a volume too big for memory): then say why. If you can ask,
+    check the language in step 1; if you can't, follow these defaults and
+    say which you chose.
+  - **Use Fiji's menu commands** (`run("Gaussian Blur...", "sigma=2")`,
+    `setAutoThreshold("Otsu dark")`), the same steps the user would click
+    through and could record with *Plugins › Macros › Record*, rather than
+    Fiji's internal Java classes. The user can then follow every line.
+  - **Provenance in a macro:** the macro language can't compute a checksum,
+    so write a small text or JSON file with the settings, input,
+    `getVersion()`, the date, and the script's file name and version (a
+    date or number in its header comment).
 - **Python:** one `.py` file. Take settings on the command line
   (`argparse`), with defaults. List the packages it needs, with versions, in
   an [inline script metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/)
@@ -56,7 +72,9 @@ apply to a single file just as to a project:
   the output) with the settings, inputs, software versions, date and the
   script's checksum.
 
-Keep it short and readable: the user should be able to follow it.
+Keep it short and readable: the user should be able to follow every line.
+Aim for the fewest lines that still follow the rules above, not for a
+general-purpose tool.
 
 ## 3. Check it
 
@@ -65,8 +83,8 @@ Keep it short and readable: the user should be able to follow it.
   answer.
 - Either way, give the user one simple check they can do themselves (e.g.
   "this box is 100 × 100 × 50 voxels of 10 × 10 × 20 nm, so 1 µm on each
-  side, and its volume should be 1 µm³"), and ask them to run it once on their data and look at the
-  output before trusting it.
+  side, and its volume should be 1 µm³"), and ask them to run it once on
+  their data and look at the output before trusting it.
 
 ## 4. Hand it over
 

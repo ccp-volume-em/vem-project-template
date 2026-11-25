@@ -33,6 +33,11 @@ Development (tests, CI and developer docs).
   macro language itself. The check for hand-built dialogs now covers `.ijm`
   macros too
   ([#36](https://github.com/ccp-volume-em/vem-project-template/pull/36)).
+- The `quick-script` skill writes Fiji one-off scripts as short ImageJ
+  macros (with Script Parameters) when the user asks for a "macro" or
+  doesn't say, using Fiji's menu commands so every line is easy to follow.
+  Groovy is still used when asked for, or when the job needs it
+  ([#37](https://github.com/ccp-volume-em/vem-project-template/pull/37)).
 
 ## [0.2.0] - 2026-10-30
 
