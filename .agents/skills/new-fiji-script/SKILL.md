@@ -1,13 +1,13 @@
 ---
 name: new-fiji-script
-description: Create a new Fiji script as a Groovy script with Script Parameters (#@) for its dialog, so it runs both in the Fiji GUI and headless, with a test. Use for any Fiji or ImageJ work unless the user asks for a different language (e.g. an ImageJ macro, Jython or a Java plugin).
+description: Create a new Fiji script or ImageJ macro with Script Parameters (#@) for its dialog, so it runs both in the Fiji GUI and headless, with a test. Groovy unless the user asks for another language (e.g. the ImageJ macro language, Jython or a Java plugin), but always Script Parameters, never a hand-built dialog. Use for any Fiji or ImageJ work, including when the user asks for a "macro".
 ---
 
 # Create a Fiji script
 
-Fiji work in this project is written as **Groovy scripts with Script
-Parameters**, unless the user asks for something else. Script Parameters are
-`#@` lines at the top of the script. Fiji builds the dialog from them, records
+Fiji work in this project always declares its inputs as **Script
+Parameters**, and is written in **Groovy** unless the user asks for another
+language. Script Parameters are `#@` lines at the top of the script. Fiji builds the dialog from them, records
 them for reproducibility, and accepts them on the command line for headless and
 HPC runs. Use `fiji/measure_object_volumes.groovy` as the model.
 
@@ -18,9 +18,15 @@ Before writing, confirm with the user, in plain language:
 - the input (file type, 2D or 3D, label image or intensities, how big);
 - every parameter they'll want to change, with sensible defaults and ranges;
 - the outputs (tables, images) and where they go;
-- any scientific choice (method, threshold): theirs to make, not yours.
+- any scientific choice (method, threshold): theirs to make, not yours;
+- the language. If they asked for a "macro", ask whether they need the
+  ImageJ macro language itself (e.g. to match macros their lab already
+  uses), or just a script: then Groovy, which is easier to test.
 
 ## 2. Write `fiji/<verb>_<thing>.groovy`
+
+(or `.ijm` for an ImageJ macro: the same rules apply, see the end of this
+section.)
 
 Follow the rules in `AGENTS.md` → *Fiji scripts*. In order:
 
@@ -47,6 +53,19 @@ Follow the rules in `AGENTS.md` → *Fiji scripts*. In order:
 4. **Outputs plus a `provenance.json`** with the parameters, input paths,
    `IJ.getFullVersion()`, the date and the script's SHA-256 checksum (the
    script's path is `binding.variables["javax.script.filename"]`).
+
+**ImageJ macros** use the same `#@` lines at the top, never `Dialog.create`,
+`getNumber`, `getString`, `getBoolean`, `File.openDialog` or `waitForUser`:
+
+```javascript
+#@ File (label = "Input image", style = "file") inputFile
+#@ Double (label = "Gaussian sigma (pixels)", value = 2, min = 0) sigma
+#@ String (label = "Threshold method", choices = {"Otsu", "Li", "Triangle"}) method
+
+open(inputFile);
+run("Gaussian Blur...", "sigma=" + sigma + " stack");
+setAutoThreshold(method + " dark");
+```
 
 ## 3. Test it
 

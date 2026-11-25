@@ -166,7 +166,7 @@ so it's set up the same way as in every other project.
 | Folder | What goes there |
 | --- | --- |
 | `src/<package>/` | Reusable Python code that others run: the analysis, as plain functions, with thin interfaces (CLI, napari) on top |
-| `fiji/` | Reusable Fiji scripts (Groovy with Script Parameters) |
+| `fiji/` | Reusable Fiji scripts (Script Parameters; Groovy by default) |
 | `notebooks/` | The project's own analysis: exploring data, choosing parameters, making figures. Uses the code above; outputs are stripped on commit |
 | `examples/` | How to run the code: parameter files, and `make_example_data.py`, which writes a test volume for both Python (OME-Zarr) and Fiji (TIFF) |
 | `tests/` | Tests of the project's code, Python and Fiji |
@@ -201,16 +201,21 @@ so it's set up the same way as in every other project.
 
 ## Fiji scripts
 
-Unless the user asks for something else (e.g. an ImageJ macro, Jython or a
-Java plugin), write Fiji work as **Groovy scripts with Script Parameters**, in
-`fiji/`. Use the **new-fiji-script** skill, and
+Write Fiji work in `fiji/` with **Script Parameters**, whatever the
+language. The language is **Groovy** unless the user asks for another (e.g.
+the ImageJ macro language, Jython or a Java plugin). People often say "macro"
+for any Fiji script: if they do, ask whether they need the ImageJ macro
+language itself, and explain that Groovy is the default because it's easier
+to test. Use the **new-fiji-script** skill, and
 `fiji/measure_object_volumes.groovy` as the model.
 
 - Declare every input as a Script Parameter (`#@ File`, `#@ Double`,
   `#@ String (choices = …)`, …) at the top, with a label, a default, and
-  limits where they make sense. Fiji builds the dialog from them; never build
-  one by hand (`GenericDialog`) or wait for the user (`waitForUser`). A test
-  checks this.
+  limits where they make sense. This works in every Fiji scripting language,
+  including ImageJ macros (`.ijm`). Fiji builds the dialog from them; never
+  build one by hand (`GenericDialog` in Groovy or Jython; `Dialog.create`,
+  `getNumber`, `getString` or `File.openDialog` in a macro) or wait for the
+  user (`waitForUser`). A test checks this for `.groovy` and `.ijm` files.
 - No hard-coded paths, and nothing that needs a screen: the same script must
   run headless (`fiji --headless --run script.groovy 'name="value",…'`), e.g.
   on an HPC cluster. See `fiji/README.md`.
@@ -306,7 +311,7 @@ assistant doesn't load skills automatically, read the file and follow it.
 | `start-project`    | set up a new repository made from this template                   |
 | `find-existing-tools` | look for existing tools that already do the job, before building one |
 | `quick-script`     | write a single standalone script for a one-off job, without a project |
-| `new-fiji-script`  | write a Fiji script (Groovy with Script Parameters) and its tests |
+| `new-fiji-script`  | write a Fiji script or macro (with Script Parameters) and its tests |
 | `review-changes`   | check a branch against these standards before opening a PR        |
 | `prepare-release`  | choose a version and prepare a release                            |
 | `update-guidance`  | check the CCP-volumeEM guide for changes and update `guidance/`   |
